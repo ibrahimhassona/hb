@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+    --primary: #2DBBAB; 
+    --lightPrimary:#2debd6;    
+    --lightGray:#333333;
+    --darkGray:#2E2E2E;
+  }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+}
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.cust-trans{
+  @apply transition-all duration-300
+}
+.loader-fast{
+  @apply transition-all duration-700
+}
+.swiper-button-prev{
+  display: block !important ;
+}
+.swiper-button-next{
+  display: block !important ;
+}

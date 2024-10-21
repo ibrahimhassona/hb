@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "mhg": "Part Of MHG Family",
+    "btn": "Where to buy?",
+    "home": "Home",
+    "who_are": "About Us",
+    "products": "Our Products",
+    "news": "News",
+    "contactUs": "Contact Us",
+    "mainTitle": "Empower Your Home, Simplify Your Life!",
+    "mainText": "Welcome to Hypnotek, Pioneering the Future of Connected Living, Where Every Interaction is Designed to Enrich Your Home Experience Beyond Expectations.",
+    "productsLink": "Explore our products"
+  },
+  "main_categories": {
+    "title": "Shop products by category",
+    "featured_products": "Featured Products",
+   "discover_more": "Discover More"
+  },
+  "news":{
+    "title":"Explore Our Journey & Creations",
+    "discover_more": "Discover More",
+    "read_more":"Read More"
+  }
+}
