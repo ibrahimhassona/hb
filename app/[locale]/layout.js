@@ -23,12 +23,11 @@ export function generateMetadata({ params }) {
 // --------- Main Layout ---------
 export default async function LocaleLayout({ children, params: { locale } }) {
   const messages = await getMessages(locale);
-  console.log(locale)
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-      <body className={` m-auto bg-white ${locale === 'ar' ? cairo.className : cairo.className}`}>
+      <body className={` m-auto relative bg-white ${locale === 'ar' ? cairo.className : cairo.className}`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <NavBar/>
+         
           {children}
           <Footer/>
         </NextIntlClientProvider>
