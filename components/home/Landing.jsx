@@ -18,7 +18,7 @@ const Landing = () => {
                 </p>
                 {/* ======= Links ======= */}
                 <div className='flex w-full justify-between items-center gap-2 cust-trans animate-flip-up'>
-                    <Link href="/" className="bg-primary max-md:w-full text-white px-4 max-sm:px-2  max-sm:text-sm py-2 rounded-md border-2 border-primary text-center " aria-label="Go to products">
+                    <Link href="/" className="bg-primary hover:bg-lightPrimary hover:border-lightPrimary cust-trans max-md:w-full text-white px-4 max-sm:px-2  max-sm:text-sm py-2 rounded-md border-2 border-primary text-center " aria-label="Go to products">
                         {t("productsLink")}
                     </Link>
                     {/* ====== Link ===== */}

@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { usePathname } from '@/i18n/routing';
 
-const MobileMenu = () => {
+const MobileMenu = ({props}) => {
     const [isOpen, setIsOpen] = useState(false); // State to manage the open/closed status of the menu
     const locale = useLocale(); // Get the current locale (language) of the app
     const toggleMenu = () => {
@@ -16,24 +17,25 @@ const MobileMenu = () => {
 
     // Translations for the navigation links
     const t = useTranslations("nav");
-
+    const currentPath = usePathname()
     // Links data for the mobile menu
     const dataLinks = [
         { title: t("home"), href: '/', id: 1 },
-        { title: t("who_are"), href: '/', id: 2 },
+        { title: t("who_are"), href: '/about', id: 2 },
         { title: t("products"), href: false, id: 3 }, // 'href: false' indicates a dropdown or non-link action
-        { title: t("news"), href: '/', id: 4 },
-        { title: t("contactUs"), href: '/', id: 5 },
+        { title: t("news"), href: '/news', id: 4 },
+        { title: t("contactUs"), href: '/contactUs', id: 5 },
     ];
+    const isActive = (href) => currentPath === href; 
 
     return (
         <div>
             {/* =========== Hamburger Menu Icon And Close =========== */}
             <div className='max-md:flex hidden' onClick={toggleMenu}>
                 {isOpen ? (
-                    <MdOutlineClose size={30} className='text-primary hover:text-primary cust-trans animate-flip-up cursor-pointer' />
+                    <MdOutlineClose size={30} className={` hover:text-primary cust-trans animate-flip-up cursor-pointer text-primary`} />
                 ) : (
-                    <HiMenu size={30} className='text-lightGray hover:text-primary cust-trans animate-flip-up cursor-pointer' />
+                    <HiMenu size={30} className={` hover:text-primary cust-trans animate-flip-up cursor-pointer ${props?'text-white':'text-lightGray'}`} />
                 )}
             </div>
             {/* =========== End Icon =========== */}
@@ -50,7 +52,7 @@ const MobileMenu = () => {
                         {/* Mapping through dataLinks to create menu items */}
                         {dataLinks.map((link) => (
                             link.href ? (
-                                <Link href={link.href} key={link.id} onClick={toggleMenu} className={`font-[500] px-2 py-1 rounded-sm w-full cust-trans hover:text-primary hover:bg-white ${link.id === 1 ? 'text-primary bg-white' : ''}`}>
+                                <Link href={link.href} key={link.id} onClick={toggleMenu} className={`font-[500] px-2 py-1 rounded-sm w-full cust-trans hover:text-primary hover:bg-white ${isActive(link.href)? 'text-primary bg-white' : ''}`}>
                                     {link.title}
                                 </Link>
                             ) : (
