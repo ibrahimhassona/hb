@@ -2,12 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Path = () => {
-    const data = [
-        { title: "الرئيسية", url: '/' },
-        { title: "من نحن", url: '/about' },
-    ]
-
+const Path = ({data}) => {
     return (
         <div className="flex items-center gap-2 max-md:text-sm">
             {data.map((item, index) => (
