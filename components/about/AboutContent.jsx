@@ -109,7 +109,7 @@ const FeatureCard = ({ title, description }) => (
 // ============ Part Three =============
 const Part3 = () => {
     return (
-        <div className='pe-4 xl:pe-40 max-md:px-4 max-md:xl:px-40 grid grid-cols-2 gap-8 max-md:gap-16 items-center justify-between max-md:flex flex-col-reverse my-8 py-6 '>
+        <div className='pe-4 xl:pe-40 max-md:px-4 max-md:xl:px-40 grid grid-cols-2 gap-8 max-md:gap-16 items-center justify-between max-md:flex flex-col my-8 py-6 '>
             {/* --------- Image -------- */}
             <div className='h-[400px] max-md:h-[300px] overflow-hidden rounded-e-3xl max-md:rounded-xl max-md:w-full '>
                 <Image
