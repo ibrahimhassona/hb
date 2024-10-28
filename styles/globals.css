@@ -44,3 +44,9 @@ body {
 .dropdown-menu {
   transition: all 0.2s ease-in-out;
 }
+/* ============= */
+
+.custom-radio{
+  background-color: var(--primary); /* لون الخلفية عند الاختيار */
+  border-color: #4a90e2;     /* لون الحافة */
+}
