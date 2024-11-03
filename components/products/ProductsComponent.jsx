@@ -89,7 +89,7 @@ const ProductsComponent = ({className}) => {
     ];
     
   return (
-    <div className={`${className} grid grid-cols-2 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-center w-full  justify-items-center`}>
+    <div className={`${className} grid grid-cols-2 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 items-center w-full  justify-items-center`}>
         {productsData.map((item,index)=>(<Card key={index} item={item}/>))}        
     </div>
   )
