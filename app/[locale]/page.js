@@ -11,7 +11,7 @@ export default function Home() {
        <NavBar/>
       <Landing />
       <MainCategories />
-      <FeaturedProducts />
+      <FeaturedProducts title="المنتجات المميزة"/>
       <ShowSection />
       <NewsSection />
     </div>

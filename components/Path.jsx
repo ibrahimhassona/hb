@@ -2,14 +2,14 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Path = ({data}) => {
+const Path = ({data,className}) => {
     return (
-        <div className="flex items-center gap-2 max-md:text-sm">
+        <div className="flex items-center gap-2 max-md:text-sm py-4 max-sm:text-xs flex-wrap">
             {data.map((item, index) => (
                 <React.Fragment key={index}>
                     {index === data.length - 1 ? (
                         // Last item - no link, no separator
-                        <span className="text-white max-md:text-sm">
+                        <span className={`  ${className}`}>
                             {item.title}
                         </span>
                     ) : (

@@ -19,7 +19,7 @@ const page = () => {
                         {/* ---- About Description ---- */}
                         <div className='flex flex-col justify-around w-[70%] max-sm:w-full gap-4 h-[250px] '>
                             {/* ------ SRC Path ------ */}
-                            <Path data={dataPath} />
+                            <Path data={dataPath} className='text-white' />
                             <div>
                                 <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>كل شي بـدأ من هنـا !</h1>
                                 <p className='text-white text-[20px] font-[500]'>عالم هيبنوتيك يخلق مستقبل التكنولوجيا في منزلك. نحن نقدم العديد من منتجات تكنولوجيا المنزل الذكي. جربه الآن!</p>

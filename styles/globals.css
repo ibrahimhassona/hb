@@ -7,7 +7,7 @@
   --foreground: #171717;
     --primary: #2DBBAB; 
     --lightPrimary:#2debd6;    
-    --lightGray:#333333;
+    --lightGray :#333333;
     --darkGray:#2E2E2E;
   }
 
@@ -46,7 +46,3 @@ body {
 }
 /* ============= */
 
-.custom-radio{
-  background-color: var(--primary); /* لون الخلفية عند الاختيار */
-  border-color: #4a90e2;     /* لون الحافة */
-}
