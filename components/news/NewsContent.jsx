@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import Pagination from '../products/Pagination';
+import { IoIosArrowDown } from 'react-icons/io';
 import { FilterButton } from './FilterButton';
+import Link from 'next/link';
 
 const NewsContent = () => {
     // State for filter section and sort selection
     const [selectedSection, setSelectedSection] = useState('');
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [sortOption, setSortOption] = useState('newest');
-
     // Sample news data array
     const newsItems = [
         {
@@ -130,26 +131,27 @@ const NewsContent = () => {
             </div>
 
             {/* ---------------News Grid Section------------- */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {newsItems.map((item) => (
-                    <div key={item.id} className="bg-white rounded-lg overflow-hidden shadow-sm">
-                        <div className="relative h-48 overflow-hidden">
+                    // =========== News Item =========
+                    <div key={item.id} className="bg-white rounded-lg overflow-hidden hover:shadow-md cust-trans cursor-pointer shadow-sm">
+                        <div className="relative h-48 max-md:h-40 overflow-hidden">
                             <img
                                 src={item.image}
                                 alt={item.title}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="p-4">
-                            <div className="flex justify-between items-center mb-2">
-                                <h2 className="text-xl font-bold text-darkGray">{item.title}</h2>
-                                <span className="text-sm text-gray-500">{item.date}</span>
+                        <div className="p-4 flex flex-col gap-2">
+                            <div className="flex items-start gap-2 flex-col">
+                                <h2 className="text-xl max-md:text-md font-bold text-darkGray">{item.title}</h2>
+                                <span className="text-sm text-gray-400">{item.date}</span>
                             </div>
-                            <p className="text-gray-600 mb-4 text-right">{item.description}</p>
-                            <div className="flex items-center text-primary hover:text-primary/80 cursor-pointer">
-                                <FaChevronLeft className="w-4 h-4 ml-1" />
+                            <p className="text-darkGray max-md:text-sm mb-4 text-right">{item.description}</p>
+                            <Link href={`/news/dd`} className="flex items-center justify-end text-primary hover:text-lightPrimary cust-trans gap-2">
                                 <span className="text-sm">اقرأ اكثر</span>
-                            </div>
+                                <FaChevronLeft className="w-4 h-4 ml-1" />
+                            </Link>
                         </div>
                     </div>
                 ))}

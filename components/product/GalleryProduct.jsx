@@ -96,7 +96,7 @@ const GalleryProduct = () => {
                             <img
                                 src={img}
                                 alt={`Product view ${index + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                className="w-full h-full object-cover cust-trans hover:scale-105"
                                 loading="lazy"
                             />
                         </div>
