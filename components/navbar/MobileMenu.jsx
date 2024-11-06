@@ -25,7 +25,7 @@ const MobileMenu = ({ props }) => {
         { title: "من نحن", href: '/about', id: 2 },
         { title: "المنتجات", href: false, id: 3 },
         { title: "الأخبار", href: '/news', id: 4 },
-        { title: "تواصل معنا", href: '/contact', id: 5 },
+        { title: "تواصل معنا", href: '/contactUs', id: 5 },
     ];
 
     // تصنيفات المنتجات وعناصرها

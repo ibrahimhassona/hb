@@ -134,26 +134,7 @@ const NewsContent = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {newsItems.map((item) => (
                     // =========== News Item =========
-                    <div key={item.id} className="bg-white rounded-lg overflow-hidden hover:shadow-md cust-trans cursor-pointer shadow-sm">
-                        <div className="relative h-48 max-md:h-40 overflow-hidden">
-                            <img
-                                src={item.image}
-                                alt={item.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="p-4 flex flex-col gap-2">
-                            <div className="flex items-start gap-2 flex-col">
-                                <h2 className="text-xl max-md:text-md font-bold text-darkGray">{item.title}</h2>
-                                <span className="text-sm text-gray-400">{item.date}</span>
-                            </div>
-                            <p className="text-darkGray max-md:text-sm mb-4 text-right">{item.description}</p>
-                            <Link href={`/news/dd`} className="flex items-center justify-end text-primary hover:text-lightPrimary cust-trans gap-2">
-                                <span className="text-sm">اقرأ اكثر</span>
-                                <FaChevronLeft className="w-4 h-4 ml-1" />
-                            </Link>
-                        </div>
-                    </div>
+                    <Card key={item.id} item={item} />
                 ))}
             </div>
             <Pagination />
@@ -161,4 +142,29 @@ const NewsContent = () => {
     );
 };
 
+
+const Card =({item})=>{
+    return(
+        <div className="bg-white rounded-lg overflow-hidden hover:shadow-md cust-trans cursor-pointer shadow-sm">
+        <div className="relative h-48 max-md:h-40 overflow-hidden">
+            <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover"
+            />
+        </div>
+        <div className="p-4 flex flex-col gap-2">
+            <div className="flex items-start gap-2 flex-col">
+                <h2 className="text-xl max-md:text-sm font-bold text-darkGray">{item.title}</h2>
+                <span className="text-sm text-gray-400">{item.date}</span>
+            </div>
+            <p className="text-darkGray max-md:text-xs mb-4 max-md:mb-2 text-right">{item.description}</p>
+            <Link href={`/news/dd`} className="flex items-center justify-end text-primary hover:text-lightPrimary cust-trans gap-2">
+                <span className="text-sm">اقرأ اكثر</span>
+                <FaChevronLeft className="w-4 h-4 ml-1" />
+            </Link>
+        </div>
+    </div>
+    )
+}
 export default NewsContent;
