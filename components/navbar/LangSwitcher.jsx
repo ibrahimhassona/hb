@@ -54,7 +54,7 @@ const LangSwitcher = ({ props }) => {
                 {/* Dropdown with higher z-index */}
                 {isOpen && (
                     <div className={` absolute left-[inherit] right-[inherit] mt-1 bg-white 
-                                   ${props?'text-black':""} border rounded-md shadow-lg 
+                                   ${props?'text-darkGray':""} border rounded-md shadow-lg 
                                    animate-fade-up cust-trans w-full overflow-hidden
                                    z-20`}> {/* Changed absolute to fixed and increased z-index */}
                         <button

@@ -9,8 +9,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Tajawal, Poppins, Cairo } from "next/font/google";
 import Footer from "@/components/footer/Footer";
+import Providers from "../providers";
 // ---- Google Fonts ------
-
 const cairo = Cairo({ subsets: ["arabic"], weight: ["200", "300", "400", "500", "700", "800", "900"] });
 const tajawal = Tajawal({ subsets: ["arabic"], weight: ["200", "300", "400", "500", "700", "800", "900"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["200", "300", "400", "500", "700", "800", "900"] });
@@ -26,11 +26,12 @@ export default async function LocaleLayout({ children, params: { locale } }) {
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <body className={` m-auto relative bg-white ${locale === 'ar' ? cairo.className : cairo.className}`}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-         
-          {children}
-          <Footer/>
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}            
+            <Footer />
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

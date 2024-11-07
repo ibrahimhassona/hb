@@ -3,15 +3,16 @@ import Path from '@/components/Path';
 import BrowseProducts from '@/components/products/BrowseProducts';
 import React from 'react';
 
-const page = () => {
+const page = ({searchParams}) => {
     const dataPath = [
         { title: "الرئيسية", url: '/' },
         { title: "المنتجات", url: '/products' },
     ]
+    console.log('======',searchParams)
     return (
         <>
             <div className='relative bg-[url(/products/products-landing.jfif)] h-[450px] bg-cover bg-center overflow-hidden'>
-                <div className='w-full h-full bg-black/70 absolute top-0 right-0'>
+                <div className='w-full h-full bg-black/70 absolute top-0 right-0'> 
                     {/* -------- NavBar -------- */}
                     <NavBar props={{ text: 'white', bg: 'primary' }} />
                     {/* ------ Landing ------ */}
@@ -29,7 +30,7 @@ const page = () => {
                 </div>
             </div>
             {/* --------------- About Content ------------- */}
-          <BrowseProducts/>
+          <BrowseProducts searchParams={searchParams}/>
         </>
     );
 };

@@ -16,7 +16,7 @@ const TopBar = ( {props} ) => {
             {/* ---- LOGO AND TITLE ------ */}
             <div className="flex items-center gap-1 justify-between">
                 <Image src='/MHG-logo.png' height={100} width={100} alt='MHG' className="w-[40px]" />
-                <h2 className={`text-${text?text:'[#006EB6]'} max-sm:font-[400] max-sm:w-[130px] text-xs font-[500] `}>{t("mhg")}</h2>
+                <h2 className={`text-${text?text:'blue-500'} max-sm:font-[400] max-sm:w-[130px] text-xs font-[500] `}>{t("mhg")}</h2>
             </div>
             {/*--------- Second Section --------*/}
             <div className="flex items-center justify-center gap-2 ">
