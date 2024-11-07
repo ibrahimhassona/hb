@@ -21,9 +21,9 @@ const contactInfo = [
 ];
 
 const ContactSocial = () => (
-  <section className="w-full bg-white">
+  <section className="w-full bg-white text-darkGray">
     {/* Header */}
-    <div className="text-start mb-6">
+    <div className="text-start mb-6 text-darkGray">
       <h2 className="text-2xl font-bold mb-2">ابق على تواصل</h2>
       <p className="text-darkGray">يسعدنا تواصلك معنا، يرجى ملء هذا النموذج</p>
     </div>

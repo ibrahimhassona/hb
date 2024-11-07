@@ -29,7 +29,7 @@ const NewsSection = () => {
             {/* Header section */}
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center gap-1">
-                    <h2 className="text-2xl font-bold text-right max-md:text-xl line-clamp-1">{t("title")}</h2>
+                    <h2 className="text-2xl font-bold text-right max-md:text-xl line-clamp-1 text-darkGray">{t("title")}</h2>
                     <Link href="/" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />
@@ -71,7 +71,7 @@ const NewsSection = () => {
                                     />
                                 </div>
                                 <div className="p-4 bg-white flex flex-col items-start gap-2 ">
-                                    <h3 className="text-lg max-sm:text-sm font-semibold  text-right">{item.title}</h3>
+                                    <h3 className="text-lg max-sm:text-sm font-semibold text-darkGray text-right">{item.title}</h3>
                                     <p className="text-gray-600 text-sm  text-right">{item.date}</p>
                                     <p className="text-gray-700 text-sm text-right">{item.description}</p>
                                     <div className='flex items-start justify-end w-full'>

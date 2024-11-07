@@ -26,7 +26,7 @@ const FeaturedProducts = ({title}) => {
         <div className="my-12 overflow-hidden">
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-2xl max-md:text-xl font-bold text-right">{title}</h2>
+                    <h2 className="text-2xl max-md:text-xl font-bold text-right text-darkGray">{title}</h2>
                     <Link href="/" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />
@@ -40,8 +40,8 @@ const FeaturedProducts = ({title}) => {
                     spaceBetween={16}
                     slidesPerView={1.5}
                     navigation={{
-                        nextEl: '.button-next',
-                        prevEl: '.button-prev',
+                        nextEl: '.button-next-f',
+                        prevEl: '.button-prev-f',
                     }}
                     dir={locale === 'ar' ? 'rtl' : 'ltr'}
                     loop={true}
@@ -80,10 +80,10 @@ const FeaturedProducts = ({title}) => {
 
                 {/* Navigation buttons */}
                 <div className={`mx-auto px-4 xl:px-40 mt-4 flex gap-2 justify-end`}>
-                    <button className="button-prev p-2 !text-white bg-primary hover:bg-lightPrimary cust-trans rounded-full flex items-center justify-center">
+                    <button className="button-prev-f p-2 !text-white bg-primary hover:bg-lightPrimary cust-trans rounded-full flex items-center justify-center">
                         <FaChevronLeft className={locale === 'ar' ? 'rotate-180' : ''} />
                     </button>
-                    <button className="button-next p-2 !text-white bg-primary hover:bg-lightPrimary cust-trans rounded-full focus:outline-none flex items-center justify-center">
+                    <button className="button-next-f p-2 !text-white bg-primary hover:bg-lightPrimary cust-trans rounded-full focus:outline-none flex items-center justify-center">
                         <FaChevronRight className={locale === 'ar' ? 'rotate-180' : ''} />
                     </button>
                 </div>

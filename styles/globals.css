@@ -110,3 +110,14 @@ body {
   background-color: #2DBBAB;
   color: #ffffff; 
 }
+.react-international-phone-country-selector-button{
+  padding: 4px !important;
+  border-radius: 2px !important;
+}
+.react-international-phone-country-selector-button:hover{
+  background-color: #a5f1e8 !important;
+}
+.react-international-phone-country-selector-button__dropdown-arrow{
+  margin: 0 4px !important;
+
+}

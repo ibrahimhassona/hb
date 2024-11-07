@@ -8,7 +8,7 @@ import { productsData } from "@/utils/static/dataStatic"
 export default function CategoryPage({ params }) {
   const { products } = params
   const productD = productsData.filter((item) => item.slug == products)
-  console.log(productD[0].title)
+
 
   const dataPath = [{ title: 'الرئيسية', url: "" }, { title: 'المنتجات', url: "/products" }, { title: 'أجهزة التعطير الذكية', url: "/products" }, { title: productD[0].title, url: "" }]
   return (

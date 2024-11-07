@@ -11,14 +11,18 @@
     "mainText": "Welcome to Hypnotek, Pioneering the Future of Connected Living, Where Every Interaction is Designed to Enrich Your Home Experience Beyond Expectations.",
     "productsLink": "Explore our products"
   },
+  "menu": {
+    "ShowAll": "Show All",
+    "loading": "Loading ..."
+  },
   "main_categories": {
     "title": "Shop products by category",
     "featured_products": "Featured Products",
-   "discover_more": "Discover More"
+    "discover_more": "Discover More"
   },
-  "news":{
-    "title":"Explore Our Journey & Creations",
+  "news": {
+    "title": "Explore Our Journey & Creations",
     "discover_more": "Discover More",
-    "read_more":"Read More"
+    "read_more": "Read More"
   }
 }
