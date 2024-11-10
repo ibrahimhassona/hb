@@ -31,7 +31,7 @@ const ProductsDropdown = () => {
       {
         isLoading ? <h1>{t('loading')}</h1> : <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {data.map((category) => (
+            {data?.map((category) => (
               <div key={category.id} className="space-y-4">
                 <h3 className="text-md font-semibold text-start text-lightGray border-b pb-2 ps-2">
                   {category.title}
