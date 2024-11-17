@@ -1,16 +1,14 @@
 import ContentProduct from "./ContentProduct";
 import GalleryProduct from "./GalleryProduct";
-
-
-const ProductDetails = () => {
+const ProductDetails = ({ product }) => {
 
 
   return (
     <div className="flex flex-row max-lg:flex-col justify-between gap-8  max-w-7xl ">
       {/* Gallery Section */}
-      <GalleryProduct />
+      <GalleryProduct images={product?.images} isFeature={product?.isFeature}/>
       {/* Content Section */}
-      <ContentProduct />
+      <ContentProduct product={product} />
     </div>
   );
 };

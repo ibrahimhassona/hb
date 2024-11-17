@@ -6,25 +6,15 @@ import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Thumbs, Navigation, Virtual } from 'swiper/modules';
 import { IoIosArrowDown } from 'react-icons/io';
+import { MdOutlineWavingHand } from "react-icons/md";
+import { useTranslations } from 'next-intl';
 
-const GalleryProduct = () => {
+const GalleryProduct = ({ images,isFeature }) => {
+    const t=useTranslations("product")
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const thumbsSwiperRef = useRef(null);
 
-    const images = [
-        '/singleProduct/card_1.png',
-        '/singleProduct/card_2.png',
-        '/singleProduct/card_6.png',
-        '/singleProduct/card_3.png',
-        '/singleProduct/card_6.png',
-        '/singleProduct/card_5.png',
-        '/singleProduct/card_6.png',
-        '/singleProduct/card_4.png',
-        '/singleProduct/card_3.png',
-        '/singleProduct/card_6.png',
-        '/singleProduct/card_3.png',
-    ];
 
     const slideNext = () => {
         if (thumbsSwiperRef.current?.swiper) {
@@ -34,7 +24,6 @@ const GalleryProduct = () => {
 
     return (
         <div className="w-1/2 max-lg:w-full flex items-start gap-2 max-md:gap-1 max-md:w-full">
-
             {/* ================== Thumbnails Section ================== */}
             <div className="relative flex flex-col w-20 max-md:w-12 h-[450px] max-md:h-[300px]  ">
                 {/* Thumbnails Swiper */}
@@ -42,18 +31,18 @@ const GalleryProduct = () => {
                     ref={thumbsSwiperRef}
                     onSwiper={setThumbsSwiper}
                     spaceBetween={2}
-                    slidesPerView={4.5}  
+                    slidesPerView={4.5}
                     loop={true}
-                    freeMode={true}  
+                    freeMode={true}
                     watchSlidesProgress={true}
                     modules={[FreeMode, Thumbs, Navigation]}
                     direction="vertical"
                     className=" w-20 max-md:w-12 h-[450px] max-md:h-[300px] "
                 >
-                    {images.map((img, index) => (
+                    {images && images.map((img, index) => (
                         <SwiperSlide key={index} className='h-full'>
                             <div
-                            onClick={()=>setActiveIndex(prev=>index)}
+                                onClick={() => setActiveIndex(prev => index)}
                                 className={`w-full h-full relative cursor-pointer cust-trans overflow-hidden
                                     ${activeIndex === index
                                         ? 'opacity-100 border-2 border-primary rounded-md shadow-lg'
@@ -61,7 +50,7 @@ const GalleryProduct = () => {
                                     }`}
                             >
                                 <img
-                                    src={img}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/${img.formats?.medium.url}`}
                                     alt={`Thumbnail ${index + 1}`}
                                     className="w-full h-full object-cover rounded-md "
                                     loading="lazy"
@@ -90,11 +79,16 @@ const GalleryProduct = () => {
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 direction="vertical"
             >
-                {images.map((img, index) => (
+            {isFeature&& <div className='absolute bg-red-500 top-0 -end-1 flex items-center gap-2 px-2 py-1 rounded-b-md text-white z-20'>
+                <MdOutlineWavingHand className=' animate-wiggle-more repeat-infinite' size={25}/>
+                <span className='text-sm'>{t('feature')}</span>
+                </div>}
+
+                {images && images.map((img, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full relative rounded-lg overflow-hidden">
                             <img
-                                src={img}
+                                src={`${process.env.NEXT_PUBLIC_IMAGES_URL}/${img.formats?.medium.url}`}
                                 alt={`Product view ${index + 1}`}
                                 className="w-full h-full object-cover cust-trans hover:scale-105"
                                 loading="lazy"

@@ -15,6 +15,9 @@
     "ShowAll": "Show All",
     "loading": "Loading ..."
   },
+  "loader": {
+    "text": "Content Loading ..."
+  },
   "main_categories": {
     "title": "Shop products by category",
     "featured_products": "Featured Products",
@@ -24,5 +27,25 @@
     "title": "Explore Our Journey & Creations",
     "discover_more": "Discover More",
     "read_more": "Read More"
+  },
+  "product": {
+    "purchase_from_site": "Buy from Build station",
+    "tax_price": "Price including tax",
+    "sar": "SAR",
+    "video_not_found": "Video Not Found",
+    "select_value": "Select",
+    "product_info": "Product Information",
+    "specifications": "Specifications",
+    "user_manual": "User Manual",
+    "video": "Video",
+    "home":"Home",
+    "similar_products":"The Similar Products",
+    "color":"Color",
+    "size":"Size",
+    "capacity":"Capacity",
+    "sold_together":"Sold Together",
+    "total_text":"Buy at price",
+    "feature":"New"
+
   }
 }

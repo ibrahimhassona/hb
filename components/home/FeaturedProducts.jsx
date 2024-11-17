@@ -26,7 +26,7 @@ const FeaturedProducts = ({title}) => {
         <div className="my-12 overflow-hidden">
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-2xl max-md:text-xl font-bold text-right text-darkGray">{title}</h2>
+                    <h2 className="text-2xl max-md:text-lg font-bold text-start text-darkGray">{title}</h2>
                     <Link href="/" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />

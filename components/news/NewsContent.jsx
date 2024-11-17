@@ -134,7 +134,7 @@ const NewsContent = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {newsItems.map((item) => (
                     // =========== News Item =========
-                    <Card key={item.id} item={item} />
+                    <Card key={item.id} item={item}  />
                 ))}
             </div>
             <Pagination />
