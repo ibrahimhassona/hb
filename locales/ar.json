@@ -15,6 +15,9 @@
     "ShowAll":"عرض الكـل",
     "loading":"جار التحميل ..."
   },
+  "loader":{
+    "text":"جار تحميل المحتوى ..."
+  },
   "main_categories": {
     "title": "تصفح حسب الفئات",
     "featured_products": "المنتجات المميزة",
@@ -24,5 +27,24 @@
     "title":"تعرف على رحلتنا، أحدث أخبـارنا",
     "discover_more": "اكتشف أكثر",
     "read_more":"اقرا المزيد"
-  }
+  },
+  "product":{
+    "purchase_from_site": "الشراء من موقع محطة البناء",
+    "tax_price":"السعر شامل الضريبة",
+    "sar":"ريال",
+    "video_not_found":"الفيديو غير موجود",
+    "select_value":"اختر",
+    "product_info":" معلومات المنتج",
+    "specifications":"المواصفات",
+    "user_manual":"دليل المستخدم",
+    "video":"فيديو",
+    "home":"الرئيسية",
+    "similar_products":"المنتجات المشابهة",
+    "color":"اللون",
+    "size":"الحجم",
+    "capacity":"السعه",
+    "sold_together":"يباع معًا",
+    "total_text":"شراء بسعر",
+    "feature":"جديد"
+ }
 }

@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import { IoAddOutline, IoRemoveOutline } from 'react-icons/io5';
 import { HiDownload } from 'react-icons/hi';
 import Image from 'next/image';
+import YouTubeEmbed from './YouTubeEmbed';
+import { getYouTubeEmbedURL } from '@/utils/libs';
+import { useTranslations } from 'next-intl';
+import parse from 'html-react-parser'
 
-const AccordionItem = ({ title, isOpen,className, onToggle, children, downloadable = false }) => {
+const AccordionItem = ({ title, isOpen, className, onToggle, children, downloadable = false, product }) => {
     return (
         <div className={className}>
             <button
@@ -32,20 +36,18 @@ const AccordionItem = ({ title, isOpen,className, onToggle, children, downloadab
     );
 };
 
-const ProductAccordion = () => {
+const ProductAccordion = ({ product }) => {
     const [openSections, setOpenSections] = useState({
         productInfo: false,
         specifications: false,
         userGuide: false
     });
-
     const toggleSection = (section) => {
         setOpenSections(prev => ({
             ...prev,
             [section]: !prev[section]
         }));
     };
-
 
     const specifications = [
         { label: 'اللون', value: 'تيتانيوم' },
@@ -57,47 +59,29 @@ const ProductAccordion = () => {
         { label: 'كود المنتج', value: 'SWir345017' }
     ];
 
-
-    const productInfo = {
-        overview: 'يمكن التحكم بالجهاز عن بعد (من خلال الواي فاي)، وفي حال انقطاع الواي فاي يتم الاتصال من خلال البلوتوث أو من خلال الجهاز مباشرة.',
-        uses: [
-            'تعطير الغرف',
-            'تعطير الشقق والفلل',
-            'تعطير المكاتب',
-            'تعطير المطاعم والمقاهي',
-            'تعطير الصالونات وأماكن الترفيه',
-            'تعطير المساجد',
-            'تعطير المعارض التجارية والمولات'
-        ]
-    };
+    // ============= YouTube Url Handling ==========
+    const embedUrl = getYouTubeEmbedURL(product?.video_url);
+    const t = useTranslations('product')
 
     return (
-        <div className="w-full mx-auto">
+        <div className="w-full mx-auto my-8">
             {/* معلومات المنتج */}
             <AccordionItem
-                title="معلومات المنتج"
+                title={t("product_info")}
                 isOpen={openSections.productInfo}
                 onToggle={() => toggleSection('productInfo')}
-                className={!openSections.productInfo?'border-b border-gray-200':''}
+                className={!openSections.productInfo ? 'border-b border-gray-200' : ''}
             >
-                <div className="space-y-4 bg-[#E0E0E0] p-4 rounded-b-md overflow-hidden shadow-md cust-trans animate-flip-up">
-                    <h3 className="font-semibold">نظرة عامة</h3>
-                    <p>{productInfo.overview}</p>
-                    <h3 className="font-semibold">يمكن استخدام المنتج لـ :</h3>
-                    <ul className="list-disc list-inside space-y-1">
-                        {productInfo.uses.map((use, index) => (
-                            <li key={index}>{use}</li>
-                        ))}
-                    </ul>
+                <div className="space-y-4 bg-[#E0E0E0] p-4 rounded-b-md overflow-hidden shadow-md cust-trans animate-flip-up text-start">
+                    {product?.description && parse(product?.description)}
                 </div>
             </AccordionItem>
-
             {/* ================= Specifications =============== */}
             <AccordionItem
-                title="المواصفات"
+                title={t("specifications")}
                 isOpen={openSections.specifications}
                 onToggle={() => toggleSection('specifications')}
-                className={!openSections.specifications?'border-b border-gray-200':''}
+                className={!openSections.specifications ? 'border-b border-gray-200' : ''}
             >
                 <div className={`cust-trans animate-flip-up rounded-b-md overflow-hidden shadow-md`}>
                     {specifications.map((spec, index) => (
@@ -115,11 +99,11 @@ const ProductAccordion = () => {
 
             {/* ================= User Manual =============== */}
             <AccordionItem
-                title="دليل المستخدم"
+                title={t("user_manual")}
                 isOpen={openSections.userGuide}
                 onToggle={() => toggleSection('userGuide')}
                 downloadable
-                className={!openSections.userGuide?'border-b border-gray-200':''}
+                className={!openSections.userGuide ? 'border-b border-gray-200' : ''}
             >
                 <div className="flex flex-col justify-between cust-trans animate-flip-up ">
                     {['بيانات فنية', 'دليل استخدام المنتج'].map((item, index) => (
@@ -135,6 +119,15 @@ const ProductAccordion = () => {
                         </div>
                     ))}
                 </div>
+            </AccordionItem>
+            {/* ================= Video =============== */}
+            <AccordionItem
+                title={t("video")}
+                isOpen={openSections.video}
+                onToggle={() => toggleSection('video')}
+                downloadable
+                className={!openSections.video ? 'border-b border-gray-200' : ''}>
+                {product?.video_url ? <YouTubeEmbed videoId={embedUrl.split('/').pop()} /> : <p className='text-center text-darkGray'>{t('video_not_found')}</p>}
             </AccordionItem>
         </div>
     );
