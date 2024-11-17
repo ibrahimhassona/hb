@@ -80,9 +80,9 @@ const SoldTogether = ({ product }) => {
         return <div className="w-full flex items-center justify-center"><l-orbit {...loaderStyles}></l-orbit></div>
     }
 
-    return (
-        <div className="flex flex-col bg-gray-50/60 py-2 px-4 rounded-md gap-1 my-5 border border-gray-200 ">
-            <h2 className="text-darkGray font-semibold text-md mb-2">{t("sold_together")}</h2>
+    return (<>
+        <h2 className="text-darkGray font-semibold text-md mb-2">{t("sold_together")}</h2>
+        <div className="flex flex-col bg-gray-50/60 py-2 px-4 rounded-md gap-1 mb-5 border border-gray-200 ">
             <div className="flex items-center gap-4 bg-white p-4 rounded-md shadow-sm w-full justify-center">
                 {product?.bought_together.map((item, index) => (
                     <React.Fragment key={item.id}>
@@ -148,6 +148,7 @@ const SoldTogether = ({ product }) => {
                 </span>
             </div>
         </div>
+    </>
     );
 };
 

@@ -72,7 +72,7 @@ const ProductAccordion = ({ product }) => {
                 onToggle={() => toggleSection('productInfo')}
                 className={!openSections.productInfo ? 'border-b border-gray-200' : ''}
             >
-                <div className="space-y-4 bg-[#E0E0E0] p-4 rounded-b-md overflow-hidden shadow-md cust-trans animate-flip-up text-start">
+                <div className="space-y-4 bg-[#E0E0E0] text-darkGray p-4 rounded-b-md overflow-hidden shadow-md cust-trans animate-flip-up text-start">
                     {product?.description && parse(product?.description)}
                 </div>
             </AccordionItem>
@@ -87,7 +87,7 @@ const ProductAccordion = ({ product }) => {
                     {specifications.map((spec, index) => (
                         <div
                             key={index}
-                            className={`grid grid-cols-2 justify-between p-3  ${index % 2 === 0 ? 'bg-[#f3f3f3]' : 'bg-[#E0E0E0]'
+                            className={`grid grid-cols-2 justify-between p-3 text-darkGray  ${index % 2 === 0 ? 'bg-[#f3f3f3]' : 'bg-[#E0E0E0]'
                                 }`}
                         >
                             <span className="font-medium">{spec.label}</span>
@@ -110,7 +110,7 @@ const ProductAccordion = ({ product }) => {
                         <div className={`flex items-center gap-2 justify-between  p-4 ${index == 0 ? 'bg-[#f3f3f3]' : 'bg-[#E0E0E0]'}`} key={index}>
                             <div className='flex items-center gap-2'>
                                 <Image src='/singleProduct/File Send.png' alt='File Send' width={100} height={100} className='w-[30px] p-[5px] flex items-center justify-center rounded-full bg-green-50' />
-                                <span className='text-lightGray font-semibold max-md:text-sm'>{item}</span>
+                                <span className=' font-semibold text-darkGray max-md:text-sm'>{item}</span>
                             </div>
                             <button className="text-primary flex items-center gap-2 hover:text-lightPrimary cust-trans">
                                 <HiDownload size={20} />
