@@ -10,6 +10,7 @@ import { MdOutlineWavingHand } from 'react-icons/md';
 const Card = ({ item }) => {
     const locale = useLocale()
     const t= useTranslations("product")
+    console.log(item)
     return (
         <Link
             href={`/products/${item.slug}`}
@@ -32,10 +33,10 @@ const Card = ({ item }) => {
             <div className="flex flex-col flex-grow p-4 space-y-3">
                 <div className="flex items-center gap-2 justify-between max-sm:flex-col">
                     {/* ====== Category ======= */}
-                    <span className="max-sm:text-xs font-bold text-primary">{item.category} </span>
+                    <span className="max-md:text-xs  text-primary">{item?.sub_categories[0]?.title} </span>
                     {/*  ==== Price ===== */}
                     <span className="flex text-primary font-semibold max-md:text-xs">
-                        {item.price} ر.س
+                        {item.price} {t("sar")}
                     </span>
                 </div>
 
