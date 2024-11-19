@@ -45,7 +45,7 @@ const ContentProduct = ({ product }) => {
             {/* --------------- Variants Options ------------- */}
             <ProductSelect product={product} />
             {/* --------------- Bought Together ------------- */}
-           {product.bought_together.length > 0 && <SoldTogether product={product} />}
+           {product.bought_together?.length > 0 && <SoldTogether product={product} />}
             {/* ---------------- Button -------------- */}
             <div className='flex items-center w-full max-sm:justify-center'>
                 <button className="w-full bg-primary hover:bg-lightPrimary cust-trans text-white py-3 rounded-lg flex items-center justify-center gap-2 max-lg:w-fit px-4 ">

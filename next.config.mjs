@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['hypnotek-admin.hypnotek.com'],
+        domains: ['uploads.hypnotek.com','hypnotek-admin.hypnotek.com'],
       },
 };
  

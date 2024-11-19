@@ -11,7 +11,7 @@ const SelectColor = ({ data, title }) => {
     return (
         <div className="flex items-center gap-2 mb-4">
             <h4 className="text-primary">{title} :</h4>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div className="flex gap-1 items-center" >
                 {data.map((color) => (
                     <div
                         key={color.id}

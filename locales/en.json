@@ -45,7 +45,10 @@
     "capacity":"Capacity",
     "sold_together":"Sold Together",
     "total_text":"Buy at price",
-    "feature":"New"
-
+    "feature":"Featured",
+    "no_products_founded":"No products found.",
+    "head_title": "Discover the Future of Smart Living",
+    "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
+    "products":"Products"
   }
 }
