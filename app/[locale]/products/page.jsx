@@ -1,12 +1,15 @@
 import NavBar from '@/components/navbar/NavBar';
 import Path from '@/components/Path';
 import BrowseProducts from '@/components/products/BrowseProducts';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
+
 const page = ({searchParams}) => {
+    const t = useTranslations("product")
     const dataPath = [
-        { title: "الرئيسية", url: '/' },
-        { title: "المنتجات", url: '/products' },
+        { title: t("home"), url: '/' },
+        { title: t("products"), url: '/products' },
     ]
     console.log('======',searchParams)
     return (
@@ -22,8 +25,8 @@ const page = ({searchParams}) => {
                             {/* ------ SRC Path ------ */}
                             <Path data={dataPath} className='text-white'/>
                             <div>
-                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>اكتشف مستقبل الحياة الذكية</h1>
-                                <p className='text-white text-[20px] font-[500]'>تصفح مجموعتنا من الأجهزة الذكية المصممة لتعزيز الراحة والأمان والملاءمة.</p>
+                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>{t("head_title")}</h1>
+                                <p className='text-white text-[20px] font-[500]'>{t("description")}</p>
                             </div>
                         </div>
                     </div>

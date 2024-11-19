@@ -79,9 +79,8 @@ const SoldTogether = ({ product }) => {
     if (loading) {
         return <div className="w-full flex items-center justify-center"><l-orbit {...loaderStyles}></l-orbit></div>
     }
-
     return (<>
-        <h2 className="text-darkGray font-semibold text-md mb-2">{t("sold_together")}</h2>
+        <h2 className="text-darkGray font-semibold text-md mb-2 animate-flip-up cust-trans">{t("sold_together")}</h2>
         <div className="flex flex-col bg-gray-50/60 py-2 px-4 rounded-md gap-1 mb-5 border border-gray-200 ">
             <div className="flex items-center gap-4 bg-white p-4 rounded-md shadow-sm w-full justify-center">
                 {product?.bought_together.map((item, index) => (
@@ -90,9 +89,9 @@ const SoldTogether = ({ product }) => {
                             {/* Custom Checkbox */}
                             <button
                                 onClick={() => toggleItem(item.id)}
-                                className={`absolute top-1 right-1 w-5 h-5 rounded-sm border flex items-center justify-center z-10 transition-colors ${selectedItems.has(item.id)
+                                className={`absolute top-1 right-1 w-5 h-5 rounded-sm border border-gray-600 flex items-center justify-center z-10 transition-colors ${selectedItems.has(item.id)
                                     ? "bg-primary border-primary"
-                                    : "bg-white border-gray-300"
+                                    : "bg-[#ffffff9c] "
                                     }`}
                             >
                                 {selectedItems.has(item.id) && (
@@ -102,13 +101,14 @@ const SoldTogether = ({ product }) => {
                             {/* Product Card */}
                             <Link
                                 href={`/products/${item.slug}`}
-                                className="relative flex flex-col w-[80px] h-[110px] overflow-hidden bg-white rounded-lg border-gray-300 shadow-md border cust-trans"
+                                className="relative flex flex-col w-[90px] h-[110px] overflow-hidden bg-white rounded-md border-gray-300 shadow-md border cust-trans"
                             >
-                                <div className="relative w-full pt-[100%] rounded-t-lg overflow-hidden bg-gray-100">
+                                {/* Image Section */}
+                                <div className="relative w-full h-[60%] rounded-t-md overflow-hidden bg-gray-100">
                                     <Image
                                         src={
                                             imageUrls[index]
-                                                ? `https://hypnotek-admin.hypnotek.com/${imageUrls[index]}`
+                                                ? `${imageUrls[0]}`
                                                 : `/isNoavilable-${locale}.png`
                                         }
                                         alt={item.title || "Product Image"}
@@ -117,8 +117,9 @@ const SoldTogether = ({ product }) => {
                                     />
                                 </div>
 
-                                <div className="flex flex-col text-center px-1">
-                                    <h3 className="text-[8px] font-medium text-gray-900">
+                                {/* Text Content Section */}
+                                <div className="flex flex-col justify-center items-center h-[40%] text-center p-1">
+                                    <h3 className="text-[9px] text-gray-900 font-semibold">
                                         {item.title.slice(0, 12)} {/* Reduced title length */}
                                     </h3>
                                     <span className="text-primary font-semibold text-[8px]">
@@ -126,6 +127,7 @@ const SoldTogether = ({ product }) => {
                                     </span>
                                 </div>
                             </Link>
+
                         </div>
                         {/* Plus Icon Between Products */}
                         {index < product.bought_together.length - 1 && (
@@ -141,7 +143,7 @@ const SoldTogether = ({ product }) => {
             <div className="flex border border-gray-100 w-full rounded-md select-none h-full p-2 text-start items-center justify-between bg-white">
                 <span className="text-sm">
                     {t("total_text")}{" "}
-                    <span className="text-primary font-semibold">
+                    <span className="text-primary font-semibold animate-flip-up cust-trans">
                         {totalPrice.toLocaleString()}
                     </span>{" "}
                     {t("sar")}
