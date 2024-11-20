@@ -1,46 +1,78 @@
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+"use client";
+import { useLocale } from 'next-intl';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/thumbs';
+import 'swiper/css/pagination';  // Import pagination CSS
+import 'swiper/css/autoplay'; // Import autoplay CSS
+import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Thumbs, Pagination, Autoplay } from 'swiper/modules'; // Import Pagination module
+import NavBar from '../navbar/NavBar';
+import { getData } from '@/utils/functions/getData';
 import Link from 'next/link';
-import React from 'react';
-import { PiArrowSquareOutLight } from 'react-icons/pi';
 
 const Landing = () => {
-    const t = useTranslations("nav");
+    const locale = useLocale()
+    const [sliders, setSliders] = useState([]);  // Set initial state to an empty array
+
+    useEffect(() => {
+        // Define an async function to fetch the sliders data
+        const fetchSliders = async () => {
+            try {
+                const data = await getData(locale, 'sliders?populate[slider][populate]=*');
+                setSliders(data[1].slider || []);  // Ensure data[1].slider is an array or fallback to empty array
+            } catch (error) {
+                console.error("Error fetching sliders:", error);  // Handle errors if any
+            }
+        };
+
+        fetchSliders();  // Call the async function to fetch the data
+    }, []);  // Only run once on component mount
 
     return (
-        <section className="h-[calc(100vh-110px)] flex overflow-hidden max-md:flex-col-reverse max-md:my-8 max-md:h-auto px-4 xl:px-40 w-[95%] m-auto">
-            <article className="flex flex-col justify-center items-start gap-4 w-full cust-trans animate-flip-up">
-                <h1 className="text-primary font-bold text-[40px] max-sm:text-[25px] max-md:text-center">
-                    {t("mainTitle")}
-                </h1>
-                <p className="text-lg leading-relaxed text-darkGray max-md:text-center">
-                    {t("mainText")}
-                </p>
-                {/* ======= Links ======= */}
-                <div className='flex w-full justify-between items-center gap-2 cust-trans animate-flip-up'>
-                    <Link href="/" className="bg-primary hover:bg-lightPrimary hover:border-lightPrimary cust-trans max-md:w-full text-white px-4 max-sm:px-2  max-sm:text-sm py-2 rounded-md border-2 border-primary text-center " aria-label="Go to products">
-                        {t("productsLink")}
-                    </Link>
-                    {/* ====== Link ===== */}
-                    <Link href="/" className='bg-white text-primary w-full border-primary border-2 px-4 max-sm:px-2 max-sm:text-sm py-2 rounded-md hidden items-center justify-center gap-1 max-md:flex'>
-                        <span className=''>{t("btn")}</span>
-                        <PiArrowSquareOutLight  className="text-primary max-sm:text-lg text-2xl" />
-                    </Link>
-                </div>
-            </article>
-
-            {/* Section for the image banner */}
-            <div className=" flex items-center justify-center  ">
-                <Image
-                    src="/panner/allpanner.png"
-                    alt="Product showcase banner"
-                    height={400}
-                    width={400}
-                    objectFit="contain"
-                    className="w-full max-md:w-[60%]"
-                    priority
-                />
+        <section className="relative m-auto">
+            <div className="bg-black/50 top-0 right-0 absolute cust-trans w-full start-0 z-40">
+                <NavBar props={{ text: 'white', bg: 'primary' }} />
             </div>
+            {/*=============== Main Image ============== */}
+            <Swiper
+                spaceBetween={10}
+                loop={true}
+                modules={[FreeMode, Thumbs, Pagination, Autoplay]}  // Include Pagination module here
+                className="w-full h-[600px] max-md:h-[400px]"
+                pagination={{ clickable: true }}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
+            >
+                {sliders.length > 0 ? (
+                    sliders.map((slider, index) => (
+                        <SwiperSlide key={index}>
+                            <div className="w-full h-full relative overflow-hidden">
+                                <img
+                                    src={slider.image.url}
+                                    alt={`News view ${index + 1}`}
+                                    className="w-full h-full object-cover cust-trans"
+                                    loading="lazy"
+                                />
+                                <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  xl:w-[50%] animate-fade-down text-white">
+                                    <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4'>{slider.header}</h1>
+                                    <p className='text-xl mb-10'>{slider.description}</p>
+                                    <Link
+                                        className='max-sm:flex max-sm:items-center justify-center bg-primary cust-trans hover:bg-lightPrimary text-white w-full border-lightPrimary border-2 px-6 max-sm:px-2 max-sm:text-sm py-1 rounded-md '
+                                        href={`${locale}/${slider.button_url}`}>
+                                        <span>{slider.button_title}</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))
+                ) : (
+                    <div className='text-primary h-full flex items-center justify-center'>Loading sliders...</div>  // Show loading message while data is being fetched
+                )}
+            </Swiper>
         </section>
     );
 };
