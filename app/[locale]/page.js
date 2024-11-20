@@ -8,7 +8,7 @@ import NavBar from "@/components/navbar/NavBar";
 export default function Home() {
   return (
     <div className="m-auto ">
-       <NavBar/>
+      
       <Landing />
       <MainCategories />
       <FeaturedProducts title="المنتجات المميزة"/>
