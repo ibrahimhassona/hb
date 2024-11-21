@@ -1,31 +1,35 @@
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
-const contactInfo = [
-  {
-    icon: FaEnvelope,
-    label: "البريد الإلكتروني",
-    value: "info@hypnotek.com.sa",
-  },
-  {
-    icon: FaPhone,
-    label: "رقم الهاتف",
-    value: "+9665 8175245 / 8433330",
-    dir: "ltr",
-  },
-  {
-    icon: FaMapMarkerAlt,
-    label: "الموقع الرئيسي",
-    value: "٣٥٣٣ طريق الخرج القديم، الرياض، المملكة العربية السعودية",
-  },
-];
 
-const ContactSocial = () => (
+const ContactSocial = () =>{
+  const t = useTranslations("contactUs")
+  const contactInfo = [
+    {
+      icon: FaEnvelope,
+      label: t("email"),
+      value: "info@hypnotek.com.sa",
+    },
+    {
+      icon: FaPhone,
+      label: t("phone"),
+      value: "+9665 8175245 / 8433330",
+      dir: "ltr",
+    },
+    {
+      icon: FaMapMarkerAlt,
+      label: t("main_location"),
+      value: t("address"),
+    },
+  ];
+  return(
+  
   <section className="w-full bg-white text-darkGray">
     {/* Header */}
     <div className="text-start mb-6 text-darkGray">
-      <h2 className="text-2xl font-bold mb-2">ابق على تواصل</h2>
-      <p className="text-darkGray">يسعدنا تواصلك معنا، يرجى ملء هذا النموذج</p>
+      <h2 className="text-2xl font-bold mb-2">{t("stay_in_touch")}</h2>
+      <p className="text-darkGray">{t("fill_form")}</p>
     </div>
 
     {/* Contact Information */}
@@ -46,5 +50,5 @@ const ContactSocial = () => (
     </div>
   </section>
 );
-
+}
 export default ContactSocial;

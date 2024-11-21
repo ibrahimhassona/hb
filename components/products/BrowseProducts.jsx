@@ -47,7 +47,7 @@ const BrowseProducts = () => {
                 {/* <MobileFilter className={`hidden max-md:flex`} /> */}
                 <SideBar className={` `} />
                 <ProductsComponent
-                    className={``}
+                    className={`shadow p-2 rounded-md`}
                     searchParams={searchParams}
                     data={data}
                 />

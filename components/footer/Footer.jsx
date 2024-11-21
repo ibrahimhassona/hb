@@ -1,9 +1,10 @@
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
 import { RiTwitterXLine } from "react-icons/ri";
+import MainCategoryFooter from './MainCategoryFooter';
 
 const FooterLink = ({ href, children }) => (
   <Link href={href} className="hover:text-lightPrimary  transition-all duration-300">
@@ -18,6 +19,7 @@ const SocialIcon = ({ href, Icon }) => (
 );
 
 const Footer = () => {
+  const t = useTranslations("footer")
   const locale = useLocale();
   const year = new Date().getFullYear().toLocaleString(locale).replace(/[٬,]/g, '');
 
@@ -39,10 +41,10 @@ const Footer = () => {
   ];
 
   const companyLinks = [
-    { name: 'من نحن', href: '/' },
-    { name: 'أين يمكنني الشراء', href: '/' },
-    { name: 'تواصل معنا', href: '/' },
-    { name: 'الشروط والأحكام', href: '/' },
+    { name: t("who_are"), href: '/about' },
+    { name: t("where_can_buy"), href: '/' },
+    { name: t("contactUs"), href: '/contactUs' },
+    { name: t("roles"), href: '/' },
   ];
 
   return (
@@ -52,8 +54,13 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="flex flex-col gap-4 items-center md:items-start text-center ">
             <Image src='/white-logo.png' width={40} height={40} alt='Logo' />
-            <p className="max-w-xs">حيث يلتقي الابتكار مع الراحة وكل زاوية تتألق بالحلول الذكية.</p>
-            <p>إحدى شركات مجموعة منزل التسويق القابضة</p>
+            <p className="max-w-xs"
+            >
+              {t("p1")}
+            </p>
+            <p>
+              {t("p2")}
+            </p>
             {/* Our Brands Logos */}
             <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start">
               {brands.map((brand) => (
@@ -63,26 +70,19 @@ const Footer = () => {
               ))}
             </div>
             <p className='text-sm'>
-              جميع الحقوق محفوظة مجموعة منزل التسويق {year} &copy;
+              {t("all_rights_hmg")} {year} &copy;
             </p>
           </div>
 
-              <div className='flex justify-between items-start '>
-          {/* Products */}
-          <div className="text-right flex flex-col items-center ">
-            <h3 className="font-bold mb-4 text-lg flex flex-col w-full items-start">المنتجات</h3>
-              <ul className="flex flex-col w-full items-start justify-center gap-2">
-                {products.map((product) => (
-                  <li key={product.name}>
-                    <FooterLink href={product.href}>{product.name}</FooterLink>
-                  </li>
-                ))}
-              </ul>
-          </div>
-
-          {/* The Company */}
-          <div className="text-right flex flex-col items-center ">
-          <h3 className="font-bold mb-4 text-lg flex flex-col w-full items-start">الشركة</h3>
+          <div className='flex justify-between items-start '>
+            {/* ----------- Main Category ----------- */}
+            <div className="text-right flex flex-col items-center">
+              <h3 className="font-bold mb-4 text-lg flex flex-col w-full items-start">{t("Categories")}</h3>
+              <MainCategoryFooter />
+            </div>
+            {/* ----------- The Company  ----------- */}
+            <div className="text-right flex flex-col items-center ">
+              <h3 className="font-bold mb-4 text-lg flex flex-col w-full items-start">{t("company")}</h3>
               <ul className="flex flex-col w-full items-start justify-center gap-2">
                 {companyLinks.map((link) => (
                   <li key={link.name}>
@@ -90,8 +90,8 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
+            </div>
           </div>
-              </div>
         </div>
       </div>
 
