@@ -2,12 +2,14 @@
 import ContactUsContent from '@/components/contact/ContactUsContent'
 import NavBar from '@/components/navbar/NavBar'
 import Path from '@/components/Path'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 const page = () => {
+    const t = useTranslations("contactUs")
     const dataPath = [
-        { title: "الرئيسية", url: '/' },
-        { title: "تواصل معنـا", url: '/contactUs' },
+        { title:  t("home"), url: '/' },
+        { title: t("contactUs"), url: '/contactUs' },
     ]
     return (
         <>
@@ -22,8 +24,9 @@ const page = () => {
                             {/* ------ SRC Path ------ */}
                             <Path data={dataPath} className='text-white' />
                             <div>
-                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>كيف يمكننـا مساعدتك؟</h1>
-                                <p className='text-white text-[20px] font-[500]'>نحن نقدر استفساراتك وأفكارك وملاحظاتك. اتصالك معنا هو الخطوة الأولى نحو تجربة سلسة ومرضية.</p>
+                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>{t("head")}</h1>
+                                <p className='text-white text-[20px] font-[500]'>{t("text")}
+                                    </p>
                             </div>
                         </div>
                     </div>

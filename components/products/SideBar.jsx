@@ -7,7 +7,16 @@ import { useLocale } from 'next-intl';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { FiMinimize2 } from "react-icons/fi";
-
+// Custom hook for fetching categories
+export const useCategories = (locale) => {
+    const url = `main-categories?populate=*`;
+    return useQuery({
+        queryKey: ['categories', locale],
+        queryFn: () => getData(locale, url),
+        staleTime: 1000 * 60 * 5, // 5 minutes
+        retry: 2,
+    });
+};
 const SideBar = ({ className }) => {
     // ------- Local-------
     const locale = useLocale();
@@ -23,16 +32,7 @@ const SideBar = ({ className }) => {
         sub: searchParams.get("sub-category") || null
     });
 
-    // Custom hook for fetching categories
-    const useCategories = (locale) => {
-        const url = `main-categories?populate=*`;
-        return useQuery({
-            queryKey: ['categories', locale],
-            queryFn: () => getData(locale, url),
-            staleTime: 1000 * 60 * 5, // 5 minutes
-            retry: 2,
-        });
-    };
+
 
     const { data, error, isLoading } = useCategories(locale);
 
@@ -42,19 +42,19 @@ const SideBar = ({ className }) => {
 
         const category = searchParams.get("category");
         const subCategory = searchParams.get("sub-category");
-        
+
         if (subCategory) {
             // Find the main category for this subcategory
-            const mainCategory = data.find(cat => 
+            const mainCategory = data.find(cat =>
                 cat.sub_categories.some(sub => sub.slug === subCategory)
             );
-            
+
             if (mainCategory) {// if main category founded
                 setActiveStates({
                     main: mainCategory.slug, //--from find function
                     sub: subCategory //--from search params
                 });
-                
+
                 // Open the parent category
                 setOpenCategories(prev => ({
                     ...prev,
@@ -66,7 +66,7 @@ const SideBar = ({ className }) => {
                 main: category,
                 sub: null
             });
-            
+
             // Find and open the category
             const categoryItem = data.find(cat => cat.slug === category);
             if (categoryItem) {
@@ -85,13 +85,13 @@ const SideBar = ({ className }) => {
             ...prev,
             [category.id]: !prev[category.id]
         }));
-        
+
         // Update states and URL
         setActiveStates({
             main: category.slug,
             sub: null  // Clear sub-category when main category is clicked
         });
-        
+
         router.push(`/${locale}/products?category=${category.slug}`, { scroll: false });
     };
 
@@ -102,7 +102,7 @@ const SideBar = ({ className }) => {
             main: category.slug,
             sub: subCategory.slug
         });
-        
+
         // Ensure parent category is open
         setOpenCategories(prev => ({
             ...prev,
@@ -116,13 +116,13 @@ const SideBar = ({ className }) => {
 
     return (
         <>
-            <span 
-                onClick={() => setCloseCategories(!closeCategories)} 
+            <span
+                onClick={() => setCloseCategories(!closeCategories)}
                 className="z-30 top-[5px] start-5 shadow absolute my-1 max-md:flex hidden cursor-pointer border text-darkGray border-darkGray w-fit p-1 rounded-md cust-trans hover:text-primary hover:border-primary"
             >
                 <FiMinimize2 size={20} />
             </span>
-            <nav className={`${closeCategories ? 'max-md:!w-[60%] hidden' : 'animate-fade-up'} max-md:bg-[#fffffff5] select-none cust-trans max-md:absolute max-md:top-[40px] max-md:-start-0 z-30 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-start ${className}`}>
+            <nav className={`${closeCategories ? 'max-md:!w-[60%] hidden' : 'animate-fade-up'}  select-none cust-trans max-md:absolute max-md:top-[40px] max-md:-start-0 z-30 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-start ${className}`}>
                 {data?.map((category) => (
                     <div key={category.id} className="mb-2">
                         {/* Main Category */}
@@ -135,7 +135,7 @@ const SideBar = ({ className }) => {
                             >
                                 {category.title}
                             </div>
-                            <IoIosArrowDown 
+                            <IoIosArrowDown
                                 className={`${openCategories[category.id] ? 'rotate-180' : ''} cust-trans`}
                                 onClick={() => handleCategoryClick(category)}
                             />

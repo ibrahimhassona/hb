@@ -28,6 +28,37 @@
     "discover_more": "Discover More",
     "read_more": "Read More"
   },
+  "contactUs": {
+    "home": "Home",
+    "contactUs": "Contact Us",
+    "head": "How can we assist you?",
+    "text": "We value your inquiries, thoughts, and feedback. Reaching out to us is the first step toward a smooth and satisfying experience.",
+    "stay_in_touch": "Stay in touch",
+    "fill_form": "We are happy to hear from you, please fill out this form",
+    "email": "Email",
+    "phone": "Phone Number",
+    "main_location": "Main Location",
+    "address": "3533 Al Kharj Road, Riyadh, Saudi Arabia",
+    "reasons": {
+      "inquiry": "Inquiry",
+      "complaint": "Complaint",
+      "cooperation": "Cooperation",
+      "other": "Other"
+    },
+    "form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Your Email",
+      "phone": "Your Phone Number",
+      "message": "Message (Optional)",
+      "contact_reason": "Reason for Contact (Optional)",
+      "message_placeholder": "Write your message",
+      "first_name_placeholder": "Enter your first name",
+      "last_name_placeholder": "Enter your last name",
+      "email_placeholder": "Enter your email",
+      "submit_button": "Send Message"
+    }
+  },
   "product": {
     "purchase_from_site": "Buy from Build station",
     "tax_price": "Price including tax",
@@ -38,17 +69,33 @@
     "specifications": "Specifications",
     "user_manual": "User Manual",
     "video": "Video",
-    "home":"Home",
-    "similar_products":"The Similar Products",
-    "color":"Color",
-    "size":"Size",
-    "capacity":"Capacity",
-    "sold_together":"Sold Together",
-    "total_text":"Buy at price",
-    "feature":"Featured",
-    "no_products_founded":"No products found.",
+    "home": "Home",
+    "similar_products": "The Similar Products",
+    "color": "Color",
+    "size": "Size",
+    "capacity": "Capacity",
+    "sold_together": "Sold Together",
+    "total_text": "Buy at price",
+    "feature": "Featured",
+    "no_products_founded": "No products found.",
     "head_title": "Discover the Future of Smart Living",
     "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
-    "products":"Products"
+    "products": "Products"
+  }
+  ,
+  "footer": {
+    "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
+    "p2": "A subsidiary of Manzil Marketing Holding Group.",
+    "Categories": "Categories",
+    "company": "Company",
+    "who_are": "Who We Are",
+    "contactUs":"Contact Us",
+    "where_can_buy": "Where Can I Buy",
+    "roles": "Terms and Conditions",
+    "all_rights_hmg": "All rights reserved to Manzil Marketing Group.",
+    "all_rights_hypnotek": {
+      "one": "All rights reserved.",
+      "two": "Hypnotek."
+    }
   }
 }
