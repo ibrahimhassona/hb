@@ -1,5 +1,5 @@
 "use client"
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React, { useState } from 'react'
 import { CiUser } from "react-icons/ci";
 import { MdOutlineEmail } from 'react-icons/md';
@@ -9,9 +9,10 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 
 const ContactForm = () => {
+  const loacle = useLocale()
   const [selectedReason, setSelectedReason] = useState('');
   const t = useTranslations("contactUs.form")
-  const tR= useTranslations("contactUs.reasons")
+  const tR = useTranslations("contactUs.reasons")
   const contactReasons = [
     { id: 'inquiry', label: tR("inquiry") },
     { id: 'complaint', label: tR("complaint") },
@@ -20,7 +21,7 @@ const ContactForm = () => {
   ];
 
   return (
-    <div className='flex flex-col w-full gap-6'> 
+    <div className='flex flex-col w-full gap-6'>
       {/* Previous form elements remain unchanged */}
       <div className='flex items-center gap-4 max-md:flex-col'>
         <div className='flex flex-col w-full relative'>
@@ -35,23 +36,26 @@ const ContactForm = () => {
         </div>
       </div>
       <div className='flex flex-col w-full relative'>
-          <label htmlFor="fName" className='text-darkGray mb-1 text-sm font-semibold'>{t("email")}<span className='text-red-500 font-bold'>*</span></label>
-          <input name='fName' type='text' className=' rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 py-2 text-sm' placeholder={t("email_placeholder")} />
-          <MdOutlineEmail className=' absolute bottom-2 end-2 text-gray-400' size={20}/>
+        <label htmlFor="fName" className='text-darkGray mb-1 text-sm font-semibold'>{t("email")}<span className='text-red-500 font-bold'>*</span></label>
+        <input name='fName' type='text' className=' rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 py-2 text-sm' placeholder={t("email_placeholder")} />
+        <MdOutlineEmail className=' absolute bottom-2 end-2 text-gray-400' size={20} />
       </div>
-      <div className='flex flex-col w-full relative'>
+      <div className='flex flex-col w-full relative' >
         <label htmlFor="fName" className='text-darkGray mb-1 text-sm font-semibold'>{t("phone")}<span className='text-red-500 font-bold'>*</span></label>
-        <PhoneInput
-          className=' rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 text-sm'
-          defaultCountry="sa"
-        />
+        <div dir='rtl'>
+          
+          <PhoneInput
+            className=' rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 text-sm relative rtl-dropdown'
+            defaultCountry="sa"
+          />
+        </div>
       </div>
-      
+
       {/* Message textarea */}
       <div className='flex flex-col w-full relative'>
         <label htmlFor="message" className='text-darkGray mb-1 text-sm font-semibold'>{t("message")}</label>
-        <textarea 
-          name='message' 
+        <textarea
+          name='message'
           rows={4}
           className='rounded-md border border-gray-300 outline-none focus:border-primary cust-trans p-2 text-sm resize-none'
           placeholder={t("message_placeholder")}
@@ -73,7 +77,7 @@ const ContactForm = () => {
                   <MdDone className="text-white" size={14} />
                 )}
               </div>
-              <label 
+              <label
                 onClick={() => setSelectedReason(reason.id)}
                 className='text-darkGray cursor-pointer'
               >
@@ -85,12 +89,12 @@ const ContactForm = () => {
       </div>
 
       {/* Submit Button */}
-      <button 
+      <button
         type="submit"
         className='w-full bg-primary text-white rounded-md py-3 text-sm font-medium hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center gap-2'
       >
         <span>{t("submit_button")}</span>
-        <RiMailSendLine size={20}/>
+        <RiMailSendLine size={20} />
       </button>
     </div>
   )
