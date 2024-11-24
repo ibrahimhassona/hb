@@ -99,8 +99,8 @@ const Footer = () => {
       <div className="bg-teal-700 py-4 px-4 xl:px-40 flex flex-col md:flex-row items-center justify-between">
         <div className='flex flex-wrap gap-2 items-center justify-center md:justify-start mb-4 md:mb-0'>
           <span>{year} &copy;</span>
-          <span>هيبنوتيك.</span>
-          <span>جميع الحقوق محفوظة.</span>
+          <span>{t("all_rights_hypnotek.one")} {t("all_rights_hypnotek.two")}</span>
+          <span></span>
         </div>
         {/* Social Media */}
         <div className='flex items-center gap-3'>

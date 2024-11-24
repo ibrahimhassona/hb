@@ -25,7 +25,7 @@ const MainCategoryFooter = () => {
     return (
         <ul className="flex flex-col w-full items-start justify-center gap-2">
             {data.map((category) => (
-                <li key={category.id || category.name}>
+                <li key={category.id}>
                     <FooterLink href={category.slug}>{category.title}</FooterLink>
                 </li>
             ))}
