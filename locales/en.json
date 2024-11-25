@@ -10,11 +10,13 @@
     "mainTitle": "Empower Your Home, Simplify Your Life!",
     "mainText": "Welcome to Hypnotek, Pioneering the Future of Connected Living, Where Every Interaction is Designed to Enrich Your Home Experience Beyond Expectations.",
     "productsLink": "Explore our products",
-    "searchPlaceholder": "Enter a value of 3 characters to search ...",
+    "searchPlaceholder": "Search for a product ...",
     "noResults": "No matching results found",
     "loading": "Loading products",
     "sku":"SKU",
-    "sar":"SAR"
+    "sar":"SAR",
+    "visit_results":"Show Results Page",
+    "ShowAll": "Show All"
   },
   "menu": {
     "ShowAll": "Show All",

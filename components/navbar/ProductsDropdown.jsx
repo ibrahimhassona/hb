@@ -7,7 +7,7 @@ import React from 'react';
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import Loader from '../Loader';
 
-const useMainCategories = (locale) => {
+export const useMainCategories = (locale) => {
   const url = 'main-categories?populate=*';
 
   return useQuery({

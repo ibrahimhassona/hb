@@ -13,7 +13,6 @@ const MainCategoryFooter = () => {
     const locale = useLocale();
     // Custom hook for fetching categories
     const { data, error, isLoading } = useCategories(locale);
-    console.log(data)
     if (!data) {
         return (
             <div className="flex items-center justify-center w-full">

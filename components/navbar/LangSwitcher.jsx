@@ -29,7 +29,7 @@ const LangSwitcher = ({ props }) => {
     const currentLang = pathname.startsWith('/ar') ? 'ar' : 'en'
 
     return (
-        <div className="relative animate-flip-up text-sm z-10">
+        <div className="relative animate-flip-up text-sm z-10 max-sm:w-[120px]">
             {/* Create a new stacking context with z-index */}
             <div className={`relative ${tajawal.className}`}>
                 <button
