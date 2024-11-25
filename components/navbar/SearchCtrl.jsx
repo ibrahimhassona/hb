@@ -62,15 +62,14 @@ const SearchCtrl = ({ props }) => {
         setIsOpen(false);
         setValue("");
     };
-    console.log("searchResults=====>", searchResults)
-// =============== Highlighted Text ==============
+    // =============== Highlighted Text ==============
     const HighlightedText = ({ text, searchValue }) => {
         if (!searchValue) return text;
 
         const parts = text.split(new RegExp(`(${searchValue})`, 'gi'));
         return parts.map((part, index) =>
             part.toLowerCase() === searchValue.toLowerCase() ? (
-                <span key={index} className="bg-yellow-300 text-primary">
+                <span key={index} className="bg-lightPrimary text-white">
                     {part}
                 </span>
             ) : (
@@ -82,12 +81,12 @@ const SearchCtrl = ({ props }) => {
     return (
         <div className="">
             {/* ============= Search SECTION ============= */}
-            <div className=' '>
+            <div className=''>
                 <div className={`border-gray-50/30 border cust-trans 
-                ${isOpen ? 'animate-flip-up' : 'hidden'} rounded-sm text-darkGray flex items-center bg-white shadow max-md:absolute top-[calc(100%+1px)]  max-md:w-[100%]  max-md:left-0 w-[300px] max-md:rounded-sm left-[10%] z-30`}
+                ${isOpen ? 'animate-flip-up' : 'hidden'} rounded-sm text-darkGray  flex px-2 items-center bg-white shadow max-md:absolute top-[calc(100%+1px)]  max-md:w-[100%] max-md:h-[50px]   max-md:left-0 w-[300px] max-md:rounded-sm left-[10%] z-30`}
                 >
                     <IoClose
-                        size={20}
+                        size={22}
                         onClick={handleClose}
                         className="cursor-pointer cust-trans hover:text-primary ml-2"
                     />
@@ -96,7 +95,7 @@ const SearchCtrl = ({ props }) => {
                         value={value}
                         ref={inputRef}
                         type="text"
-                        className="text-sm text-darkGray outline-none font-normal w-[200px] placeholder:text-darkGray placeholder:text-xs bg-transparent px-2 py-2"
+                        className="text-sm text-darkGray cust-trans rounded-md  outline-none font-normal w-[200px] flex-1 placeholder:text-darkGray placeholder:text-xs bg-transparent px-2 py-2"
                         placeholder={t('searchPlaceholder')}
                     />
                 </div>
@@ -114,7 +113,7 @@ const SearchCtrl = ({ props }) => {
             </div>
             {/* Search Results Dropdown */}
             {isOpen && value.length >= 3 && (
-                <div className="absolute  max-md:top-[80px] max-md:w-[100%]  max-md:left-0 top-[40px] animate-fade-up cust-trans  w-[300px] bg-white mt-1 rounded-sm shadow-lg z-30">
+                <div className="absolute  max-md:top-[85px] max-md:w-[100%]  max-md:left-0 top-[36px] animate-fade-up cust-trans  w-[300px] bg-white mt-1 rounded-sm shadow z-30">
                     {isLoading ? (
                         <div className="p-4 text-center text-gray-600">
                             <div className="flex  gap-1 items-center justify-center w-full">
@@ -134,7 +133,7 @@ const SearchCtrl = ({ props }) => {
                                     className='flex cursor-pointer rounded-sm gap-2 items-center w-[90%] py-1 px-2 shadow-sm m-auto bg-gray-50 border border-gray-200 hover:border-green-300 cust-trans' key={product.id}>
                                     <Image src={product?.main_image.url} height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
                                     <div className='flex flex-col items-start h-full justify-between w-full gap-2'>
-                                        <h2 className='text-darkGray font-semibold'>
+                                        <h2 className='text-darkGray font-semibold line-clamp-1'>
                                             <HighlightedText
                                                 text={product.title}
                                                 searchValue={value}
@@ -152,6 +151,7 @@ const SearchCtrl = ({ props }) => {
                                     </div>
                                 </div>
                             ))}
+                            <button className='text-darkGray  hover:text-primary cust-trans border border-darkGray hover:border-primary w-fit px-3 text-xs py-1 m-auto mt-4 rounded-sm '>{t("visit_results")}</button>
                         </div>
                     ) : (
                         <div className="p-4 text-center text-gray-600">
@@ -166,4 +166,4 @@ const SearchCtrl = ({ props }) => {
 
 export default SearchCtrl;
 
-
+ 
