@@ -6,9 +6,6 @@ import { useLocale } from 'next-intl'
 import { useQuery } from '@tanstack/react-query'
 import SideBar from './SideBar'
 import ProductsComponent from './ProductsComponent'
-import MobileFilter from './MobileFilter'
-import Pagination from './Pagination'
-import Loader from '../Loader'
 import LoadMore from '../LoadMore'
 
 const useProducts = (locale, url) => {
@@ -54,7 +51,7 @@ const BrowseProducts = () => {
                 />
             </div>
             {/* <Pagination /> */}
-            {data.length > 15 && <LoadMore />}
+            <LoadMore />
         </>
     )
 }
