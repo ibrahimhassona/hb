@@ -5,6 +5,7 @@ import Pagination from '../products/Pagination';
 import { IoIosArrowDown } from 'react-icons/io';
 import { FilterButton } from './FilterButton';
 import Link from 'next/link';
+import LoadMore from '../LoadMore';
 
 const NewsContent = () => {
     // State for filter section and sort selection
@@ -137,7 +138,8 @@ const NewsContent = () => {
                     <Card key={item.id} item={item}  />
                 ))}
             </div>
-            <Pagination />
+            {/* <Pagination /> */}
+            <LoadMore/>
         </div>
     );
 };

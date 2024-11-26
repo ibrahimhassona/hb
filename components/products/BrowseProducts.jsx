@@ -9,6 +9,7 @@ import ProductsComponent from './ProductsComponent'
 import MobileFilter from './MobileFilter'
 import Pagination from './Pagination'
 import Loader from '../Loader'
+import LoadMore from '../LoadMore'
 
 const useProducts = (locale, url) => {
     return useQuery({
@@ -31,7 +32,7 @@ const BrowseProducts = () => {
 
             setUrl(`products?filters[main_category][slug][$eq]=${categoryValue}&populate=*`)
         }
-         else {
+        else {
 
             setUrl(`products?filters[sub_categories][slug][$eq]=${categoryValue}&populate=*`)
         }
@@ -52,9 +53,9 @@ const BrowseProducts = () => {
                     data={data}
                 />
             </div>
-            <Pagination />
+            {/* <Pagination /> */}
+            {data.length > 15 && <LoadMore />}
         </>
-        // <></>
     )
 }
 

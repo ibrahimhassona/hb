@@ -5,74 +5,76 @@ import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
 import 'swiper/css/pagination';  // Import pagination CSS
 import 'swiper/css/autoplay'; // Import autoplay CSS
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Thumbs, Pagination, Autoplay } from 'swiper/modules'; // Import Pagination module
 import NavBar from '../navbar/NavBar';
 import { getData } from '@/utils/functions/getData';
 import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
 
+// ======== Hook to fetch slider =========
+export const useSlider = (locale) => {
+    const url = 'sliders?populate[slider][populate]=*'
+    return useQuery({
+        queryKey: ['sliders', locale],
+        queryFn: () => getData(locale, url),
+        staleTime: 1000 * 60 * 5, // 5 minutes
+        retry: 2,
+    })
+}
 const Landing = () => {
     const locale = useLocale()
-    const [sliders, setSliders] = useState([]);  // Set initial state to an empty array
-
-    useEffect(() => {
-        // Define an async function to fetch the sliders data
-        const fetchSliders = async () => {
-            try {
-                const data = await getData(locale, 'sliders?populate[slider][populate]=*');
-                setSliders(data[1].slider || []);  // Ensure data[1].slider is an array or fallback to empty array
-            } catch (error) {
-                console.error("Error fetching sliders:", error);  // Handle errors if any
-            }
-        };
-
-        fetchSliders();  // Call the async function to fetch the data
-    }, []);  // Only run once on component mount
-
+    const { data, loading } = useSlider(locale)
+    const sliders = data && data[1]?.slider || []
     return (
         <section className="relative m-auto">
             <div className="bg-black/50 top-0 right-0 absolute cust-trans w-full start-0 z-40">
                 <NavBar props={{ text: 'white', bg: 'primary' }} />
             </div>
             {/*=============== Main Image ============== */}
-            <Swiper
-                spaceBetween={10}
-                loop={true}
-                modules={[FreeMode, Thumbs, Pagination, Autoplay]}  // Include Pagination module here
-                className="w-full h-[600px] max-md:h-[400px]"
-                pagination={{ clickable: true }}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }}
-            >
-                {sliders.length > 0 ? (
-                    sliders.map((slider, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="w-full h-full relative overflow-hidden">
-                                <img
-                                    src={slider.image.url}
-                                    alt={`News view ${index + 1}`}
-                                    className="w-full h-full object-cover cust-trans"
-                                    loading="lazy"
-                                />
-                                <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  xl:w-[50%] animate-fade-down text-white">
-                                    <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4'>{slider.header}</h1>
-                                    <p className='text-xl mb-10'>{slider.description}</p>
-                                    <Link
-                                        className='max-sm:flex max-sm:items-center justify-center bg-primary cust-trans hover:bg-lightPrimary text-white w-full border-lightPrimary border-2 px-6 max-sm:px-2 max-sm:text-sm py-1 rounded-md '
-                                        href={`${locale}/${slider.button_url}`}>
-                                        <span>{slider.button_title}</span>
-                                    </Link>
+            {data ?
+                <Swiper
+                    spaceBetween={10}
+                    loop={true}
+                    modules={[FreeMode, Thumbs, Pagination, Autoplay]}  // Include Pagination module here
+                    className="w-full h-[600px] max-md:h-[400px]"
+                    pagination={{ clickable: true }}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+                >
+                    {
+                        sliders && sliders.map((slider, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="w-full h-full relative overflow-hidden">
+                                    <img
+                                        src={slider.image?.url}
+                                        alt={`News view ${index + 1}`}
+                                        className="w-full h-full object-cover cust-trans"
+                                        loading="lazy"
+                                    />
+                                    <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  xl:w-[50%] animate-fade-down text-white">
+                                        <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4'>{slider.header}</h1>
+                                        <p className='text-xl mb-10'>{slider.description}</p>
+                                        <Link
+                                            className='max-sm:flex max-sm:items-center justify-center bg-primary cust-trans hover:bg-lightPrimary text-white w-full border-lightPrimary border-2 px-6 max-sm:px-2 max-sm:text-sm py-1 rounded-md '
+                                            href={`${locale}/${slider.button_url}`}>
+                                            <span>{slider.button_title}</span>
+                                        </Link>
+                                    </div>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    ))
-                ) : (
-                    <div className='text-primary h-full flex items-center justify-center'>Loading sliders...</div>  // Show loading message while data is being fetched
-                )}
-            </Swiper>
+                            </SwiperSlide>
+                        ))}
+                </Swiper>
+                : <div className='text-white bg-black/80  flex items-center justify-center h-[600px] max-md:h-[400px]'>
+                    <div className="flex items-center justify-center w-full">
+                        {/* Spinner */}
+                        <span className="w-[50px] h-[50px] border-2 border-gray-100 border-t-lightPrimary rounded-full animate-spin"></span>
+                    </div>
+                </div>  
+            }
         </section>
     );
 };

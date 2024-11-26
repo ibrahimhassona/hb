@@ -13,14 +13,18 @@
     "searchPlaceholder": "Search for a product ...",
     "noResults": "No matching results found",
     "loading": "Loading products",
-    "sku":"SKU",
-    "sar":"SAR",
-    "visit_results":"Show Results Page",
-    "ShowAll": "Show All"
+    "sku": "SKU",
+    "sar": "SAR",
+    "visit_results": "Show Results Page",
+    "ShowAll": "Show All",
+    "search_result": "Search results for",
+    "contains": "Contains ",
+    "results": "results"
   },
   "menu": {
     "ShowAll": "Show All",
-    "loading": "Loading ..."
+    "loading": "Loading ...",
+    "load_more":"Load More"
   },
   "loader": {
     "text": "Content Loading ..."
@@ -87,16 +91,16 @@
     "no_products_founded": "No products found.",
     "head_title": "Discover the Future of Smart Living",
     "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
+    "sku": "SKU",
     "products": "Products"
-  }
-  ,
+  },
   "footer": {
     "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
     "p2": "A subsidiary of Manzil Marketing Holding Group.",
     "Categories": "Categories",
     "company": "Company",
     "who_are": "Who We Are",
-    "contactUs":"Contact Us",
+    "contactUs": "Contact Us",
     "where_can_buy": "Where Can I Buy",
     "roles": "Terms and Conditions",
     "all_rights_hmg": "All rights reserved to Manzil Marketing Group.",
