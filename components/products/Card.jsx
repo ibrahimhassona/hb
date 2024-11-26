@@ -4,13 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { MdOutlineWavingHand } from 'react-icons/md';
+import { HighlightedText } from '../navbar/SearchCtrl';
 
 // ProductCard Component
 
-const Card = ({ item }) => {
+const Card = ({ item ,search,value}) => {
     const locale = useLocale()
     const t = useTranslations("product")
-    console.log(item.main_image)
     return (
         <Link
             href={`/products/${item.slug}`}
@@ -39,11 +39,19 @@ const Card = ({ item }) => {
                         {item.price?.toLocaleString()} <span className='text-xs'>{t("sar")}</span>
                     </span>
                 </div>
-
-                {/* ====== Title ======= */}
-                <h3 className="text-sm font-medium text-gray-900 line-clamp-2 min-h-[40px]">
-                    {item.title}
-                </h3>
+                <div className='flex w-full justify-between items-center max-sm:flex-col-reverse'>
+                    {/* ====== Title ======= */}
+                    <h3 className="text-sm font-medium text-gray-900 line-clamp-2 min-h-[40px]">
+                    {!search?
+                     <span>{item.title}</span>:<HighlightedText text={item.title} searchValue={value}/>}
+                    </h3>
+                    {/* ====== SKU ======= */}
+                    <h4 className="text-xs font-medium text-gray-400 line-clamp-1 max-sm:my-1 ">
+                        <span className='font-semibold'> {t("sku")} :{" "}</span>
+                     {!search ?
+                     <span>{item.SKU}</span>:<HighlightedText text={item.SKU} searchValue={value}/>}
+                    </h4>
+                </div>
             </div>
         </Link>
     );

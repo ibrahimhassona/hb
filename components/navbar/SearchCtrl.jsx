@@ -8,8 +8,23 @@ import { getData } from '@/utils/functions/getData'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+// =============== Highlighted Text ==============
+export const HighlightedText = ({ text, searchValue }) => {
+    if (!searchValue) return text;
+
+    const parts = text.split(new RegExp(`(${searchValue})`, 'gi'));
+    return parts.map((part, index) =>
+        part.toLowerCase() === searchValue.toLowerCase() ? (
+            <span key={index} className="bg-lightPrimary text-white">
+                {part}
+            </span>
+        ) : (
+            part
+        )
+    );
+};
 // Search hook with proper conditions
-const useSearch = (locale, value) => {
+export const useSearch = (locale, value) => {
     const enabled = value?.length >= 3;
     const url = enabled
         ? `products?populate=*&filters[$or][0][title][$containsi]=${value}&filters[$or][1][SKU][$containsi]=${value}`
@@ -38,18 +53,19 @@ const SearchCtrl = ({ props }) => {
         }
     }, [isOpen]);
     // // ================ Enter key To open the Search Result Page  ================
-    // useEffect(() => {
-    //     const handleKeyDown = (event) => {
-    //         if (event.keyCode === 13 && searchResults?.length > 0) {
-    //             const newUrl = `/products/searchItemsByStr?searchText=${encodeURIComponent(searchText)}`;
-    //             router.replace(newUrl);
-    //         }
-    //     };
-    //     document.addEventListener('keydown', handleKeyDown);
-    //     return () => {
-    //         document.removeEventListener('keydown', handleKeyDown);
-    //     };
-    // }, [searchResults, router]);
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.keyCode === 13 && searchResults?.length > 0) {
+                const newUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/products/search?value=${encodeURIComponent(value)}`;
+                router.replace(newUrl);
+                setIsOpen(false)
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [searchResults, router]);
     // ---- Put Value And Target ------
     const handleValue = (e) => {
         setValue(e.target.value);
@@ -61,21 +77,6 @@ const SearchCtrl = ({ props }) => {
     const handleClose = () => {
         setIsOpen(false);
         setValue("");
-    };
-    // =============== Highlighted Text ==============
-    const HighlightedText = ({ text, searchValue }) => {
-        if (!searchValue) return text;
-
-        const parts = text.split(new RegExp(`(${searchValue})`, 'gi'));
-        return parts.map((part, index) =>
-            part.toLowerCase() === searchValue.toLowerCase() ? (
-                <span key={index} className="bg-lightPrimary text-white">
-                    {part}
-                </span>
-            ) : (
-                part
-            )
-        );
     };
 
     return (
@@ -151,7 +152,11 @@ const SearchCtrl = ({ props }) => {
                                     </div>
                                 </div>
                             ))}
-                            <button className='text-darkGray  hover:text-primary cust-trans border border-darkGray hover:border-primary w-fit px-3 text-xs py-1 m-auto mt-4 rounded-sm '>{t("visit_results")}</button>
+                            <button onClick={() => {
+                                const newUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/products/search?value=${encodeURIComponent(value)}`;
+                                 router.replace(newUrl);
+                                 setIsOpen(false)
+                            }} className='text-darkGray  hover:text-primary cust-trans border border-darkGray hover:border-primary w-fit px-3 text-xs py-1 m-auto mt-4 rounded-sm '>{t("visit_results")}</button>
                         </div>
                     ) : (
                         <div className="p-4 text-center text-gray-600">
@@ -166,4 +171,3 @@ const SearchCtrl = ({ props }) => {
 
 export default SearchCtrl;
 
- 
