@@ -55,7 +55,7 @@ const Landing = () => {
                                         className="w-full h-full object-cover cust-trans"
                                         loading="lazy"
                                     />
-                                    <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  xl:w-[50%] animate-fade-down text-white">
+                                    <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  lg:w-[70%] 2xl:w-[60%] animate-fade-down text-white">
                                         <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4'>{slider.header}</h1>
                                         <p className='text-xl mb-10'>{slider.description}</p>
                                         <Link

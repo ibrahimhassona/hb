@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { getData } from '@/utils/functions/getData';
 import { useQuery } from '@tanstack/react-query';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { FiMinimize2 } from "react-icons/fi";
@@ -18,6 +18,8 @@ export const useCategories = (locale) => {
     });
 };
 const SideBar = ({ className }) => {
+    // ------- Translation -------
+    const t = useTranslations("product")
     // ------- Local-------
     const locale = useLocale();
     // ------- Router-------
@@ -116,12 +118,15 @@ const SideBar = ({ className }) => {
 
     return (
         <>
-            <span
-                onClick={() => setCloseCategories(!closeCategories)}
-                className="z-30 top-[5px] start-5 shadow absolute my-1 max-md:flex hidden cursor-pointer border text-darkGray border-darkGray w-fit p-1 rounded-md cust-trans hover:text-primary hover:border-primary"
-            >
-                <FiMinimize2 size={20} />
-            </span>
+            <div className='flex items-center gap-2 flex-row z-30 top-[5px] start-5  absolute'>
+                <span
+                    onClick={() => setCloseCategories(!closeCategories)}
+                    className=" shadow my-1 max-md:flex hidden cursor-pointer border text-darkGray border-darkGray w-fit p-1 rounded-md cust-trans hover:text-primary hover:border-primary"
+                >
+                    <FiMinimize2 size={20} />
+                </span>
+                {closeCategories && <span className='text-darkGray hidden  max-md:flex cust-trans animate-flip-up'>{t("open_menu")}</span>}
+            </div>
             <nav className={`${closeCategories ? 'max-md:!w-[60%] hidden' : 'animate-fade-up'}  select-none cust-trans max-md:absolute max-md:top-[40px] max-md:-start-0 z-30 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-start ${className}`}>
                 {data?.map((category) => (
                     <div key={category.id} className="mb-2">

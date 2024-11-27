@@ -1,5 +1,4 @@
 "use client";
-
 import React from 'react';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -7,27 +6,96 @@ import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { getData } from '@/utils/functions/getData';
+import { useQuery } from '@tanstack/react-query';
+import ProductSkeleton from '../ProductSkeleton';
 
-const FeaturedProducts = ({title}) => {
+
+
+export const useIsFeature = (locale) => {
+    const url = `products?populate=*&filters[isFeature][$eq]=true`;
+    return useQuery({
+        queryKey: ['isFeature', locale],
+        queryFn: () => getData(locale, url),
+        staleTime: 1000 * 60 * 5, // 5 minutes
+        retry: 2,
+    });
+};
+
+const ProductCard = ({ product, locale }) => {
+    const t = useTranslations("product")
+    return (
+        <div className="relative rounded-lg overflow-hidden shadow-md h-64 max-sm:h-[200px] group cursor-pointer">
+            {product?.main_image?.url && (
+                <Image
+                    src={product.main_image.url}
+                    alt={product.title || ''}
+                    layout="fill"
+                    objectFit="cover"
+                    className="w-full h-full"
+                />
+            )}
+            <div className="absolute bottom-0 left-0 right-0 p-4">
+                <div className="flex justify-between max-sm:text-xs items-start flex-col gap-1 border border-[#C0C0C0] p-2 rounded-md overflow-hidden bg-black/30 backdrop-blur-lg">
+                    <div className='flex items-center justify-between w-full'>
+                        <span
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                window.location.href = `/products?sub-category=${product.sub_categories[0].slug}`;
+                            }}
+                            className="text-[#C0C0C0] flex-1 hover:text-white cust-trans cursor-pointer"
+                        >
+                            {product.sub_categories[0]?.title}
+                        </span>
+                        {product?.colors?.length > 0 && (
+                            <span className='w-fit flex items-center gap-1'>
+                                {product.colors.map((color, colorIndex) => (
+                                    <span
+                                        key={colorIndex}
+                                        style={{ backgroundColor: color.name }}
+                                        className="w-5 h-5 rounded-full"
+                                    />
+                                ))}
+                            </span>
+                        )}
+                    </div>
+                    <div className="flex justify-between items-center w-full">
+                        <h3 className="text-lg max-md:text-[14px] max-sm:text-xs font-semibold mb-1 text-start text-white">
+                            {product?.title?.length > 15 ? `${product.title.slice(0, 15)}...` : product.title}
+                        </h3>
+                        <p className="text-gray-200 text-start text-sm max-md:text-[10px]">
+                            {product?.price?.toLocaleString()} <span className=' text-[9px]'>{t("sar")}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const FeaturedProducts = ({ title }) => {
     const t = useTranslations("main_categories");
     const locale = useLocale();
-    const products = [
-        { id: 1, name: 'سيدار جهاز تعطير', price: 499, image: '/section2/curs-1.png' },
-        { id: 2, name: 'إضاءة مكتب', price: 499, image: '/section2/curs-2.png' },
-        { id: 3, name: 'منقي هواء', price: 499, image: '/section2/curs-3.png' },
-        { id: 4, name: 'منقي هواء', price: 499, image: '/section2/curs-4.png' },
-        { id: 5, name: 'منقي هواء', price: 499, image: '/section2/curs-5.png' },
-    ];
+    const { data: products, isLoading, isError } = useIsFeature(locale);
+
+    const skeletonArray = Array(5).fill(null);
+
+    if (isError) {
+        return (
+            <div className="my-12 text-center text-red-500">
+                {t("error_loading_products")}
+            </div>
+        );
+    }
 
     return (
         <div className="my-12 overflow-hidden">
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl max-md:text-lg font-bold text-start text-darkGray">{title}</h2>
-                    <Link href="/" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
+                    <Link href="/products/feature" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />
                     </Link>
@@ -44,7 +112,7 @@ const FeaturedProducts = ({title}) => {
                         prevEl: '.button-prev-f',
                     }}
                     dir={locale === 'ar' ? 'rtl' : 'ltr'}
-                    loop={true}
+                    loop={products?.length > 3}
                     breakpoints={{
                         640: {
                             slidesPerView: 2.5,
@@ -54,31 +122,23 @@ const FeaturedProducts = ({title}) => {
                         },
                     }}
                 >
-                    {products.map((product, index) => (
-                        <SwiperSlide key={index} >
-                            <div className="relative rounded-lg overflow-hidden shadow-md h-64 max-sm:h-[200px]">
-                                <Image
-                                    src={product.image}
-                                    alt={product.name}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="w-full h-full"
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 p-4">
-                                    <div className="flex justify-between max-sm:text-xs items-start flex-col gap-1 border border-[#C0C0C0] p-2 rounded-md overflow-hidden bg-black/30 backdrop-blur-lg">
-                                        <h2 className="text-[#C0C0C0]">{product.name}</h2>
-                                        <div className="flex justify-between items-center w-full ">
-                                            <h3 className="text-lg max-sm:text-xs font-semibold mb-1 text-right text-white">{product.name}</h3>
-                                            <p className="text-gray-200 text-right">سعر {product.price} ريال</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
+                    {isLoading ? (
+                        skeletonArray.map((_, index) => (
+                            <SwiperSlide key={`skeleton-${index}`}>
+                                <ProductSkeleton />
+                            </SwiperSlide>
+                        ))
+                    ) : (
+                        products?.map((product, index) => (
+                            <SwiperSlide key={product.id || index}>
+                                <Link href={`/products/${product?.slug}`}>
+                                    <ProductCard product={product} locale={locale} />
+                                </Link>
+                            </SwiperSlide>
+                        ))
+                    )}
                 </Swiper>
 
-                {/* Navigation buttons */}
                 <div className={`mx-auto px-4 xl:px-40 mt-4 flex gap-2 justify-end`}>
                     <button className="button-prev-f p-2 !text-white bg-primary hover:bg-lightPrimary cust-trans rounded-full flex items-center justify-center">
                         <FaChevronLeft className={locale === 'ar' ? 'rotate-180' : ''} />
@@ -93,4 +153,3 @@ const FeaturedProducts = ({title}) => {
 };
 
 export default FeaturedProducts;
-
