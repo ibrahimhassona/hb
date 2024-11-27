@@ -19,7 +19,8 @@
     "ShowAll": "Show All",
     "search_result": "Search results for",
     "contains": "Contains ",
-    "results": "results"
+    "results": "results",
+    "feature_result":"Featured Products"
   },
   "menu": {
     "ShowAll": "Show All",
@@ -92,7 +93,8 @@
     "head_title": "Discover the Future of Smart Living",
     "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
     "sku": "SKU",
-    "products": "Products"
+    "products": "Products",
+    "open_menu":"Click To Categories"
   },
   "footer": {
     "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
@@ -101,7 +103,7 @@
     "company": "Company",
     "who_are": "Who We Are",
     "contactUs": "Contact Us",
-    "where_can_buy": "Where Can I Buy",
+    "where_can_buy": "Where To Buy",
     "roles": "Terms and Conditions",
     "all_rights_hmg": "All rights reserved to Manzil Marketing Group.",
     "all_rights_hypnotek": {

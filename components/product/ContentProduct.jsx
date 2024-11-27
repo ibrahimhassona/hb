@@ -22,7 +22,7 @@ const ContentProduct = ({ product }) => {
                         {product?.sub_categories && product?.sub_categories.map((subcategory) => (
                             <Link
                                 key={subcategory.slug}
-                                href={`${process.env.NEXT_PUBLIC_BASE_URL}products?sub_category=${subcategory?.slug}`}
+                                href={`${process.env.NEXT_PUBLIC_BASE_URL}products?sub-category=${subcategory?.slug}`}
                                 className="text-primary text-sm mb-2"
                             >
                                 {subcategory?.title}

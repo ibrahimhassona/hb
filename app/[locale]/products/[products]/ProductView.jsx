@@ -33,7 +33,7 @@ const ProductView = ({ slug }) => {
     {
       title: data[0]?.sub_categories?.[0]?.title || "",
       url: data[0]?.sub_categories?.[0]?.slug
-        ? `${process.env.NEXT_PUBLIC_BASE_URL}products?sub_category=${data[0].sub_categories[0].slug}`
+        ? `${process.env.NEXT_PUBLIC_BASE_URL}products?sub-category=${data[0].sub_categories[0].slug}`
         : "#"
     },
     { title: data[0]?.title, url: "#" }

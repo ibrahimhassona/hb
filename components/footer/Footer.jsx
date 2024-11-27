@@ -32,19 +32,11 @@ const Footer = () => {
     { name: 'MHG', logo: '/footer/MHG-logo.png' },
   ];
 
-  const products = [
-    { name: 'الإضاءة الذكيـة', href: '/' },
-    { name: 'اندروميـدا', href: '/' },
-    { name: 'الأجهزة متعددة الاستخدام', href: '/' },
-    { name: 'أجهزة التعطير الذكيـة', href: '/' },
-    { name: 'الخزائن الذكيـة', href: '/' },
-  ];
-
   const companyLinks = [
     { name: t("who_are"), href: '/about' },
     { name: t("where_can_buy"), href: '/' },
     { name: t("contactUs"), href: '/contactUs' },
-    { name: t("roles"), href: '/' },
+    { name: t("roles"), href: '/cms/terms-and-conditions' },
   ];
 
   return (

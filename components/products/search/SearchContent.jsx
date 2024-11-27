@@ -22,8 +22,8 @@ const SearchContent = ({ value }) => {
     ]
     return (
         <div className='px-4 xl:px-40 my-5'>
-            <Path data={dataPath} />
-            <div className=' p-2 shadow rounded-md my-6'>
+            <Path data={dataPath} className={'text-darkGray'}/>
+            <div className=' p-2 shadow-sm rounded-md my-6'>
                 {searchResults ? <div className={` min-h-[500px] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 items-start h-fit w-full justify-items-center`}>
                     {searchResults.map((item, index) => (
                         <Card search={true} item={item} key={index} value={value?.value} />

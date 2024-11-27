@@ -1,29 +1,39 @@
-import React from 'react';
+
+"use client"
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { getFeaturedCategories } from '@/utils/hooks/featuredCategories';
+import { grid } from 'ldrs';
 
 const MainCategories = () => {
   const t = useTranslations("main_categories");
-
-  const categories = [
-    { id: 1, title: 'أجهزة التعطير الذكية', image: '/section1/card_1.png' },
-    { id: 2, title: 'الحياة الذكية', image: '/section1/card_2.png' },
-    { id: 3, title: 'الإضاءة الذكية', image: '/section1/card_3.png' },
-    { id: 4, title: 'أجهزة متعددة الاستخدام', image: '/section1/card_4.png' },
-    { id: 5, title: 'اندروميدا', image: '/section1/card_5.png' },
-    { id: 6, title: 'الخزائن الذكية', image: '/section1/card_6.png' },
-  ];
-
+  const locale = useLocale()
+  const featuredCategories = getFeaturedCategories(locale)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Register the grid loader
+      grid.register();
+    }
+  }, [])
+  if (featuredCategories.length < 6) {
+    return (
+      <div className="min-h-[500px] w-full flex items-center justify-center ">
+        <l-grid size="100" speed="1" color="#2dbbab" />
+      </div>
+    )
+  }
   return (
     <section className='px-4 xl:px-40 py-8'>
       <h1 className="font-[600] text-[30px] text-darkGray  mb-6">
         {t("title")}
       </h1>
       {/* ============= DeskTop Screen =========== */}
-      <Link href='/' className="grid grid-cols-1 gap-4 md:grid-cols-4 max-lg:hidden ">
-        {categories.map((category, index) => (
-          <div
+      <div  className="grid grid-cols-1 gap-4 md:grid-cols-4 max-lg:hidden ">
+        {featuredCategories.slice(0, 6).map((category, index) => (
+          <Link
+          href={`/products?sub-category=${category.slug}`}
             key={category.id}
             className={`
               group
@@ -34,7 +44,7 @@ const MainCategories = () => {
             `}
           >
             <Image
-              src={category.image}
+              src={category.image[0]?.url}
               alt={category.title}
               layout="fill"
               objectFit="cover"
@@ -46,12 +56,12 @@ const MainCategories = () => {
                 {category.title}
               </h2>
             </div>
-          </div>
+          </Link>
         ))}
-      </Link>
+      </div>
       {/* ============= Small Screen =========== */}
       <Link href='/' className="grid grid-cols-2 gap-4 lg:hidden">
-        {categories.map((category, index) => (
+        {featuredCategories.slice(0, 6).map((category, index) => (
           <div
             key={category.id}
             className={`
@@ -63,7 +73,7 @@ const MainCategories = () => {
             `}
           >
             <Image
-              src={category.image}
+              src={category.image[0]?.url}
               alt={category.title}
               layout="fill"
               objectFit="cover"

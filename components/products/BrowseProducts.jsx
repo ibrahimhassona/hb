@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 import SideBar from './SideBar'
 import ProductsComponent from './ProductsComponent'
 import LoadMore from '../LoadMore'
+import ProductSkeleton from '../ProductSkeleton'
 
 const useProducts = (locale, url) => {
     return useQuery({

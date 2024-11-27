@@ -10,7 +10,7 @@ const SelectColor = ({ data, title }) => {
 
     return (
         <div className="flex items-center gap-2 mb-4">
-            <h4 className="text-primary">{title} :</h4>
+           {title&& <h4 className="text-primary">{title} :</h4>}
             <div className="flex gap-1 items-center" >
                 {data.map((color) => (
                     <div
