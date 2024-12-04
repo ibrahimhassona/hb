@@ -20,12 +20,12 @@
     "search_result": "Search results for",
     "contains": "Contains ",
     "results": "results",
-    "feature_result":"Featured Products"
+    "feature_result": "Featured Products"
   },
   "menu": {
     "ShowAll": "Show All",
     "loading": "Loading ...",
-    "load_more":"Load More"
+    "load_more": "Load More"
   },
   "loader": {
     "text": "Content Loading ..."
@@ -94,7 +94,7 @@
     "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
     "sku": "SKU",
     "products": "Products",
-    "open_menu":"Click To Categories"
+    "open_menu": "Click To Categories"
   },
   "footer": {
     "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
@@ -110,5 +110,21 @@
       "one": "All rights reserved ",
       "two": "Hypnotek."
     }
+  },
+  "Locations": {
+    "no_data_to_view": "There are no identical places",
+    "search_location": "Find your nearest location",
+    "all": "All",
+    "share": "Share",
+    "times": "Times",
+    "open_map": "Open The Map",
+    "link_copy": "Copy link",
+    "copied": "Copied !",
+    "where_buy": "Where to Buy",
+    "home": "Home",
+    "working_hours": "Working Hours",
+    "search_place": "Search for a place",
+    "address": "Address",
+    "phone": "Phone"
   }
 }

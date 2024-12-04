@@ -26,7 +26,7 @@ const MainCategories = () => {
   }
   return (
     <section className='px-4 xl:px-40 py-8'>
-      <h1 className="font-[600] text-[30px] text-darkGray  mb-6">
+      <h1 className="font-[600] text-2xl text-darkGray  mb-6">
         {t("title")}
       </h1>
       {/* ============= DeskTop Screen =========== */}

@@ -33,13 +33,13 @@ const Header = ({ props }) => {
       <div className='flex gap-2 text-sm'>
         {dataLinks.map((link) => (
           link.link ? (
-            <Link href={link.href} key={link.id} className={`font-[500] cust-trans hover:text-primary ${isActive(link.href) ? 'text-primary' : `${props ? 'text-white' : ''}`}`}>
+            <Link href={link.href} key={link.id} className={`font-[500] cust-trans hover:text-primary ${isActive(link.href) ? 'text-primary' : `${props ?  `text-${props.text}` : ''}`}`}>
               {link.title}
             </Link>
           ) : (
             // ------ Products Menu Dropdown ----------
             <div className='relative' key={link.id}>
-              <button className={`font-[500] cust-trans hover:text-primary flex items-center gap-1 group  ${props ? (isActive(link.href) ? 'text-primary' : 'text-white') : (isActive(link.href) ? 'text-primary' : '')}`}
+              <button className={`font-[500] cust-trans hover:text-primary flex items-center gap-1 group  ${props ? (isActive(link.href) ? 'text-primary' : `text-${props.text}`) : (isActive(link.href) ? 'text-primary' : '')}`}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {link.title}
