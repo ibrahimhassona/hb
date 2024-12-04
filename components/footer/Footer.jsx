@@ -34,7 +34,7 @@ const Footer = () => {
 
   const companyLinks = [
     { name: t("who_are"), href: '/about' },
-    { name: t("where_can_buy"), href: '/' },
+    { name: t("where_can_buy"), href: '/cms/where-to-buy' },
     { name: t("contactUs"), href: '/contactUs' },
     { name: t("roles"), href: '/cms/terms-and-conditions' },
   ];
