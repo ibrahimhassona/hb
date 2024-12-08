@@ -27,6 +27,9 @@
     "loading": "Loading ...",
     "load_more": "Load More"
   },
+  "about": {
+    "explore": "Discover our products"
+  },
   "loader": {
     "text": "Content Loading ..."
   },

@@ -22,6 +22,10 @@
     "results":"نتيجة",
     "feature_result":"المنتجات المميزة"
   },
+  "about":{
+    "explore":"اكتشف منتجاتنـا"
+  }
+  ,
   "menu": {
     "ShowAll": "عرض الكـل",
     "loading": "جار التحميل ...",

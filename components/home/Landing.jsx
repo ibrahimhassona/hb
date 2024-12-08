@@ -73,7 +73,7 @@ const Landing = () => {
                         {/* Spinner */}
                         <span className="w-[50px] h-[50px] border-2 border-gray-100 border-t-lightPrimary rounded-full animate-spin"></span>
                     </div>
-                </div>  
+                </div>
             }
         </section>
     );
