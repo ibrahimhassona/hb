@@ -1,35 +1,20 @@
 import AboutContent from '@/components/about/AboutContent';
 import NavBar from '@/components/navbar/NavBar';
-import Path from '@/components/Path';
 import React from 'react';
 
 const page = () => {
-    const dataPath = [
-        { title: "الرئيسية", url: '/' },
-        { title: "من نحن", url: '/about' },
-    ]
+    
+
     return (
         <>
-            <div className='relative bg-[url(/about/about-landing.jpg)] h-[450px] bg-cover bg-center '>
-                <div className='w-full h-full bg-black/70 absolute top-0 right-0'>
-                    {/* -------- NavBar -------- */}
+            <section className="relative m-auto">
+                <div className="bg-black/50 top-0 right-0 absolute cust-trans w-full start-0 z-40">
                     <NavBar props={{ text: 'white', bg: 'primary' }} />
-                    {/* ------ Landing ------ */}
-                    <div className='px-4 xl:px-40 h-full cust-trans animate-flip-up'>
-                        {/* ---- About Description ---- */}
-                        <div className='flex flex-col justify-around w-[70%] max-sm:w-full gap-4 h-[250px] '>
-                            {/* ------ SRC Path ------ */}
-                            <Path data={dataPath} className='text-white' />
-                            <div>
-                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>كل شي بـدأ من هنـا !</h1>
-                                <p className='text-white text-[20px] font-[500]'>عالم هيبنوتيك يخلق مستقبل التكنولوجيا في منزلك. نحن نقدم العديد من منتجات تكنولوجيا المنزل الذكي. جربه الآن!</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            {/* --------------- About Content ------------- */}
-            <AboutContent />
+            </section>
+            {/* -------- NavBar -------- */}
+            {/* --------------- About Content ------------- */ }
+            < AboutContent />
         </>
     );
 };

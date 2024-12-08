@@ -32,14 +32,14 @@ const SelectItems = ({ items, selectHandler, selectedValue, placeholder, all }) 
                 />
                 <div className="w-full h-[calc(100%-40px)] overflow-auto cust-trans">
                     <span
-                        className={`${query == "" && selectedValue == t("all") ? 'bg-primary text-white' : ''} my-1 line-clamp-1 cust-trans rounded-sm hover:bg-primary hover:text-white hover:cursor-pointer px-2 py-1`}
+                        className={`${query == "" && selectedValue == t("all") ? 'bg-primary text-white' : ''} my-1 line-clamp-1 cust-trans text-darkGray rounded-sm hover:bg-primary hover:text-white hover:cursor-pointer px-2 py-1`}
                         onClick={() => { selectHandler(t("all")); setQuery(""); setIsOpen(false); }}
                     >{t("all")}
                     </span>
                     {filterArray && filterArray?.map(item => (
                         <span
                             key={item.id}
-                            className={`${item?.title === selectedValue ? 'bg-primary text-white' : ''} my-1 line-clamp-1 cust-trans rounded-sm hover:bg-primary hover:text-white hover:cursor-pointer px-2 py-1`}
+                            className={`${item?.title === selectedValue ? 'bg-primary text-white' : ''} my-1 line-clamp-1 cust-trans rounded-sm text-darkGray hover:bg-primary hover:text-white hover:cursor-pointer px-2 py-1`}
                             onClick={() => { setIsOpen(false); selectHandler(item?.title); }}
                         >
                             {item?.title || 'No title available'}

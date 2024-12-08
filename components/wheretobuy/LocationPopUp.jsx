@@ -19,9 +19,9 @@ const LocationPopUp = ({ item }) => {
     };
     return (
         <div className='flex flex-col gap-4 max-w-[350px]'>
-            <h2 className='text-xl font-semibold '>{t("share")}</h2>
+            <h2 className='text-xl font-semibold text-darkGray'>{t("share")}</h2>
             {/* ==================== Share part ========================== */}
-            <div className='flex flex-col gap-4 px-2'>
+            <div className='flex flex-col gap-4 px-2 text-darkGray'>
                 <p className='flex items-center justify-between gap-4'><span>{`${item.address}`}</span><span><FaMapLocationDot className=' text-xl text-primary' /></span></p>
                 {item.phone && <p className='flex items-center justify-between gap-4'><span>{item.phone}</span><span><FaPhone className=' text-xl text-primary' /></span></p>}
             </div>
@@ -39,7 +39,7 @@ const LocationPopUp = ({ item }) => {
             </div>
             {/* ==================== Copy Link part ========================== */}
             <div className='flex flex-col gap-2'>
-                <p className=' font-semibold'>{t("open_map")} & {t("link_copy")}</p>
+                <p className=' font-semibold text-darkGray'>{t("open_map")} & {t("link_copy")}</p>
                 <div className='flex gap-4 m-auto'>
                     {/* -----Copy Link---- */}
                     <span onClick={() => copyURL(item.location_link)} className=' hover:bg-primaryDark cust-trans h-[30px] w-[30px] bg-primary text-white rounded-md p-2 flex items-center justify-center cursor-pointer'>

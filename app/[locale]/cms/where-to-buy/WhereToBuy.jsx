@@ -30,7 +30,6 @@ const WhereToBuy = () => {
     const [selectedValue, setSelectedValue] = useState(t("all"));
     const [selectedBreanch, setSelectedBranch] = useState(null)
     const { data: dataQ } = useBranches(locale)
-    console.log("selectedBreanch ====>", selectedBreanch)
 
     //------ To Get The Selected From Map -------
     const clickedItemHandler = (item) => {
@@ -56,11 +55,10 @@ const WhereToBuy = () => {
                 <h1 className="text-2xl font-bold text-primary mb-6 border-b-2 border-gray-200 pb-4 capitalize">
                     {t("where_buy")}
                 </h1>
-
-                <section className="flex max-md:flex-col gap-2 ">
+                <section className="flex max-md:flex-col gap-2 text-darkGray">
                     <div className='w-full flex-1 h-[500px] border  max-sm:h-[350px] shadow-md rounded-md'>
                         <div className='flex flex-col gap-4 items-center p-2 max-sm:min-h-[250px] '>
-                            <h2 className='font-semibold text-lg capitalize '>{t("search_place")}</h2>
+                            <h2 className='font-semibold text-lg capitalize text-darkGray'>{t("search_place")}</h2>
                             {/* =========== Select Location =========== */}
                             <SelectItems items={dataQ} selectHandler={SelectHandler} selectedValue={selectedValue} placeholder={t("search_location")} all={true} />
                             {/* --------- Branch Details ------- */}

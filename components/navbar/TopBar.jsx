@@ -11,6 +11,7 @@ const TopBar = ({ props }) => {
     const t = useTranslations("nav")
 
     const text = props?.text
+    console.log("text",text)
     return (
         <div className={`flex h-[40px] justify-between relative items-center m-auto text-sm  max-md:shadow-sm bg-transparent text-${text}`}>
             {/* ---- LOGO AND TITLE ------ */}

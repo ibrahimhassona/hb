@@ -132,7 +132,7 @@ const SearchCtrl = ({ props }) => {
                                         router.replace(newUrl);
                                     }}
                                     className='flex cursor-pointer rounded-sm gap-2 items-center w-[90%] py-1 px-2 shadow-sm m-auto bg-gray-50 border border-gray-200 hover:border-green-300 cust-trans' key={product.id}>
-                                    <Image src={product?.main_image.url} height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
+                                    <Image src={product?.main_image?.url} height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
                                     <div className='flex flex-col items-start h-full justify-between w-full gap-2'>
                                         <h2 className='text-darkGray font-semibold line-clamp-1'>
                                             <HighlightedText

@@ -5,8 +5,7 @@ import NavBar from '@/components/navbar/NavBar'
 const page = () => {
   return (
     <div>
-        <NavBar  props={{ text: 'darkGary' }} />
-        
+        <NavBar  props={{ text: 'darkGray' }} />
         <WhereToBuy/>
     </div>
   )
