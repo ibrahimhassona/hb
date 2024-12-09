@@ -38,7 +38,6 @@ const BrowseProducts = () => {
 
     const locale = useLocale()
     const { data, error, isLoading } = useProducts(locale, url);
-    console.log(data)
 
     return (
         <>
