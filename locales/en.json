@@ -129,5 +129,21 @@
     "search_place": "Search for a place",
     "address": "Address",
     "phone": "Phone"
+  },
+  "404": {
+    "title": "Oops! This page seems to have wandered off into another dimension ",
+    "description": "Don't worry though - we'll get you back home in ",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "seconds":"Seconds",
+    "second":"Second"
+  },
+  "error": {
+    "title": "Something Went Wrong",
+    "description": "Redirecting to homepage in",
+    "second": "second",
+    "seconds": "seconds",
+    "goHome": "Go Home",
+    "tryAgain": "Try Again"
   }
 }

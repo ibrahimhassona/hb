@@ -9,9 +9,7 @@ import MobileMenu from './MobileMenu'
 import SearchCtrl from './SearchCtrl'
 const TopBar = ({ props }) => {
     const t = useTranslations("nav")
-
     const text = props?.text
-    console.log("text",text)
     return (
         <div className={`flex h-[40px] justify-between relative items-center m-auto text-sm  max-md:shadow-sm bg-transparent text-${text}`}>
             {/* ---- LOGO AND TITLE ------ */}
@@ -26,7 +24,7 @@ const TopBar = ({ props }) => {
                 {/* ====== Language Switcher ===== */}
                 <LangSwitcher props={props} />
                 {/* ====== Link ===== */}
-                <Link href="/" className={`bg-primary items-center  rounded-sm py-1 px-2 m-0 flex hover:bg-lightPrimary cust-trans text-white gap-1 max-md:hidden`}>
+                <Link href="/cms/where-to-buy" className={`bg-primary items-center  rounded-sm py-1 px-2 m-0 flex hover:bg-lightPrimary cust-trans text-white gap-1 max-md:hidden`}>
                     <span className='max-sm:font-[300] text-xs'>{t("btn")}</span>
                     <PiArrowSquareOutLight size={25} className="text-white" />
                 </Link>
