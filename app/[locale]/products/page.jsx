@@ -11,7 +11,6 @@ const page = ({searchParams}) => {
         { title: t("home"), url: '/' },
         { title: t("products"), url: '/products' },
     ]
-    console.log('======',searchParams)
     return (
         <>
             <div className='relative bg-[url(/products/products-landing.jfif)] h-[450px] bg-cover bg-center overflow-hidden'>
@@ -24,9 +23,9 @@ const page = ({searchParams}) => {
                         <div className='flex flex-col justify-around w-[70%] max-sm:w-full gap-4 h-[250px] '>
                             {/* ------ SRC Path ------ */}
                             <Path data={dataPath} className='text-white'/>
-                            <div>
-                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>{t("head_title")}</h1>
-                                <p className='text-white text-[20px] font-[500]'>{t("description")}</p>
+                            <div className='flex flex-col gap-2 max-sm:gap-5'>
+                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary max-sm:text-xl'>{t("head_title")}</h1>
+                                <p className='text-white text-[20px] font-[500] max-sm:text-sm'>{t("description")}</p>
                             </div>
                         </div>
                     </div>

@@ -27,6 +27,7 @@ const MobileMenu = ({ props }) => {
         { title: t("products"), href: false, id: 3 },
         { title: t("news"), href: '/news', id: 4 },
         { title: t("contactUs"), href: '/contactUs', id: 5 },
+        { title: t("where_can_buy"), href: '/cms/where-to-buy', id: 6 },
     ];
     //  ======== Toggle Menu ======
     const toggleMenu = () => {
@@ -65,7 +66,7 @@ const MobileMenu = ({ props }) => {
             <div className="max-md:flex hidden" onClick={toggleMenu}>
                 <HiMenu
                     size={30}
-                    className={`hover:text-primary cust-trans animate-flip-up cursor-pointer ${props ? 'text-white' : 'text-darkGray'}`}
+                    className={`hover:text-primary cust-trans animate-flip-up cursor-pointer ${props ? `text-${props.text}` : 'text-darkGray'}`}
                 />
             </div>
 

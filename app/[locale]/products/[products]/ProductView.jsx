@@ -41,7 +41,6 @@ const ProductView = ({ slug }) => {
 
 
 
-  console.log('Data ====>', data[0])
   return (
     <>
       <div className="px-4 xl:px-40 my-8">

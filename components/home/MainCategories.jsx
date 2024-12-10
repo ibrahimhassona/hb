@@ -30,10 +30,10 @@ const MainCategories = () => {
         {t("title")}
       </h1>
       {/* ============= DeskTop Screen =========== */}
-      <div  className="grid grid-cols-1 gap-4 md:grid-cols-4 max-lg:hidden ">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-4 max-lg:hidden ">
         {featuredCategories.slice(0, 6).map((category, index) => (
           <Link
-          href={`/products?sub-category=${category.slug}`}
+            href={`/products?sub-category=${category.slug}`}
             key={category.id}
             className={`
               group
@@ -60,9 +60,10 @@ const MainCategories = () => {
         ))}
       </div>
       {/* ============= Small Screen =========== */}
-      <Link href='/' className="grid grid-cols-2 gap-4 lg:hidden">
+      <div className="grid grid-cols-2 gap-4 lg:hidden">
         {featuredCategories.slice(0, 6).map((category, index) => (
-          <div
+          <Link
+            href={`/products?sub-category=${category.slug}`}
             key={category.id}
             className={`
               group
@@ -81,13 +82,13 @@ const MainCategories = () => {
             />
             {/* ========== Title ======== */}
             <div className={`absolute inset-0 bg-black bg-opacity-40 flex items-center ${index == 0 ? 'justify-start' : index == 5 ? 'justify-end' : 'justify-center'} p-4`}>
-              <h2 className="text-white text-lg text-center font-semibold backdrop-blur-sm bg-black/20 p-8 rounded-md group-hover:text-primary group-hover:bg-black/30  cust-trans">
+              <h2 className="text-white text-lg max-sm:text-sm text-center font-semibold backdrop-blur-sm bg-black/20 p-8 rounded-md group-hover:text-primary group-hover:bg-black/30  cust-trans">
                 {category.title}
               </h2>
             </div>
-          </div>
+          </Link>
         ))}
-      </Link>
+      </div>
     </section>
   );
 };

@@ -21,7 +21,7 @@ export default function Error() {
       const timer = setTimeout(() => setCounter(counter - 1), 1000);
       return () => clearTimeout(timer);
     } else {
-      window.location.href = process.env.NEXT_PUBLIC_BASE_URL;
+     router.back();
     }
   }, [counter]);
 
@@ -55,7 +55,7 @@ export default function Error() {
             {t("goHome")}
           </button>
           <button
-            onClick={() => router.back()}
+            onClick={() => router.refresh()}
             className="flex items-center gap-2 border border-red-500 text-red-500 px-6 py-2 rounded-lg  max-sm:px-2 max-sm:text-xs max-sm:h-[50px] max-sm:py-1 hover:text-red-400 hover:border-red-400 cust-trans"
           >
             <TbReload size={20} className={`${counter <= 2 ? 'animate-spin cust-trans ' : ""} `} />

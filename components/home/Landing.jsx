@@ -56,8 +56,8 @@ const Landing = () => {
                                         loading="lazy"
                                     />
                                     <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  lg:w-[70%] 2xl:w-[60%] animate-fade-down text-white">
-                                        <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4'>{slider.header}</h1>
-                                        <p className='text-xl mb-10'>{slider.description}</p>
+                                        <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4 max-sm:text-xl'>{slider.header}</h1>
+                                        <p className='text-xl mb-10 max-sm:text-sm'>{slider.description}</p>
                                         <Link
                                             className='max-sm:flex max-sm:items-center justify-center bg-primary cust-trans hover:bg-lightPrimary text-white w-full border-lightPrimary border-2 px-6 max-sm:px-2 max-sm:text-sm py-1 rounded-md '
                                             href={`${locale}/${slider.button_url}`}>

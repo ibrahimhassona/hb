@@ -138,7 +138,6 @@ const FeaturedProducts = ({ title }) => {
                         ))
                     )}
                 </Swiper>
-
                 <div className={`mx-auto px-4 xl:px-40 mt-4 flex gap-2 justify-end`}>
                     <button className="button-prev-f p-2 !text-white bg-primary hover:bg-lightPrimary cust-trans rounded-full flex items-center justify-center">
                         <FaChevronLeft className={locale === 'ar' ? 'rotate-180' : ''} />
