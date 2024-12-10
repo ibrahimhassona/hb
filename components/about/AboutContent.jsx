@@ -23,7 +23,6 @@ export const useAbout = (locale) => {
 const AboutContent = () => {
     const locale = useLocale()
     const { data, isLoading } = useAbout(locale)
-    console.log("about ====== >", data)
     const t = useTranslations("nav")
     const dataPath = [
         { title:t("home"), url: '/' },
@@ -137,7 +136,6 @@ const FeatureCard = ({ title, description }) => (
 const Part3 = ({ data }) => {
     const { title, description } = data.Section_attributes[0]
     const [one, two] = data.features
-    console.log("part 3 ====== >", data)
     return (
         <div className='pe-4 xl:pe-40 max-md:px-4 max-md:xl:px-40 grid grid-cols-2 gap-8 max-md:gap-16 items-center justify-between max-md:flex flex-col my-8 py-6 '>
             {/* --------- Image -------- */}

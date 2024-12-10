@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 
 
 const ProductSelect = ({ product }) => {
-    console.log(product?.colors)
     const t = useTranslations("product")
     return (
         <div className="grid grid-cols-2 items-center gap-2 mb-4">
@@ -16,4 +15,4 @@ const ProductSelect = ({ product }) => {
     );
 };
 
-export default ProductSelect;
+export default ProductSelect ;

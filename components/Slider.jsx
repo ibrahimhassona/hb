@@ -42,8 +42,9 @@ const Slider = ({ number, top, dataPath }) => {
                                                 <Path data={dataPath} /> :
                                                 ""
                                             }
-                                            <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4'>{slider.header}</h1>
-                                            <p className='text-xl mb-10 max-md:text-sm'>{slider.description}</p>
+
+                                            <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4 max-sm:text-xl'>{slider.header}</h1>
+                                            <p className='text-xl mb-10 max-sm:text-sm'>{slider.description}</p>
                                             {top ?
                                                 <></>
                                                 :

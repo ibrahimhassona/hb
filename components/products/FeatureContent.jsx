@@ -15,7 +15,6 @@ const FeatureContent = () => {
         { title: t("home"), url: '/' },
         { title: `${t("feature_result")}`, url: '#' },
     ]
-
     if (!products) {
         return (
           <div className="my-6 px-4 xl:px-40 min-h-[500px] shadow-sm p-4 rounded-md grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 items-start h-fit w-full justify-items-center">

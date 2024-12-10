@@ -10,7 +10,7 @@ export default function CategoryPage({ params }) {
 
   return (
     <>
-      <NavBar />
+      <NavBar props={{ text: 'darkGray' }} />
       <ProductView slug={ products }/>
     </>
   )

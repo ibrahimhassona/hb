@@ -8,7 +8,7 @@ import React from 'react'
 const page = () => {
     const t = useTranslations("contactUs")
     const dataPath = [
-        { title:  t("home"), url: '/' },
+        { title: t("home"), url: '/' },
         { title: t("contactUs"), url: '/contactUs' },
     ]
     return (
@@ -23,10 +23,10 @@ const page = () => {
                         <div className='flex flex-col justify-around w-[70%] max-sm:w-full gap-4 h-[250px] '>
                             {/* ------ SRC Path ------ */}
                             <Path data={dataPath} className='text-white' />
-                            <div>
-                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>{t("head")}</h1>
-                                <p className='text-white text-[20px] font-[500]'>{t("text")}
-                                    </p>
+                            <div className='flex flex-col gap-2 max-sm:gap-4'>
+                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary max-sm:text-xl'>{t("head")}</h1>
+                                <p className='text-white text-[20px] font-[500] max-sm:text-sm'>{t("text")}
+                                </p>
                             </div>
                         </div>
                     </div>

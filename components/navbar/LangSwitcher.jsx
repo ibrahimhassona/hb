@@ -27,14 +27,13 @@ const LangSwitcher = ({ props }) => {
     const text = props?.text
     const bg = props?.bg
     const currentLang = pathname.startsWith('/ar') ? 'ar' : 'en'
-
     return (
         <div className="relative animate-flip-up text-sm z-10 max-sm:w-[120px]">
             {/* Create a new stacking context with z-index */}
             <div className={`relative ${tajawal.className}`}>
                 <button
                     onClick={toggleDropdown}
-                    className={`${isOpen ? `${props ? 'bg-primary' : 'bg-gray-100'}` : ''} 
+                    className={`${isOpen ? `${props ? `bg-primary text-${text}` : 'bg-gray-100'} ` : ``} 
                               flex items-center gap-2 cust-trans px-3 py-2 rounded-md 
                               relative z-10`} // Added z-index to button
                 >
