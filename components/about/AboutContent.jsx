@@ -33,7 +33,7 @@ const AboutContent = () => {
     }
     return (
         <>
-            <Slider number={2} top={true} dataPath={dataPath} />
+            <Slider number={1} top={true} dataPath={dataPath} />
             {data && <Part1 data={data[1]} />}
             {data && <Part2 data={data[2]} />}
             {data && <Part3 data={data[0]} />}
@@ -189,7 +189,7 @@ const Part3 = ({ data }) => {
 // ============ Part Three =============
 const Part4 = () => {
     return (
-        <Slider number={3} top={false} />
+        <Slider number={2} top={false} />
     )
 }
 

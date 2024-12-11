@@ -1,0 +1,16 @@
+{
+    "name": "هيبنوتيك | Hypnotek ",
+    "short_name": "هيبنوتيك | Hypnotek ",
+    "icons": [
+        {
+            "src": "Hypnotek-logo.png",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#2dbbab",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/",
+    "lang": "ar",
+    "dir": "rtl"
+}
