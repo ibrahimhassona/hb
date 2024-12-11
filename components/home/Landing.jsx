@@ -26,7 +26,7 @@ export const useSlider = (locale) => {
 const Landing = () => {
     const locale = useLocale()
     const { data, loading } = useSlider(locale)
-    const sliders = data && data[1]?.slider || []
+    const sliders = data && data[3]?.slider || []
     return (
         <section className="relative m-auto">
             <div className="bg-black/50 top-0 right-0 absolute cust-trans w-full start-0 z-40">
