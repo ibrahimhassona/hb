@@ -55,8 +55,8 @@ const Part1 = ({ data }) => {
             {/* ----- Content ------ */}
             <div className='flex flex-col gap-4 max-md:py-8'>
                 <h2 className='text-primary font-[600] '>{title}</h2>
-                <h3 className='text-[30px] font-[600] max-md:text-[20px]'>{sub_title}</h3>
-                <p className='text-lightGray max-md:leading-7 '>{description}</p>
+                <h3 className='text-[30px] font-[600] max-md:text-[20px] text-darkGray'>{sub_title}</h3>
+                <p className='text-darkGray max-md:leading-7 '>{description}</p>
             </div>
         </div>
     )
@@ -73,9 +73,9 @@ const Part2 = ({ data }) => {
         <div className='px-4 xl:px-40 my-2 py-8 flex flex-col gap-4 items-center w-full'>
             {/* ----- Head ------ */}
             <div className='flex flex-col items-center justify-center gap-3'>
-                <h2 className='text-primary font-[600] text-lg'>{title}</h2>
-                <h3 className='text-[35px] font-[500] max-md:text-[20px]'>{sub_title}</h3>
-                <p>{description}</p>
+                <h2 className='text-primary font-[600] text-lg '>{title}</h2>
+                <h3 className='text-[35px] font-[500] max-md:text-[20px] text-darkGray'>{sub_title}</h3>
+                <p className='text-darkGray'>{description}</p>
             </div>
             {/* ----- Content ------ */}
             <div className='flex flex-col gap-4 max-md:py-8'>
@@ -151,7 +151,7 @@ const Part3 = ({ data }) => {
             {/* --------- Content -------- */}
             <div className='flex flex-col gap-3'>
                 <h2 className='text-primary font-[600] text-lg'>{title}</h2>
-                <h3 className='text-lightGray font-[600] mb-[20px] '>{description}</h3>
+                <h3 className='text-darkGray font-[600] mb-[20px] '>{description}</h3>
                 <div className='relative ps-[50px] flex flex-col gap-16 py-4 '>
                     {/* Item */}
                     <div className=' flex justify-between items-start gap-5'>
@@ -160,7 +160,7 @@ const Part3 = ({ data }) => {
                         </div>
                         <div className='flex flex-col'>
                             <h3 className='font-semibold text-primary '>{one.title}</h3>
-                            <p className='text-lightGray'>{one.description}</p>
+                            <p className='text-darkGray'>{one.description}</p>
                         </div>
                     </div>
                     {/* Item */}
@@ -170,7 +170,7 @@ const Part3 = ({ data }) => {
                         </div>
                         <div className='flex flex-col'>
                             <h3 className='font-semibold text-primary '>{two.title}</h3>
-                            <p className='text-lightGray'>{two.description}</p>
+                            <p className='text-darkGray'>{two.description}</p>
                         </div>
                     </div>
                     {/* ------- Span Line Column --------- */}
