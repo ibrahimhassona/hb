@@ -91,7 +91,7 @@ const FeaturedProducts = ({ title }) => {
     }
 
     return (
-        <div className="my-12 overflow-hidden">
+        <section className="my-12 overflow-hidden">
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl max-md:text-lg font-bold text-start text-darkGray">{title}</h2>
@@ -147,7 +147,7 @@ const FeaturedProducts = ({ title }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
