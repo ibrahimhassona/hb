@@ -40,7 +40,6 @@ const ProductView = ({ slug }) => {
   ];
 
 
-
   return (
     <>
       <div className="px-4 xl:px-40 my-8">
