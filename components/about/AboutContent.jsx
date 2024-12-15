@@ -49,7 +49,7 @@ export default AboutContent
 const Part1 = ({ data }) => {
     const { title, description, sub_title } = data.Section_attributes[0]
     return (
-        <div className='px-4 xl:px-40 grid grid-cols-2 max-md:flex flex-col  items-center  my-2'>
+        <section className='px-4 xl:px-40 grid grid-cols-2 max-md:flex flex-col  items-center  my-2'>
             {/* ----- Image ------ */}
             <Image src={data.poster.url} alt='alt' height={400} width={400} className='max-md:w-full' />
             {/* ----- Content ------ */}
@@ -58,7 +58,7 @@ const Part1 = ({ data }) => {
                 <h3 className='text-[30px] font-[600] max-md:text-[20px] text-darkGray'>{sub_title}</h3>
                 <p className='text-darkGray max-md:leading-7 '>{description}</p>
             </div>
-        </div>
+        </section>
     )
 }
 
@@ -70,7 +70,7 @@ const Part2 = ({ data }) => {
     const [one, two, three, four] = data.features
     const t = useTranslations("about")
     return (
-        <div className='px-4 xl:px-40 my-2 py-8 flex flex-col gap-4 items-center w-full'>
+        <section className='px-4 xl:px-40 my-2 py-8 flex flex-col gap-4 items-center w-full'>
             {/* ----- Head ------ */}
             <div className='flex flex-col items-center justify-center gap-3'>
                 <h2 className='text-primary font-[600] text-lg '>{title}</h2>
@@ -115,7 +115,7 @@ const Part2 = ({ data }) => {
                 </div>
             </div>
             <Link href='/products?category=smart-life' className='w-fit capitalize text-white py-2 px-4 hover:bg-lightPrimary bg-primary cust-trans rounded-md'>{t("explore")}</Link>
-        </div>
+        </section>
     )
 }
 
@@ -137,7 +137,7 @@ const Part3 = ({ data }) => {
     const { title, description } = data.Section_attributes[0]
     const [one, two] = data.features
     return (
-        <div className='pe-4 xl:pe-40 max-md:px-4 max-md:xl:px-40 grid grid-cols-2 gap-8 max-md:gap-16 items-center justify-between max-md:flex flex-col my-8 py-6 '>
+        <section className='pe-4 xl:pe-40 max-md:px-4 max-md:xl:px-40 grid grid-cols-2 gap-8 max-md:gap-16 items-center justify-between max-md:flex flex-col my-8 py-6 '>
             {/* --------- Image -------- */}
             <div className='h-[400px] max-md:h-[300px] overflow-hidden rounded-e-3xl max-md:rounded-xl max-md:w-full '>
                 <Image
@@ -182,7 +182,7 @@ const Part3 = ({ data }) => {
                     </span>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

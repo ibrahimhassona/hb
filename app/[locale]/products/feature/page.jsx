@@ -6,7 +6,7 @@ const page = () => {
 
   return (
     <div>
-        <NavBar/>
+        <NavBar props={{ text:'darkGray'}} />
         <FeatureContent />
     </div>
   )
