@@ -8,6 +8,7 @@ import { FreeMode, Thumbs, Navigation, Virtual } from 'swiper/modules';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdOutlineWavingHand } from "react-icons/md";
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const GalleryProduct = ({ images,isFeature }) => {
     const t=useTranslations("product")
@@ -49,7 +50,7 @@ const GalleryProduct = ({ images,isFeature }) => {
                                         : 'opacity-30 hover:opacity-75 border border-transparent'
                                     }`}
                             >
-                                <img
+                                <Image
                                     src={img?.url ? `${img?.url }` : `/isNoavilable-${locale}.png`}
                                     alt={`Thumbnail ${index + 1}`}
                                     className="w-full h-full object-cover rounded-md "

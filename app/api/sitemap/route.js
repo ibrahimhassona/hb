@@ -39,6 +39,7 @@
 //       { url: '/cms/where-to-buy', changefreq: 'monthly', priority: 0.8 },
 //       { url: '/news', changefreq: 'monthly', priority: 0.8 },
 //       { url: '/products', changefreq: 'monthly', priority: 0.8 },
+//       { url: '/products/feature', changefreq: 'monthly', priority: 0.8 },
 //     ];
 
 //     // Write static pages to the sitemap
