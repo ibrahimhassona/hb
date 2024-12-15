@@ -4,7 +4,27 @@ import NavBar from '@/components/navbar/NavBar'
 import Path from '@/components/Path'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-
+// ================= Meta Data ==================
+export async function generateMetadata({ params }) {
+    const locale = params.locale;
+    let metadata = {}
+    if (locale == 'ar') {
+        metadata = {
+            title: 'تـواصل معنـا',
+            description: 'كيف يمكننـا مساعدتك؟ نحن نقدر استفساراتك وأفكارك وملاحظاتك. اتصالك معنا هو الخطوة الأولى نحو تجربة سلسة ومرضية.',
+            charset: "UTF-8",
+            robots: "index, follow",
+        }
+    } else {
+        metadata = {
+            title: 'Contact us',
+            description: 'How can we help you? We value your questions, ideas and feedback. Contacting us is the first step towards a smooth and satisfying experience.',
+            charset: "UTF-8",
+            robots: "index, follow",
+        }
+    }
+    return metadata;
+}
 const page = () => {
     const t = useTranslations("contactUs")
     const dataPath = [

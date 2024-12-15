@@ -12,6 +12,7 @@ import NavBar from '../navbar/NavBar';
 import { getData } from '@/utils/functions/getData';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
+import Image from 'next/image';
 
 // ======== Hook to fetch slider =========
 export const useSlider = (locale) => {
@@ -49,11 +50,16 @@ const Landing = () => {
                         sliders && sliders.map((slider, index) => (
                             <SwiperSlide key={index}>
                                 <div className="w-full h-full relative overflow-hidden">
-                                    <img
+                                    <Image
                                         src={slider.image?.url}
                                         alt={`News view ${index + 1}`}
+                                        width={1000}
+                                        height={1000}
                                         className="w-full h-full object-cover cust-trans"
                                         loading="lazy"
+                                        quality={100} 
+                                        placeholder="blur"
+                                        blurDataURL={`/isNoavilable-${locale}.png`}
                                     />
                                     <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  lg:w-[70%] 2xl:w-[60%] animate-fade-down text-white">
                                         <h1 className='text-[40px] max-md:text-[25px] text-primary font-bold my-4 max-sm:text-xl'>{slider.header}</h1>
