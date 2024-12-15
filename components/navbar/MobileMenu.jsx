@@ -25,6 +25,7 @@ const MobileMenu = ({ props }) => {
         { title: t("home"), href: '/', id: 1 },
         { title: t("who_are"), href: '/about', id: 2 },
         { title: t("products"), href: false, id: 3 },
+        { title: t("feature_result"), href: '/products/feature', id: 7 },
         { title: t("news"), href: '/news', id: 4 },
         { title: t("contactUs"), href: '/contactUs', id: 5 },
         { title: t("where_can_buy"), href: '/cms/where-to-buy', id: 6 },

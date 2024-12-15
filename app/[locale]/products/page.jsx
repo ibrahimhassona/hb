@@ -6,15 +6,17 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 // ================= Meta Data ==================
 export async function generateMetadata({ params, searchParams }) {
+    // ---- Locale ----
     const locale = params.locale;
+    // ---- Fetch Sub Category ----
     const data = await getData(locale, 'sub-categories?')
+    // ---- KeyWords ----
     const arrayKeyWords = data.map(item => item.title)
-    console.log(searchParams)
     let metadata = {}
+    // ---- Get Title Of Sub Categories ----
     const value = searchParams['sub-category'];
     let cat = data && data.filter(item => item.slug == value)
     let title = cat && cat[0]?.title
-    console.log('title', cat)
     if (locale == 'ar') {
         metadata = {
             title: title || 'المنتجات',
@@ -30,10 +32,8 @@ export async function generateMetadata({ params, searchParams }) {
             robots: "index, follow",
         }
     }
-
     return metadata;
 }
-
 
 const page = ({ searchParams }) => {
     const t = useTranslations("product")
