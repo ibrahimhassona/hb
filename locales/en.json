@@ -98,7 +98,10 @@
     "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
     "sku": "SKU",
     "products": "Products",
-    "open_menu": "Click To Categories"
+    "open_menu": "Click To Categories",
+    "product_usage": "Product Usage Guide",
+    "data_explaning": "Technical Data",
+    "download":"Download"
   },
   "footer": {
     "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
@@ -136,8 +139,8 @@
     "description": "Don't worry though - we'll get you back home in ",
     "goHome": "Go Home",
     "goBack": "Go Back",
-    "seconds":"Seconds",
-    "second":"Second"
+    "seconds": "Seconds",
+    "second": "Second"
   },
   "error": {
     "title": "Something Went Wrong",

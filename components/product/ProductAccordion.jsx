@@ -7,6 +7,7 @@ import YouTubeEmbed from './YouTubeEmbed';
 import { getYouTubeEmbedURL } from '@/utils/libs';
 import { useTranslations } from 'next-intl';
 import parse from 'html-react-parser'
+import Link from 'next/link';
 
 const AccordionItem = ({ title, isOpen, className, onToggle, children, downloadable = false, product }) => {
     return (
@@ -77,7 +78,7 @@ const ProductAccordion = ({ product }) => {
                 </div>
             </AccordionItem>
             {/* ================= Specifications =============== */}
-            <AccordionItem
+            {/* <AccordionItem
                 title={t("specifications")}
                 isOpen={openSections.specifications}
                 onToggle={() => toggleSection('specifications')}
@@ -95,7 +96,7 @@ const ProductAccordion = ({ product }) => {
                         </div>
                     ))}
                 </div>
-            </AccordionItem>
+            </AccordionItem> */}
 
             {/* ================= User Manual =============== */}
             <AccordionItem
@@ -106,7 +107,7 @@ const ProductAccordion = ({ product }) => {
                 className={!openSections.userGuide ? 'border-b border-gray-200' : ''}
             >
                 <div className="flex flex-col justify-between cust-trans animate-flip-up ">
-                    {['بيانات فنية', 'دليل استخدام المنتج'].map((item, index) => (
+                    {[t('data_explaning'),t('product_usage')].map((item, index) => (
                         <div className={`flex items-center gap-2 justify-between  p-4 ${index == 0 ? 'bg-[#f3f3f3]' : 'bg-[#E0E0E0]'}`} key={index}>
                             <div className='flex items-center gap-2'>
                                 <Image src='/singleProduct/File Send.png' alt='File Send' width={100} height={100} className='w-[30px] p-[5px] flex items-center justify-center rounded-full bg-green-50' />
@@ -114,7 +115,7 @@ const ProductAccordion = ({ product }) => {
                             </div>
                             <button className="text-primary flex items-center gap-2 hover:text-lightPrimary cust-trans">
                                 <HiDownload size={20} />
-                                <span className='max-md:text-sm'>تحميل</span>
+                                <Link target='_blanck' href={product.Manuals || '#'}  rel="noopener noreferrer"  className='max-md:text-sm'>{t('download')}</Link>
                             </button>
                         </div>
                     ))}

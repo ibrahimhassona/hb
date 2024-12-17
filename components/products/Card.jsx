@@ -23,10 +23,12 @@ const Card = ({ item ,search,value}) => {
             {/* ========= Images ========== */}
             <div className="relative w-full pt-[100%] rounded-t-lg overflow-hidden bg-gray-100">
                 <Image
-                    src={item?.main_image?.url ? `${item?.main_image?.url}` : `/isNoavilable-${locale}.png`}
+                    src={item?.images_url ? item?.images_url?.split(',')[0] : `/isNoavilable-${locale}.png`}
                     alt={item?.title || "Product Image"}
                     fill
                     className="object-cover cust-trans group-hover:scale-110"
+                    placeholder="blur"
+                    blurDataURL={`/isNoavilable-${locale}.png`}
                 />
             </div>
             {/* ============= End Image ============= */}

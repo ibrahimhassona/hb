@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   const locale = params.locale;
   // ---- Fetch Sub Category ----
   const value = params.products;
-  const data = await getData(locale, `products?populate=*&filters[slug][$eq]=${value}`)
+  const data = await getData(locale, `products?populate=*&filters[slug][$eq]=${value}&filters[isVisible][$eq]=true`)
   // ---- KeyWords ----
   let metadata = {}
   // ---- Get Title Of Sub Categories ----

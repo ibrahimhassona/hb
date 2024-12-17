@@ -10,12 +10,11 @@ import { MdOutlineWavingHand } from "react-icons/md";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-const GalleryProduct = ({ images,isFeature }) => {
-    const t=useTranslations("product")
+const GalleryProduct = ({ images, isFeature }) => {
+    const t = useTranslations("product")
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const thumbsSwiperRef = useRef(null);
-
 
     const slideNext = () => {
         if (thumbsSwiperRef.current?.swiper) {
@@ -51,10 +50,12 @@ const GalleryProduct = ({ images,isFeature }) => {
                                     }`}
                             >
                                 <Image
-                                    src={img?.url ? `${img?.url }` : `/isNoavilable-${locale}.png`}
+                                    src={img ? img : `/isNoavilable-${locale}.png`}
                                     alt={`Thumbnail ${index + 1}`}
                                     className="w-full h-full object-cover rounded-md "
                                     loading="lazy"
+                                    width={200}
+                                    height={200}
                                 />
                             </div>
                         </SwiperSlide>
@@ -80,18 +81,20 @@ const GalleryProduct = ({ images,isFeature }) => {
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 direction="vertical"
             >
-            {isFeature&& <div className='absolute bg-red-500 top-2 end-0 flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20'>
-                <MdOutlineWavingHand className=' animate-wiggle-more repeat-infinite' size={25}/>
-                <span className='text-sm'>{t('feature')}</span>
+                {isFeature && <div className='absolute bg-red-500 top-2 end-0 flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20'>
+                    <MdOutlineWavingHand className=' animate-wiggle-more repeat-infinite' size={25} />
+                    <span className='text-sm'>{t('feature')}</span>
                 </div>}
                 {images && images.map((img, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full relative rounded-lg overflow-hidden">
-                            <img
-                        src={img?.url ? `${img.url}` : `/isNoavilable-${locale}.png`}
+                            <Image
+                                fill
+                                src={img ? img : `/isNoavilable-${locale}.png`}
                                 alt={`Product view ${index + 1}`}
                                 className="w-full h-full object-cover cust-trans hover:scale-105"
                                 loading="lazy"
+                                quality={100}
                             />
                         </div>
                     </SwiperSlide>

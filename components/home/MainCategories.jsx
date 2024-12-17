@@ -25,7 +25,7 @@ const MainCategories = () => {
     )
   }
   return (
-    <section className='px-4 xl:px-40 py-8'>
+    <section className='px-4 xl:px-40 pb-8 pt-12'>
       <h1 className="font-[600] text-2xl text-darkGray  mb-6">
         {t("title")}
       </h1>
