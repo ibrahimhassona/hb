@@ -27,13 +27,15 @@ const Header = ({ props }) => {
   return (
     <div className='h-[70px] w-full gap-2 flex items-center justify-start m-auto max-md:hidden'>
       {/* ------- Logo -------- */}
-      <Image src='/Hypnotek-logo.png' alt='Hypotek Logo' height={1000} width={1000} className='w-[40px]' />
+      <Link href='/'>
+        <Image src='/Hypnotek-logo.png' alt='Hypotek Logo' height={1000} width={1000} className='w-[40px]' />
+      </Link>
 
       {/* --------- Links -------- */}
-      <div className='flex gap-2 text-sm'>
+      <div className='flex gap-6 text-sm'>
         {dataLinks.map((link) => (
           link.link ? (
-            <Link href={link.href} key={link.id} className={`font-[500] cust-trans hover:text-primary ${isActive(link.href) ? 'text-primary' : `${props ?  `text-${props.text}` : ''}`}`}>
+            <Link href={link.href} key={link.id} className={`font-[500] cust-trans hover:text-primary ${isActive(link.href) ? 'text-primary' : `${props ? `text-${props.text}` : ''}`}`}>
               {link.title}
             </Link>
           ) : (

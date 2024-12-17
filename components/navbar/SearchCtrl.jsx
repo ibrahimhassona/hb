@@ -30,7 +30,7 @@ export const useSearch = (locale, value) => {
     const enabled = value?.length >= 3;
     const url = useMemo(() => {
         if (value?.length >= 3) {
-            return `products?populate=*&filters[$or][0][title][$containsi]=${value}&filters[$or][1][SKU][$containsi]=${value}`;
+            return `products?populate=*&filters[$or][0][title][$containsi]=${value}&filters[$or][1][SKU][$containsi]=${value}&filters[isVisible][$eq]=true`;
         }
         return null;
     }, [value]);
@@ -140,7 +140,7 @@ const SearchCtrl = ({ props }) => {
                                 <div
                                     onClick={() => handleProductClick(product.slug)}
                                     className='flex cursor-pointer h-[60px] rounded-sm gap-2 items-center w-[90%] py-1 px-2 shadow-sm m-auto bg-gray-50 border border-gray-200 hover:border-green-300 cust-trans' key={product.id}>
-                                    <Image src={product?.img?.url ? `${img?.url}` : `/isNoavilable-${locale}.png`} loading="lazy" height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
+                                    <Image src={product?.images_url ? product?.images_url.split(',')[0] : `/isNoavilable-${locale}.png`} loading="lazy" height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
                                     <div className='flex flex-col items-start h-full justify-between w-full gap-2'>
                                         <h2 className='text-darkGray text-xs font-semibold line-clamp-1'>
                                             <HighlightedText
