@@ -86,7 +86,7 @@ const SocialMediaShare = () => {
                             onClick={() => handleShare('copy')}
                             className={styleButton}
                         >
-                            <FaCopy size={20} className="text-center" />
+                            <FaCopy size={20} className="text-center text-darkGray" />
                         </button>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ const SocialMediaShare = () => {
 
             {/* Copy Success Notification */}
             {copySuccess && (
-                <div className=" absolute end-[40px] -top-2 w-[200px] text-center bg-primary text-white py-2 text-sm rounded-md shadow-md">
+                <div className=" absolute end-[40px] -top-2 w-[200px] text-center bg-primary  text-white py-2 text-sm rounded-md shadow-md">
                     تم نسخ الرابط إلى الحافظة !
                 </div>
             )}

@@ -110,7 +110,7 @@ const Card = ({ item, t, locale }) => {
                     <h2 className=" max-md:text-sm font-bold text-darkGray">{item.title}</h2>
                     <span className="text-sm text-gray-400">{new Date(item.createdAt).toLocaleDateString(locale)}</span>
                 </div>
-                <div className='text-sm max-sm:line-clamp-2'>{parse(item.short_description.slice(0, 100))}......</div>
+                <div className='text-sm max-sm:line-clamp-2 text-darkGray'>{parse(item.short_description.slice(0, 100))}......</div>
                 <Link href={`/news/${item.slug}`} className="flex items-center justify-end text-primary hover:text-lightPrimary cust-trans gap-2">
                     <span className="text-sm">{t("read_more")}</span>
                     <FaChevronLeft className={`ml-1 ${locale == 'en' ? 'rotate-180' : ''}`} />

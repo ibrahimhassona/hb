@@ -42,9 +42,9 @@ const NewsSinglePage = ({ data }) => {
                 </div>
                 {/* ---------- Description ------------ */}
                 <div className='flex flex-col gap-4 my-4'>
-                    <span className='text-sm text-gray-400 max-md:text-xs'>{new Date(createdAt).toLocaleDateString('en')}</span>
-                    <div className='text-sm'>{parse(short_description)}</div>
-                    <div className='text-sm '>{parse(description)}</div>
+                    <span className='text-sm  text-gray-400 max-md:text-xs'>{new Date(createdAt).toLocaleDateString('en')}</span>
+                    <div className='text-sm text-darkGray'>{parse(short_description)}</div>
+                    <div className='text-sm  text-darkGray'>{parse(description)}</div>
                 </div>
                 {/* ==================== Gallery =============== */}
                 <NewsGallery images={image} />

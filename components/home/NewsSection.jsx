@@ -27,13 +27,12 @@ const NewsSection = () => {
     const locale = useLocale();
     const { data, isLoading } = useNews()
     const skeletonArray = Array(5).fill(null);
-    console.log('all data =====>', data)
     return (
         <div className="my-12 overflow-hidden">
             {/* Header section */}
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center gap-1">
-                    <h2 className="text-2xl font-bold text-right max-md:text-xl line-clamp-1">{t("title")}</h2>
+                    <h2 className="text-2xl font-bold text-start max-md:text-xl line-clamp-1 text-darkGray">{t("title")}</h2>
                     <Link href="/" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />
@@ -82,10 +81,10 @@ const NewsSection = () => {
                                     />
                                 </div>
                                 <div className="p-4 bg-white flex flex-col items-start gap-2 ">
-                                    <h3 className="text-lg max-sm:text-sm font-semibold  text-right">{item.title}</h3>
+                                    <h3 className="text-lg max-sm:text-sm font-semibold  text-start text-darkGray">{item.title}</h3>
                                     <p className="text-gray-600 text-xs  text-start">{new Date(item.createdAt).toLocaleDateString(locale)}</p>
                                     {/* ------- Description -------- */}
-                                    <div>{parse(item.short_description.slice(0, 100))}......</div>
+                                    <div className='text-darkGray'>{parse(item.short_description.slice(0, 100))}......</div>
                                     <div className='flex items-start justify-end w-full'>
                                         <Link href={`/news/${item.slug}`} className={`text-sm w-fit font-semibold flex items-center gap-2 text-primary mt-2 hover:text-lightPrimary cust-trans`}>
                                             {t("read_more")}
