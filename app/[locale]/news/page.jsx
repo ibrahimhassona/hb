@@ -1,12 +1,23 @@
 import NavBar from '@/components/navbar/NavBar';
 import NewsContent from '@/components/news/NewsContent';
 import Path from '@/components/Path';
+import { useTranslations } from 'next-intl';
 import React from 'react';
+// ================= Meta Data ==================
+export function generateMetadata() {
+    let metadata = {
+        title: 'الاخبار',
+        description: "اهم اخبار هيبنوتيك واخبار الفروع والسياسات الخاصة الجديدة",
+        robots: "index, follow",
+    }
+    return metadata;
+}
 
 const page = () => {
+    const t = useTranslations("news")
     const dataPath = [
-        { title: "الرئيسية", url: '/' },
-        { title: "الأخبــار", url: '/news' },
+        { title: t("home"), url: '/' },
+        { title: t("news"), url: '/news' },
     ]
     return (
         <>
@@ -19,10 +30,10 @@ const page = () => {
                         {/* ---- About Description ---- */}
                         <div className='flex flex-col justify-around w-[70%] max-sm:w-full gap-4 h-[250px] '>
                             {/* ------ SRC Path ------ */}
-                            <Path data={dataPath} className='text-white'/>
+                            <Path data={dataPath} className='text-white' />
                             <div>
-                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>ابق على اطلاع معنـا</h1>
-                                <p className='text-white text-[20px] font-[500]'>احصل على آخر الأخبار والابتكارات والرؤى في مجال تكنولوجيا المنزل الذكي.</p>
+                                <h1 className='text-[40px] max-sm:text-[30px] font-bold text-primary'>{t("stay_updated")}</h1>
+                                <p className='text-white text-[20px] font-[500]'>{t("newsletter_text")}</p>
                             </div>
                         </div>
                     </div>
