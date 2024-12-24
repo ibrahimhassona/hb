@@ -52,24 +52,22 @@ const NewsContent = () => {
                     <div className="relative">
                         <FilterButton
                             title={sortOption == 'newest' ? t("newest") : t("oldest")}
-                            isActive={selectedSection === 'sort'}
+                            isActive={isFilterOpen}
                             onClick={() => handleSectionClick('sort')}
                         />
                         {/* Filter Dropdown Menu */}
                         {isFilterOpen && selectedSection === 'sort' && (
-                            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                            <div className="absolute end-0 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
                                 <div className="py-1">
                                     <button
                                         onClick={() => handleSortChange('newest')}
-                                        className={`block w-full text-right px-4 py-2 text-sm ${sortOption === 'newest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'
-                                            }`}
+                                        className={`block w-full text-start px-4 py-2 text-sm ${sortOption === 'newest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'}`}
                                     >
                                         {t("newest")}
                                     </button>
                                     <button
                                         onClick={() => handleSortChange('oldest')}
-                                        className={`block w-full text-right px-4 py-2 text-sm ${sortOption === 'oldest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'
-                                            }`}
+                                        className={`block w-full text-start px-4 py-2 text-sm ${sortOption === 'oldest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'}`}
                                     >
                                         {t("oldest")}
                                     </button>

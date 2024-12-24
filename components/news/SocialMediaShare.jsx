@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {  FaFacebook, FaTwitter, FaSnapchat, FaCopy } from 'react-icons/fa';
 import { IoShareSocialOutline } from 'react-icons/io5';
+import { RiTwitterXLine } from 'react-icons/ri';
 
 const SocialMediaShare = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -74,7 +75,7 @@ const SocialMediaShare = () => {
                             onClick={() => handleShare('twitter')}
                             className={styleButton}
                         >
-                            <FaTwitter size={20} className="text-center text-blue-400" />
+                            <RiTwitterXLine size={20} className="text-center text-black" />
                         </button>
                         <button
                             onClick={() => handleShare('snapchat')}

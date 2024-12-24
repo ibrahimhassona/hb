@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   let metadata = {}
   // ---- Get Title Of Sub Categories ----
   metadata = {
-    title: data && data[0]?.title ||'هيبنوتيك في المريخ' ,
+    title: data && data[0]?.title ||'هيبنوتيك في الصين' ,
     description: data && htmlToText(data[0]?.short_description),
     image: data[0]?.image[0]?.url,
     robots: "index, follow",
