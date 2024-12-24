@@ -30,11 +30,11 @@ const NewsGallery = ({ images }) => {
                 className='w-full max-md:h-[400px] h-[500px]'
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             >
-                {images.map((img, index) => (
+                {images?.map((img, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full relative rounded-lg overflow-hidden">
                             <img
-                                src={img}
+                                src={img?.url}
                                 alt={`News view ${index + 1}`}
                                 className="w-full h-full object-cover cust-trans hover:scale-105"
                                 loading="lazy"
@@ -64,7 +64,7 @@ const NewsGallery = ({ images }) => {
                     modules={[FreeMode, Thumbs, Navigation]}
                     className=" h-[150px] max-md:h-[90px] w-full "
                 >
-                    {images.map((img, index) => (
+                    {images?.map((img, index) => (
                         <SwiperSlide key={index} className='h-full'>
                             <div
                                 onClick={() => setActiveIndex(prev => index)}
@@ -75,7 +75,7 @@ const NewsGallery = ({ images }) => {
                                     }`}
                             >
                                 <img
-                                    src={img}
+                                    src={img.url}
                                     alt={`Thumbnail ${index + 1}`}
                                     className="w-full h-full object-cover rounded-md "
                                     loading="lazy"

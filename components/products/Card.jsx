@@ -23,10 +23,13 @@ const Card = ({ item ,search,value}) => {
             {/* ========= Images ========== */}
             <div className="relative w-full pt-[100%] rounded-t-lg overflow-hidden bg-gray-100">
                 <Image
-                    src={item?.main_image?.url ? `${item?.main_image?.url}` : `/isNoavilable-${locale}.png`}
+                    src={item?.images_url ? item?.images_url?.split(',')[0] : `/isNoavilable-${locale}.png`}
                     alt={item?.title || "Product Image"}
                     fill
                     className="object-cover cust-trans group-hover:scale-110"
+                    placeholder="blur"
+                    blurDataURL={`/isNoavilable-${locale}.png`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
             {/* ============= End Image ============= */}
@@ -39,18 +42,18 @@ const Card = ({ item ,search,value}) => {
                         {item.price?.toLocaleString()} <span className='text-xs'>{t("sar")}</span>
                     </span>
                 </div>
-                <div className='flex w-full justify-between items-center max-sm:flex-col-reverse'>
-                    {/* ====== Title ======= */}
-                    <h3 className="text-sm font-medium text-gray-900 line-clamp-2 min-h-[40px]">
-                    {!search?
-                     <span>{item.title}</span>:<HighlightedText text={item.title} searchValue={value}/>}
-                    </h3>
+                <div className='flex w-full justify-between items-center flex-col-reverse gap-1'>
                     {/* ====== SKU ======= */}
                     <h4 className="text-xs font-medium text-gray-400 line-clamp-1 max-sm:my-1 ">
                         <span className='font-semibold'> {t("sku")} :{" "}</span>
                      {!search ?
                      <span>{item.SKU}</span>:<HighlightedText text={item.SKU} searchValue={value}/>}
                     </h4>
+                    {/* ====== Title ======= */}
+                    <h3 className="text-sm font-medium text-gray-900 line-clamp-2 min-h-[40px]">
+                    {!search?
+                     <span>{item.title}</span>:<HighlightedText text={item.title} searchValue={value}/>}
+                    </h3>
                 </div>
             </div>
         </Link>
