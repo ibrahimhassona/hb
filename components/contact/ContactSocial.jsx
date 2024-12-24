@@ -40,8 +40,8 @@ const ContactSocial = () =>{
             <item.icon className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <p className="text-primary font-semibold text-md">{item.label}</p>
-            <p className={`text-darkGray ${item.dir ? `dir-${item.dir}` : ''}`}>
+            <p className="text-primary font-semibold max-sm:text-sm text-md">{item.label}</p>
+            <p className={`text-darkGray max-sm:text-sm ${item.dir ? `dir-${item.dir}` : ''}`}>
               {item.value}
             </p>
           </div>
