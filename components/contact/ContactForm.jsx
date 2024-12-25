@@ -98,7 +98,7 @@ const ContactForm = () => {
               <Field
                 name="firstName"
                 type="text"
-                className="rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 py-2 text-sm"
+                className="rounded-md border border-gray-300 text-darkGray outline-none focus:border-primary cust-trans px-2 py-2 text-sm"
                 placeholder={t("first_name_placeholder")}
               />
               <ErrorMessage
@@ -116,7 +116,7 @@ const ContactForm = () => {
               <Field
                 name="lastName"
                 type="text"
-                className="rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 py-2 text-sm "
+                className="rounded-md border border-gray-300 text-darkGray outline-none focus:border-primary cust-trans px-2 py-2 text-sm "
                 placeholder={t("last_name_placeholder")}
               />
               <ErrorMessage
@@ -137,7 +137,7 @@ const ContactForm = () => {
             <Field
               name="email"
               type="email"
-              className="rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 py-2 text-sm"
+              className="rounded-md border border-gray-300 text-darkGray outline-none focus:border-primary cust-trans px-2 py-2 text-sm"
               placeholder={t("email_placeholder")}
             />
             <ErrorMessage
@@ -155,7 +155,7 @@ const ContactForm = () => {
               <span className="text-red-500 font-bold">*</span>
             </label>
             <PhoneInput
-              className="rounded-md border border-gray-300 outline-none focus:border-primary cust-trans px-2 text-sm relative rtl-dropdown"
+              className="rounded-md border border-gray-300 text-darkGray outline-none focus:border-primary cust-trans px-2 text-sm relative rtl-dropdown"
               defaultCountry="sa"
               value={values.phone}
               onChange={(phone) => setFieldValue("phone", phone)}
@@ -176,7 +176,7 @@ const ContactForm = () => {
               as="textarea"
               name="message"
               rows={4}
-              className="rounded-md border border-gray-300 outline-none focus:border-primary cust-trans p-2 text-sm resize-none"
+              className="rounded-md border border-gray-300 outline-none text-darkGray focus:border-primary cust-trans p-2 text-sm resize-none"
               placeholder={t("message_placeholder")}
             />
             <ErrorMessage
