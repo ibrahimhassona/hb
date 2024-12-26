@@ -1,11 +1,14 @@
-export const getYouTubeEmbedURL = (url) => {
-    // Extract the video ID from the URL
-    const videoId = url?.split('v=')[1];
-    const ampersandPosition = videoId?.indexOf('&');
-    if (ampersandPosition !== -1) {
-      return `https://www.youtube.com/embed/${videoId?.substring(0, ampersandPosition)}`;
-    } else {
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
+export const getVideoType = (url) => {
+  if (!url) return null;
+
+  if (url.includes('youtube.com') || url.includes('youtu.be')) {
+    const videoIdMatch = url.match(/(?:v=|\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    return videoIdMatch ? { type: 'youtube', id: videoIdMatch[1] } : null;
   }
 
+  if (url.includes('cloudfront.net')) {
+    return { type: 'cloudfront', url };
+  }
+
+  return null;
+};

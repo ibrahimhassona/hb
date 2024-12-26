@@ -9,8 +9,10 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { MdOutlineWavingHand } from "react-icons/md";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import SocialMediaShare from '../news/SocialMediaShare';
+import { FaNotEqual } from 'react-icons/fa6';
 
-const GalleryProduct = ({ images, isFeature }) => {
+const GalleryProduct = ({ product, isFeature }) => {
     const t = useTranslations("product")
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -39,7 +41,7 @@ const GalleryProduct = ({ images, isFeature }) => {
                     direction="vertical"
                     className=" w-20 max-md:w-12 h-[450px] max-md:h-[300px] "
                 >
-                    {images && images.map((img, index) => (
+                    {product?.images_url && product?.images_url.split(',').map((img, index) => (
                         <SwiperSlide key={index} className='h-full'>
                             <div
                                 onClick={() => setActiveIndex(prev => index)}
@@ -81,11 +83,18 @@ const GalleryProduct = ({ images, isFeature }) => {
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 direction="vertical"
             >
-                {isFeature && <div className='absolute bg-red-500 top-2 end-0 flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20'>
+                <div className=' absolute top-2 end-2 z-20 '>
+                    <SocialMediaShare />
+                </div>
+                {product?.isFeature && <div className='absolute bg-red-500 top-14 end-0 w-[70px] animate-fade-up cust-trans flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20'>
                     <MdOutlineWavingHand className=' animate-wiggle-more repeat-infinite' size={25} />
                     <span className='text-sm'>{t('feature')}</span>
                 </div>}
-                {images && images.map((img, index) => (
+                 {product?.stock == 0 && <div className={`absolute bg-yellow-500 text-xs py-2 w-[70px] animate-fade-up cust-trans ${product?.isFeature ?'top-[86px]':'top-14'} end-0 flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20`}>
+                    <FaNotEqual  className='' size={20} />
+                    <span className='text-xs'>{t('outOfStock')}</span>
+                </div>} 
+                {product?.images_url && product?.images_url.split(',').map((img, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full relative rounded-lg overflow-hidden">
                             <Image
