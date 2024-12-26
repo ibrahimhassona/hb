@@ -122,7 +122,10 @@
     "open_menu": "Click To Categories",
     "product_usage": "Product Usage Guide",
     "data_explaning": "Technical Data",
-    "download": "Download"
+    "download": "Download",
+    "stock":"Stock",
+    "outOfStock":"Out"
+
   },
   "footer": {
     "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
