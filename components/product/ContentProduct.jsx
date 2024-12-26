@@ -56,7 +56,7 @@ const ContentProduct = ({ product, dataAttributes, onVariantSelect , categories 
                 </Link>
                 <Image src='/buildStation.png' alt='build Station' width={400} height={200} className='w-[100px]' />
             </div>
-            {/* ---------------- End Button -------------- */}
+            {/* ---------------- End Button ------------- */}
         </div>
     )
 }
