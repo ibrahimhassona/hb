@@ -25,7 +25,7 @@ const ProductDetails = ({ product, categories }) => {
     setSelectedVariant(variant)
   }
   // console.log("selectedVariant=====>", selectedVariant.Variant_Type, selectedVariant)
-  console.log("=====>", product.main_category, product)
+
   return (
     <div className="flex flex-row max-lg:flex-col justify-between gap-8  max-w-7xl ">
       {/* Gallery Section */}
