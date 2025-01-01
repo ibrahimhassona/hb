@@ -4,13 +4,19 @@ import Path from '@/components/Path';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 // ================= Meta Data ==================
-export function generateMetadata() {
-    let metadata = {
+export function generateMetadata({ params }) {
+    const locale = params.locale;
+    let enMetadata = {
+        title: 'News',
+        description: "The most important news of Hypnotic, branch updates, and new policies.",
+        robots: "index, follow",
+    };
+    let arMetadata = {
         title: 'الاخبار',
         description: "اهم اخبار هيبنوتيك واخبار الفروع والسياسات الخاصة الجديدة",
         robots: "index, follow",
     }
-    return metadata;
+    return locale == "ar" ? arMetadata : enMetadata;
 }
 
 const page = () => {

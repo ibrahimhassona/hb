@@ -36,6 +36,7 @@ const ProductDetails = ({ product, categories }) => {
         dataAttributes={dataAttributes}
         onVariantSelect={handleVariantSelect}
         categories={categories}
+        parentProduct={product}
       />
     </div>
   );

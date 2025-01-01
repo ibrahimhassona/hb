@@ -99,7 +99,7 @@ const ProductAccordion = ({ product }) => {
             </AccordionItem> */}
 
             {/* ================= User Manual =============== */}
-            <AccordionItem
+            {product.Manuals && <AccordionItem
                 title={t("user_manual")}
                 isOpen={openSections.userGuide}
                 onToggle={() => toggleSection('userGuide')}
@@ -120,7 +120,7 @@ const ProductAccordion = ({ product }) => {
                         </div>
                     ))}
                 </div>
-            </AccordionItem>
+            </AccordionItem>}
             {/* ================= Video =============== */}
             <AccordionItem
                 title={t('video')}

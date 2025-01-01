@@ -10,7 +10,7 @@ import Error from '@/app/[locale]/error'
 import ProductCategories from './ProductCategories'
 
 
-const ContentProduct = ({ product, dataAttributes, onVariantSelect , categories }) => {
+const ContentProduct = ({ product, dataAttributes, onVariantSelect, categories, parentProduct }) => {
     if (!product || !product.slug) {
         // Instead of updating state here, render an error page directly
         return <Error />;
@@ -24,7 +24,7 @@ const ContentProduct = ({ product, dataAttributes, onVariantSelect , categories 
                 <div className="mb-6 ">
                     {/* --- Sub Categories ----- */}
                     <div className='flex items-center gap-2 flex-wrap'>
-                        <ProductCategories categories={categories}/>
+                        <ProductCategories categories={categories} />
                     </div>
                     <h1 className="text-2xl font-bold text-lightGray mb-4 ">{product?.title}</h1>
                     {product?.description && parse(product?.short_description)}
@@ -39,16 +39,14 @@ const ContentProduct = ({ product, dataAttributes, onVariantSelect , categories 
                         {/* ------- SKU -------- */}
                         <div className='text-gray-500 text-xs  p-2 bg-green-50  shadow-sm  rounded-md'>{t("sku")} : <span className='text-primary font-semibold'>{product.SKU}</span></div>
                         {/* ------- Stock -------- */}
-                        <div className='text-gray-500 text-xs p-2 bg-green-50  shadow-sm  rounded-md'>{t("stock")} : <span className={`${product.stock<5?'text-red-500 ':'text-primary '} font-semibold`}>{product.stock}</span></div>
+                        <div className='text-gray-500 text-xs p-2 bg-green-50  shadow-sm  rounded-md'>{t("stock")} : <span className={`${product.stock < 5 ? 'text-red-500 ' : 'text-primary '} font-semibold`}>{product.stock}</span></div>
                     </div>
                 </div>
             </div>
-            {/* Colors Select */}
-            {product?.colors.length > 0 && <SelectColor title={t("color")} data={product?.colors} />}
             {/* --------------- Variants Options ------------- */}
             <ProductSelect onVariantSelect={onVariantSelect} product={product} dataAttributes={dataAttributes} />
             {/* --------------- Bought Together ------------- */}
-            {product.bought_together.length > 0 && <SoldTogether product={product} />}
+            {parentProduct.bought_together.length > 0 && <SoldTogether product={parentProduct} varProduct={product} />}
             {/* ---------------- Button -------------- */}
             <div className='flex items-center w-full max-sm:justify-center'>
                 <Link href={product?.buildstation_url} target='_blank' className="w-full bg-primary hover:bg-lightPrimary cust-trans text-white py-3 rounded-lg flex items-center justify-center gap-2 max-lg:w-fit px-4 ">

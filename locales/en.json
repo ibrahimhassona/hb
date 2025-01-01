@@ -37,7 +37,8 @@
   "main_categories": {
     "title": "Shop products by category",
     "featured_products": "Featured Products",
-    "discover_more": "Discover More"
+    "discover_more": "Discover More",
+    "offers":"Offers"
   },
   "news": {
     "title": "Explore Our Journey & Creations",
@@ -124,7 +125,7 @@
     "data_explaning": "Technical Data",
     "download": "Download",
     "stock":"Stock",
-    "outOfStock":"Out"
+    "outOfStock":"Out Of Stock"
 
   },
   "footer": {
@@ -140,7 +141,8 @@
     "all_rights_hypnotek": {
       "one": "All rights reserved ",
       "two": "Hypnotek."
-    }
+    },
+    "download-app":"Download the mobile app"
   },
   "Locations": {
     "no_data_to_view": "There are no identical places",

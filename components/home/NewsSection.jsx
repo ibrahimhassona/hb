@@ -33,7 +33,7 @@ const NewsSection = () => {
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center gap-1">
                     <h2 className="text-2xl font-bold text-start max-md:text-xl line-clamp-1 text-darkGray">{t("title")}</h2>
-                    <Link href="/" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
+                    <Link href="/news" className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />
                     </Link>
@@ -80,7 +80,7 @@ const NewsSection = () => {
                                         loading='lazy'
                                     />
                                 </div>
-                                <div className="p-4 bg-white flex flex-col items-start gap-2 ">
+                                <div className="p-4 bg-gray-50 flex flex-col items-start gap-2 ">
                                     <h3 className="text-lg max-sm:text-sm font-semibold  text-start text-darkGray">{item.title}</h3>
                                     <p className="text-gray-600 text-xs  text-start">{new Date(item.createdAt).toLocaleDateString(locale)}</p>
                                     {/* ------- Description -------- */}

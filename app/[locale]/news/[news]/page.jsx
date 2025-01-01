@@ -23,7 +23,6 @@ export async function generateMetadata({ params }) {
 const page = async ({ params }) => {
   // -------- Data ----------
   const data = await getData('ar', `news?populate=*&filters[slug][$eq]=${params.news}`)
-  console.log("data=====>",data[0]?.image[0]?.url)
   return (
     <>
       <NavBar props={{ text: 'darkGray' }} />

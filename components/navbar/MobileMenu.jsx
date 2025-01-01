@@ -64,7 +64,7 @@ const MobileMenu = ({ props }) => {
     }
     return (
         <div className="relative">
-            <div className="max-md:flex hidden" onClick={toggleMenu}>
+            <div className="max-md:flex hidden " onClick={toggleMenu}>
                 <HiMenu
                     size={30}
                     className={`hover:text-primary cust-trans animate-flip-up cursor-pointer ${props ? `text-${props.text}` : 'text-darkGray'}`}

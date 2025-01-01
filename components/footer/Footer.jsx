@@ -42,7 +42,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-white text-sm w-full">
       <div className="mx-auto px-4 xl:px-40 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-start max-md:items-center mx-auto max-md:w-fit justify-center gap-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-start max-md:items-center mx-auto max-md:w-fit justify-center gap-8 w-full">
           {/* Logo Section */}
           <div className="flex flex-col gap-4 items-center md:items-start text-center ">
             <Image src='/white-logo.png' width={40} height={40} alt='Logo' />
@@ -65,7 +65,21 @@ const Footer = () => {
               {t("all_rights_hmg")} {year} &copy;
             </p>
           </div>
-
+          {/* --- Download App Section --- */}
+          <div className=' '>
+            <div className="text-right flex flex-col items-center ">
+              <h3 className="font-bold mb-4 text-lg flex flex-col w-full items-start max-sm:items-center">{t("download-app")}</h3>
+            </div>
+            {/* Links */}
+            <div className='flex items-center gap-2 max-sm:justify-around'>
+              <Link href='https://play.google.com/store/apps/details?id=com.hypnotek.hypnotek&pli=1' target='_blank'>
+                <Image src="/footer/hypnotek-googleplay.webp" height={200} width={200} className='w-[120px] h-[36px]' alt='Andriod App' />
+              </Link>
+              <Link href='https://apps.apple.com/sa/app/hypnotek/id1533759974' target='_blank'>
+                <Image src="/footer/hypnotek-appstore.webp" height={200} width={200} className='w-[120px] h-[36px]' alt='Andriod App' />
+              </Link>
+            </div>
+          </div>
           <div className='flex justify-between items-start '>
             {/* ----------- Main Category ----------- */}
             <div className="text-right flex flex-col items-center">

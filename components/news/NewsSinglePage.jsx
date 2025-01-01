@@ -24,7 +24,7 @@ const NewsSinglePage = ({ data }) => {
         { title: t("news"), url: '/news' },
         { title: title, url: `/news/${slug}` },
     ]
-    console.log(createdAt)
+
 
     return (
         <div className='px-4 xl:px-40 '>

@@ -37,7 +37,7 @@ const ProductsDropdown = () => {
                   {category.title}
                 </h3>
                 <ul className="flex flex-col">
-                  {category.sub_categories.map((subCategory) => (
+                  {category.sub_categories.slice(0,6).map((subCategory) => (
                     <li key={subCategory.id}>
                       <Link
                         href={`/products?sub-category=${subCategory.slug}`}

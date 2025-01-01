@@ -1,4 +1,4 @@
-# robots.txt for https://hypnotek.com/ar
+# robots.txt for https://hypnotek.com/
 
 # Allow all robots full access to the main site
 User-agent: *
@@ -21,7 +21,7 @@ Allow: /sitemap.xml
 Allow: /sitemap-*.xml
 
 # Specify sitemap locations
-Sitemap: https://hypnotek.com/ar/sitemap.xml
+Sitemap: http:hypnotek.com/api/sitemap
 
 # Add a crawl delay to prevent server overload
 Crawl-delay: 1

@@ -37,7 +37,8 @@
   "main_categories": {
     "title": "تصفح حسب الفئات",
     "featured_products": "المنتجات المميزة",
-    "discover_more": "اكتشف أكثر"
+    "discover_more": "اكتشف أكثر",
+    "offers":"عروض"
   },
   "news": {
     "title": "تعرف على رحلتنا، أحدث أخبـارنا",
@@ -124,7 +125,7 @@
     "data_explaning": "بيانات فنية",
     "download": "تحميل",
     "stock":"المخزون",
-    "outOfStock":"نفذت"
+    "outOfStock":"نفذت الكمية"
   },
   "footer": {
     "p1": "حيث يلتقي الابتكار مع الراحة وكل زاوية تتألق بالحلول الذكية.",
@@ -139,7 +140,8 @@
     "all_rights_hypnotek": {
       "one": " جميع الحقوق محفوظة",
       "two": "هيبنوتيك."
-    }
+    },
+    "download-app":"تحميل تطبيق الجوال"
   },
   "Locations": {
     "no_data_to_view": "لا توجد اماكن متطابقه",

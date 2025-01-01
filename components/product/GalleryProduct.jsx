@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import SocialMediaShare from '../news/SocialMediaShare';
 import { FaNotEqual } from 'react-icons/fa6';
+import Lables from './Lables';
 
 const GalleryProduct = ({ product, isFeature }) => {
     const t = useTranslations("product")
@@ -86,14 +87,7 @@ const GalleryProduct = ({ product, isFeature }) => {
                 <div className=' absolute top-2 end-2 z-20 '>
                     <SocialMediaShare />
                 </div>
-                {product?.isFeature && <div className='absolute bg-red-500 top-14 end-0 w-[70px] animate-fade-up cust-trans flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20'>
-                    <MdOutlineWavingHand className=' animate-wiggle-more repeat-infinite' size={25} />
-                    <span className='text-sm'>{t('feature')}</span>
-                </div>}
-                 {product?.stock == 0 && <div className={`absolute bg-yellow-500 text-xs py-2 w-[70px] animate-fade-up cust-trans ${product?.isFeature ?'top-[86px]':'top-14'} end-0 flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20`}>
-                    <FaNotEqual  className='' size={20} />
-                    <span className='text-xs'>{t('outOfStock')}</span>
-                </div>} 
+                <Lables product={product} />
                 {product?.images_url && product?.images_url.split(',').map((img, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full relative rounded-lg overflow-hidden">

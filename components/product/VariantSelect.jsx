@@ -16,7 +16,7 @@ const VariantSelect = ({ data, title, className, onVariantSelect }) => {
                 <IoIosArrowDown className={`cust-trans ${isOpen ? ' rotate-180' : ''}`} />
             </div>
             {isOpen &&
-                <div className="flex z-20 text-start flex-col absolute top-[105%] border w-full rounded-md shadow-sm  py-1 gap-1 bg-white animate-fade-up max-h-60 overflow-y-auto cust-trans px-2 ">
+                <div className="flex z-20 text-start flex-col absolute bottom-[105%] border w-full rounded-md shadow-sm  py-1 gap-1 bg-white animate-fade-up max-h-60 overflow-y-auto cust-trans px-2 ">
                     {data.map((item) => (
                         <span onClick={() => { setSelected({ text: item.var_value, value: item.var_value }); setIsOpen(false) ;onVariantSelect(item) }} key={item.id} value={item.var_value} className={`${selected.value == item.SKU ? 'bg-gray-50 text-primary' : 'text-darkGray'} hover:text-primary hover:bg-green-50 flex items-center justify-between  shadow-sm py-2 rounded-sm px-2 w-full cust-trans text-sm cursor-pointer  capitalize `}>
                             {item.var_value}
