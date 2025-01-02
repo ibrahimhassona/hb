@@ -1,9 +1,11 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Lables from '../product/Lables';
 export const ProductCard = ({ product, locale }) => {
     const t = useTranslations("product")
     return (
         <div className="relative rounded-lg overflow-hidden shadow-md h-64 max-sm:h-[200px] border border-gray-100 group cursor-pointer ">
+           <Lables product={product} />
             {product?.images_url && (
                 <Image
                     src={product.images_url.split(",")[0]}
@@ -26,15 +28,15 @@ export const ProductCard = ({ product, locale }) => {
                         >
                             {product.sub_categories[0]?.title}
                         </span>
-                        <span
+                       { product.main_categories[1] && <span
                             onClick={(e) => {
                                 e.stopPropagation();
-                                window.location.href = `/products?sub-category=${product.main_categories[0].slug}`;
+                                window.location.href = `/products?sub-category=${product.main_categories[1].slug}`;
                             }}
                             className="text-[#C0C0C0]  text-xs line-clamp-1 bg-black/40 px-2 py-[2px] rounded-md w-fit hover:text-white cust-trans cursor-pointer"
                         >
                             {product.sub_categories[1]?.title}
-                        </span>
+                        </span>}
                     </div>
                     {/* ------- End Sub Categories --------- */}
                     <div className="flex justify-between items-center w-full">

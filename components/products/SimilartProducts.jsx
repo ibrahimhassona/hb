@@ -15,19 +15,18 @@ import { ProductCard } from '../home/PoductCard';
 
 
 
-export const useSimilar = (locale, url,name) => {
+export const useSimilar = (locale, url, name) => {
     return useQuery({
         queryKey: [name, locale],
         queryFn: () => getData(locale, url),
-        staleTime: 1000 * 60 * 5, // 5 minutes
-        retry: 2,
+
     });
 };
 
-const SimilartProducts = ({type, title, url ,slug}) => {
+const SimilartProducts = ({ type, title, url, slug }) => {
     const t = useTranslations("main_categories");
     const locale = useLocale();
-    const { data: products, isLoading, isError } = useSimilar(locale, url,title);
+    const { data: products, isLoading, isError } = useSimilar(locale, url, title);
     const skeletonArray = Array(5).fill(null);
 
     if (isError) {
@@ -38,16 +37,16 @@ const SimilartProducts = ({type, title, url ,slug}) => {
         );
     }
     const router = useRouter()
-    let url_route = type=='featured' ?  `${process.env.NEXT_PUBLIC_BASE_URL}/products/feature`:`${process.env.NEXT_PUBLIC_BASE_URL}/products?sub-category=${slug}`
+    let url_route = type == 'featured' ? `/products/feature` : `/products?sub-category=${slug}`
     return (
         <section className="my-16 py-2 overflow-hidden">
             <div className="mx-auto px-4 xl:px-40 my-6">
                 <div className="flex justify-between items-center">
                     <h2 className="text-2xl max-md:text-lg font-bold text-start text-darkGray">{title}</h2>
-                    <button onClick={() => router.replace(url_route)}  className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
+                    <Link href={url_route} className="bg-primary hover:bg-lightPrimary cust-trans max-sm:text-xs text-white px-4 py-2 rounded-md text-sm flex items-center justify-between gap-1 text-nowrap">
                         {t("discover_more")}
                         <FaChevronLeft className={`${locale === 'ar' ? '' : 'rotate-180'}`} />
-                    </button>
+                    </Link>
                 </div>
             </div>
 
