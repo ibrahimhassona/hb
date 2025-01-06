@@ -111,12 +111,13 @@ export async function POST(req) {
   </div>
 </body>
 `;
-  
+
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: process.env.SMTP_HOST, // SMTP host from provided data
+      port: process.env.SMTP_PORT,
       auth: {
-        user: process.env.EMAIL_RECEIVER,
+        user: process.env.USER,
         pass: process.env.EMAIL_PASS,
       },
     });
@@ -125,16 +126,16 @@ export async function POST(req) {
       from: process.env.EMAIL_RECEIVER,
       to: email,
       replyTo: process.env.EMAIL_RECEIVER,
-      subject: `${locale=='ar'?'إرسال نموذج اتصال جديد - السبب:':'New Contact Form Submission - Reason:'} ${reason}`,
-      html:locale=='ar'?arBody: enBody,
+      subject: `${locale == 'ar' ? 'إرسال نموذج اتصال جديد - السبب:' : 'New Contact Form Submission - Reason:'} ${reason}`,
+      html: locale == 'ar' ? arBody : enBody,
     };
 
     const mailOptionsToAdmin = {
       from: email,
       to: process.env.EMAIL_RECEIVER,
       replyTo: email,
-      subject: `${locale=='ar'?'إرسال نموذج اتصال جديد - السبب:':'New Contact Form Submission - Reason:'} ${reason}`,
-      html:locale=='ar'?arBody: enBody,
+      subject: `${locale == 'ar' ? 'إرسال نموذج اتصال جديد - السبب:' : 'New Contact Form Submission - Reason:'} ${reason}`,
+      html: locale == 'ar' ? arBody : enBody,
     };
 
     // Sending emails

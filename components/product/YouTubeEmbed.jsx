@@ -2,7 +2,7 @@ import React from 'react';
 
 const YouTubeEmbed = ({ videoId, title }) => {
   return (
-    <div className="youtube-embed grid xl:grid-cols-4 md:grid-cols-2 max-sm:grid-cols-1 max-sm:w-full my-4 cust-trans animate-fade-up">
+    <div className="youtube-embed grid  border max-sm:grid-cols-1 max-sm:w-full my-4 cust-trans animate-fade-up">
       <div className="rounded-md overflow-hidden">
         <iframe
           width="100%"

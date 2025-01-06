@@ -15,7 +15,7 @@ const Card = ({ item, search, value }) => {
     return (
         <Link
             href={`/products/${item.slug}`}
-            className="group relative flex flex-col w-full bg-white rounded-lg border border-gray-100 cust-trans  overflow-hidden"
+            className="group relative flex flex-col w-full bg-white rounded-lg  shadow border-gray-100 cust-trans  overflow-hidden"
         >
             <Lables product={item} />
             {/* ========= Images ========== */}
@@ -31,7 +31,7 @@ const Card = ({ item, search, value }) => {
                 />
             </div>
             {/* ============= End Image ============= */}
-            <div className="flex flex-col flex-grow p-4 space-y-3 max-sm:bg-gray-50">
+            <div className="flex flex-col flex-grow p-4 space-y-3 max-sm:bg-gray-50 ">
                 <div className="flex items-center gap-2 justify-between ">
                     {/* ====== Category ======= */}
                     <div className='flex items-center justify-start gap-1  max-sm:items-start'>
@@ -43,7 +43,7 @@ const Card = ({ item, search, value }) => {
                         {item.price?.toLocaleString()} <span className='text-xs'>{t("sar")}</span>
                     </span>
                 </div>
-                <div className='flex w-full justify-between flex-col-reverse gap-1'>
+                <div className='flex w-full justify-between flex-col-reverse gap-1 '>
                     {/* ====== SKU ======= */}
                     <h4 className="text-xs font-medium text-[10px] text-gray-400 flex items-center justify-end">
                         <span className='font-semibold '> {t("sku")} :{" "}</span>

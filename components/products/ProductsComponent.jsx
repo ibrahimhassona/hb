@@ -30,7 +30,7 @@ const ProductsComponent = ({ className, data }) => {
 
   return (
     <div
-      className={`${className} min-h-[790px] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 items-start h-fit w-full justify-items-center`}
+      className={`${className} min-h-[790px] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-4 content-start h-fit w-full justify-items-center `}
     >
       {data?.map((item, index) => (
         <Card key={item.id || item.slug || index} item={item} />

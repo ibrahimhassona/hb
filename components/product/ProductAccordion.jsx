@@ -122,29 +122,31 @@ const ProductAccordion = ({ product }) => {
                 </div>
             </AccordionItem>}
             {/* ================= Video =============== */}
-            <AccordionItem
+            {product.video_url && <AccordionItem
                 title={t('video')}
                 isOpen={openSections.video}
                 onToggle={() => toggleSection('video')}
                 downloadable
-                className={!openSections.video ? 'border-b border-gray-200' : ''}
+                className={!openSections.video ? 'border-b border-gray-200 ' : ''}
             >
-                {/* {product?.video_url ? (
-                    product.video_url.split(',').map((url, index) => {
-                        const trimmedUrl = url.trim(); 
-                        console.log(url)
-                        return (
-                            <div key={index} className="my-4">
-                                <VideoRenderer url={trimmedUrl} title={`Video ${index + 1}`} />
-                            </div>
-                        );
-                    })
-                ) : (
-                    <p className="text-center text-darkGray">{t('video_not_found')}</p>
-                )} */}
+
+                <div className='grid grid-cols-2 max-md:grid-cols-1 gap-2'>
+                    {product?.video_url ? (
+                        product.video_url.split(',').map((url, index) => {
+                            const trimmedUrl = url.trim();
+                            return (
+                                <div key={index} className="my-4">
+                                    <VideoRenderer url={trimmedUrl} title={`Video ${index + 1}`} />
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <p className="text-center text-darkGray">{t('video_not_found')}</p>
+                    )}
+                </div>
                 {/* <VideoRenderer url={`https://dyq4yrh81omo6.cloudfront.net/videos/video_6473363f0e0a21685272127.mp4`} title={`Video ${ + 1}`} /> */}
-                <p className='text-darkGray w-full text-center'>تحت الانشاء </p>
-            </AccordionItem>
+                {/* <p className='text-darkGray w-full text-center'>تحت الانشاء </p> */}
+            </AccordionItem>}
         </div>
     );
 };
