@@ -1,128 +1,75 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
-import Pagination from '../products/Pagination';
-import { IoIosArrowDown } from 'react-icons/io';
 import { FilterButton } from './FilterButton';
 import Link from 'next/link';
-import LoadMore from '../LoadMore';
+import { useLocale, useTranslations } from 'next-intl';
+import { useNews } from '../home/NewsSection';
+import parse from 'html-react-parser'
+import Loader from '../Loader';
 
 const NewsContent = () => {
-    // State for filter section and sort selection
-    const [selectedSection, setSelectedSection] = useState('');
+    // Sample news data array 
+    const { data, isLoading } = useNews()
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [selectedSection, setSelectedSection] = useState('');
     const [sortOption, setSortOption] = useState('newest');
-    // Sample news data array
-    const newsItems = [
-        {
-            id: 1,
-            title: 'هيبنوتك في الصين',
-            date: '12/12/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-1.jpg',
-        },
-        {
-            id: 2,
-            title: 'هيبنوتك في الصين',
-            date: '12/3/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-1.jpg',
-        },
-        {
-            id: 3,
-            title: 'هيبنوتك في الصين',
-            date: '12/12/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-3.jpg',
-        },
-        {
-            id: 4,
-            title: 'هيبنوتك في الصين',
-            date: '12/12/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-2.jpg',
-        },
-        {
-            id: 5,
-            title: 'هيبنوتك في الصين',
-            date: '12/4/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-2.jpg',
-        },
-        {
-            id: 6,
-            title: 'هيبنوتك في الصين',
-            date: '12/6/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-1.jpg',
-        },
-        {
-            id: 7,
-            title: 'هيبنوتك في الصين',
-            date: '12/8/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-3.jpg',
-        },
-        {
-            id: 8,
-            title: 'هيبنوتك في الصين',
-            date: '12/12/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-2.jpg',
-        },
-        {
-            id: 9,
-            title: 'هيبنوتك في الصين',
-            date: '12/12/2024',
-            description: 'نسعى و نفخر بدي في شركة هيبنوتك على التواجد والمشاركة في اكبر حدث نظلي و المقام في المعرض الق...',
-            image: '/news/news-3.jpg',
-        },
-    ];
-     // Handle filter section click
-     const handleSectionClick = (section) => {
-        if (selectedSection === section) {
-            setSelectedSection('');
-            setIsFilterOpen(false);
-        } else {
-            setSelectedSection(section);
-            setIsFilterOpen(true);
-        }
+
+    // Sort handlers
+    const handleSectionClick = (section) => {
+        setSelectedSection(prevSection => {
+            const newSection = prevSection === section ? '' : section;
+            setIsFilterOpen(!!newSection);
+            return newSection;
+        });
     };
 
-    // Handle sort selection
     const handleSortChange = (option) => {
         setSortOption(option);
         setIsFilterOpen(false);
     };
+    // Sort the data
+    const sortedData = useMemo(() => {
+        if (!data) return [];
 
+        return [...data].sort((a, b) => {
+            if (sortOption === 'newest') {
+                return new Date(b.publishedAt) - new Date(a.publishedAt);
+            } else {
+                return new Date(a.publishedAt) - new Date(b.publishedAt);
+            }
+        });
+    }, [data, sortOption]);
+    const t = useTranslations("news")
+    const locale = useLocale()
 
     return (
-        <div className="px-4 xl:px-40 mx-auto my-8">
+        <div className="px-4 xl:px-40 mx-auto mt-10 mb-24">
             {/* ---------------Main Header Section------------- */}
             <div className="flex justify-between items-center mb-8 relative">
-                <h1 className="text-3xl font-bold text-darkGray">أخبارنا</h1>
+                <h1 className="text-3xl font-bold text-darkGray">{t("our_news")}</h1>
                 <div className="flex items-center space-x-4">
                     <div className="relative">
                         <FilterButton
-                            title="الترتيب حسب"
-                            isActive={selectedSection === 'sort'}
+                            title={sortOption == 'newest' ? t("newest") : t("oldest")}
+                            isActive={isFilterOpen}
                             onClick={() => handleSectionClick('sort')}
                         />
                         {/* Filter Dropdown Menu */}
                         {isFilterOpen && selectedSection === 'sort' && (
-                            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                            <div className="absolute end-0 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
                                 <div className="py-1">
                                     <button
                                         onClick={() => handleSortChange('newest')}
-                                        className={`block w-full text-right px-4 py-2 text-sm ${sortOption === 'newest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'}`}
+                                        className={`block w-full text-start px-4 py-2 text-sm ${sortOption === 'newest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'}`}
                                     >
-                                        الأحدث
+                                        {t("newest")}
                                     </button>
                                     <button
                                         onClick={() => handleSortChange('oldest')}
-                                        className={`block w-full text-right px-4 py-2 text-sm ${sortOption === 'oldest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'}`}
+                                        className={`block w-full text-start px-4 py-2 text-sm ${sortOption === 'oldest' ? 'text-primary bg-teal-50' : 'text-darkGray hover:bg-gray-100'}`}
                                     >
-                                        الأقدم
+                                        {t("oldest")}
                                     </button>
                                 </div>
                             </div>
@@ -133,40 +80,41 @@ const NewsContent = () => {
 
             {/* ---------------News Grid Section------------- */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {newsItems.map((item) => (
+                {data ? sortedData.map((item) => (
                     // =========== News Item =========
-                    <Card key={item.id} item={item}  />
-                ))}
+                    <Card key={item.id} item={item} t={t} locale={locale} />
+                )) : <Loader />}
             </div>
             {/* <Pagination /> */}
-            <LoadMore/>
+            {/* <LoadMore /> */}
         </div>
     );
 };
 
 
-const Card =({item})=>{
-    return(
+const Card = ({ item, t, locale }) => {
+
+    return (
         <div className="bg-white rounded-lg overflow-hidden hover:shadow-md cust-trans cursor-pointer shadow-sm">
-        <div className="relative h-48 max-md:h-40 overflow-hidden">
-            <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover"
-            />
-        </div>
-        <div className="p-4 flex flex-col gap-2">
-            <div className="flex items-start gap-2 flex-col">
-                <h2 className="text-xl max-md:text-sm font-bold text-darkGray">{item.title}</h2>
-                <span className="text-sm text-gray-400">{item.date}</span>
+            <div className="relative h-48 max-md:h-40 overflow-hidden">
+                <img
+                    src={item.image[0]?.url}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                />
             </div>
-            <p className="text-darkGray max-md:text-xs mb-4 max-md:mb-2 text-right">{item.description}</p>
-            <Link href={`/news/dd`} className="flex items-center justify-end text-primary hover:text-lightPrimary cust-trans gap-2">
-                <span className="text-sm">اقرأ اكثر</span>
-                <FaChevronLeft className="w-4 h-4 ml-1" />
-            </Link>
+            <div className="p-4 flex flex-col gap-2 max-sm:gap-0">
+                <div className="flex items-start gap-2 flex-col">
+                    <h2 className=" max-md:text-sm font-bold text-darkGray">{item.title}</h2>
+                    <span className="text-sm text-gray-400">{new Date(item.createdAt).toLocaleDateString(locale)}</span>
+                </div>
+                <div className='text-sm max-sm:line-clamp-2 text-darkGray'>{parse(item.short_description.slice(0, 100))}......</div>
+                <Link href={`/news/${item.slug}`} className="flex items-center justify-end text-primary hover:text-lightPrimary cust-trans gap-2">
+                    <span className="text-sm">{t("read_more")}</span>
+                    <FaChevronLeft className={`ml-1 ${locale == 'en' ? 'rotate-180' : ''}`} />
+                </Link>
+            </div>
         </div>
-    </div>
     )
 }
 export default NewsContent;

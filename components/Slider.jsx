@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { IoIosArrowRoundUp } from 'react-icons/io'
 import Path from './Path'
+import Image from 'next/image'
 
 const Slider = ({ number, top, dataPath }) => {
     const locale = useLocale()
@@ -30,11 +31,16 @@ const Slider = ({ number, top, dataPath }) => {
                         sliders && sliders.map((slider, index) => (
                             <SwiperSlide key={index}>
                                 <div className="w-full h-full relative overflow-hidden">
-                                    <img
+                                    <Image
                                         src={slider.image?.url}
                                         alt={`News view ${index + 1}`}
                                         className="w-full h-full object-cover cust-trans"
                                         loading="lazy"
+                                        width={1000}
+                                        height={1000}
+                                        quality={100} 
+                                        placeholder="blur"
+                                        blurDataURL={`/isNoavilable-${locale}.png`}
                                     />
                                     <div className=' absolute top-0  right-0 w-full h-full bg-black/50 z-10'>
                                         <div className="absolute z-20 px-4 xl:px-40  bottom-20 w-[100%]  lg:w-[70%] 2xl:w-[60%] animate-fade-down text-white">

@@ -17,7 +17,7 @@ export const useCategories = (locale) => {
         retry: 2,
     });
 };
-const SideBar = ({ className }) => {
+const SideBar = ({ className , handleLoadeMore }) => {
     // ------- Translation -------
     const t = useTranslations("product")
     // ------- Local-------
@@ -93,7 +93,7 @@ const SideBar = ({ className }) => {
             main: category.slug,
             sub: null  // Clear sub-category when main category is clicked
         });
-
+        handleLoadeMore(25)
         router.push(`/${locale}/products?category=${category.slug}`, { scroll: false });
     };
 
@@ -110,7 +110,7 @@ const SideBar = ({ className }) => {
             ...prev,
             [category.id]: true
         }));
-
+        handleLoadeMore(25)
         // Update URL with sub-category parameter
         const newUrl = `/${locale}/products?sub-category=${subCategory.slug}`;
         router.push(newUrl, { scroll: false });

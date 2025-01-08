@@ -47,7 +47,7 @@ const MobileMenuProducts = ({
             ) : (
                 // ------ Sub Selected  -----
                 <div className="flex flex-col gap-4 animate-fade-left text-white cust-trans">
-                    {selectedCategory.sub_categories.map((item) => (
+                    {selectedCategory.sub_categories.slice(0,6).map((item) => (
                         <Link
                         href={`/products?sub-category=${item.slug}`}
                         key={item.id}

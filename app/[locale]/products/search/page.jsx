@@ -6,7 +6,7 @@ import React from 'react'
 const page = ({ locale, searchParams }) => {
     return (
         <>
-            <NavBar />
+           <NavBar props={{ text: 'darkGray' }} />
             <SearchContent value={searchParams} locale={locale} />
         </>
     )

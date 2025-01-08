@@ -1,11 +1,16 @@
 "use client"
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 const ShowSection = () => {
     return (
         <div className="relative my-6">
-            <img
+            <Image
+                height={1000}
+                width={1000}
+                loading='lazy'
+                quality={100}
                 src="/bg-section.png"
                 alt="background"
                 className="w-full  object-cover"
@@ -16,7 +21,7 @@ const ShowSection = () => {
                     <Item
                         position="top-8 right-8"
                         popupPosition="right-8"
-                        title="جهاز تعطير ذكي"
+                        title="Smart Device"
                         subtitle="سيدار - تحكم ذكي"
                         image="/section1/card_1.png"
                         price="2,399 ريال"
@@ -77,7 +82,7 @@ const Item = ({ position, popupPosition, title, subtitle, image, price, rope }) 
                     <span className={`absolute animate-flip-up cust-trans ${rope}`}></span>
                     <div className={`absolute cust-trans animate-flip-up ${popupPosition} backdrop-blur-sm bg-black/30  rounded-lg overflow-hidden w-64 max-sm:w-48 z-30`}>
                         <div className="flex items-center p-3 gap-2 ">
-                            <img src={image} alt={title} className="h-16 w-16 max-sm:w-12 max-sm:h-12 rounded-md object-cover" />
+                            <Image width={200} height={200} loading='lazy' src={image} alt={title} className="h-16 w-16 max-sm:w-12 max-sm:h-12 rounded-md object-cover" />
                             <div className="flex flex-col gap-1">
                                 <h3 className="text-sm font-semibold text-teal-500 max-sm:text-xs">{title}</h3>
                                 <div className='flex flex-col gap-1'>

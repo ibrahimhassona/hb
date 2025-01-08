@@ -25,7 +25,7 @@ const MainCategories = () => {
     )
   }
   return (
-    <section className='px-4 xl:px-40 py-8'>
+    <section className='px-4 xl:px-40 pb-8 pt-12'>
       <h1 className="font-[600] text-2xl text-darkGray  mb-6">
         {t("title")}
       </h1>
@@ -47,7 +47,10 @@ const MainCategories = () => {
               src={category.image[0]?.url}
               alt={category.title}
               layout="fill"
-              objectFit="cover"
+              loading="lazy"
+              quality={100} 
+              placeholder="blur"
+              blurDataURL={`/isNoavilable-${locale}.png`}
               className="rounded-2xl"
             />
             {/* ========== Title ======== */}
@@ -79,6 +82,7 @@ const MainCategories = () => {
               layout="fill"
               objectFit="cover"
               className="rounded-2xl w-full"
+              loading="lazy"
             />
             {/* ========== Title ======== */}
             <div className={`absolute inset-0 bg-black bg-opacity-40 flex items-center ${index == 0 ? 'justify-start' : index == 5 ? 'justify-end' : 'justify-center'} p-4`}>

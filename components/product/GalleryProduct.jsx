@@ -8,13 +8,16 @@ import { FreeMode, Thumbs, Navigation, Virtual } from 'swiper/modules';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdOutlineWavingHand } from "react-icons/md";
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import SocialMediaShare from '../news/SocialMediaShare';
+import { FaNotEqual } from 'react-icons/fa6';
+import Lables from './Lables';
 
-const GalleryProduct = ({ images,isFeature }) => {
-    const t=useTranslations("product")
+const GalleryProduct = ({ product, isFeature }) => {
+    const t = useTranslations("product")
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const thumbsSwiperRef = useRef(null);
-
 
     const slideNext = () => {
         if (thumbsSwiperRef.current?.swiper) {
@@ -39,7 +42,7 @@ const GalleryProduct = ({ images,isFeature }) => {
                     direction="vertical"
                     className=" w-20 max-md:w-12 h-[450px] max-md:h-[300px] "
                 >
-                    {images && images.map((img, index) => (
+                    {product?.images_url && product?.images_url.split(',').map((img, index) => (
                         <SwiperSlide key={index} className='h-full'>
                             <div
                                 onClick={() => setActiveIndex(prev => index)}
@@ -49,11 +52,13 @@ const GalleryProduct = ({ images,isFeature }) => {
                                         : 'opacity-30 hover:opacity-75 border border-transparent'
                                     }`}
                             >
-                                <img
-                                    src={img?.url ? `${img?.url }` : `/isNoavilable-${locale}.png`}
+                                <Image
+                                    src={img ? img : `/isNoavilable-${locale}.png`}
                                     alt={`Thumbnail ${index + 1}`}
                                     className="w-full h-full object-cover rounded-md "
                                     loading="lazy"
+                                    width={200}
+                                    height={200}
                                 />
                             </div>
                         </SwiperSlide>
@@ -79,18 +84,20 @@ const GalleryProduct = ({ images,isFeature }) => {
                 onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 direction="vertical"
             >
-            {isFeature&& <div className='absolute bg-red-500 top-2 end-0 flex items-center gap-2 px-2 py-1 rounded-s-full text-white z-20'>
-                <MdOutlineWavingHand className=' animate-wiggle-more repeat-infinite' size={25}/>
-                <span className='text-sm'>{t('feature')}</span>
-                </div>}
-                {images && images.map((img, index) => (
+                <div className=' absolute top-2 end-2 z-20 '>
+                    <SocialMediaShare />
+                </div>
+                <Lables product={product} />
+                {product?.images_url && product?.images_url.split(',').map((img, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full h-full relative rounded-lg overflow-hidden">
-                            <img
-                        src={img?.url ? `${img.url}` : `/isNoavilable-${locale}.png`}
+                            <Image
+                                fill
+                                src={img ? img : `/isNoavilable-${locale}.png`}
                                 alt={`Product view ${index + 1}`}
                                 className="w-full h-full object-cover cust-trans hover:scale-105"
                                 loading="lazy"
+                                quality={100}
                             />
                         </div>
                     </SwiperSlide>

@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { IoAddOutline, IoRemoveOutline } from 'react-icons/io5';
 import { HiDownload } from 'react-icons/hi';
 import Image from 'next/image';
-import YouTubeEmbed from './YouTubeEmbed';
-import { getYouTubeEmbedURL } from '@/utils/libs';
 import { useTranslations } from 'next-intl';
 import parse from 'html-react-parser'
+import Link from 'next/link';
+import VideoRenderer from './VideoRenderer';
+
 
 const AccordionItem = ({ title, isOpen, className, onToggle, children, downloadable = false, product }) => {
     return (
@@ -60,7 +61,7 @@ const ProductAccordion = ({ product }) => {
     ];
 
     // ============= YouTube Url Handling ==========
-    const embedUrl = getYouTubeEmbedURL(product?.video_url);
+    // const embedUrl = getYouTubeVideoId('https://www.youtube.com/embed/3Ia0Ie05VEI');
     const t = useTranslations('product')
 
     return (
@@ -77,7 +78,7 @@ const ProductAccordion = ({ product }) => {
                 </div>
             </AccordionItem>
             {/* ================= Specifications =============== */}
-            <AccordionItem
+            {/* <AccordionItem
                 title={t("specifications")}
                 isOpen={openSections.specifications}
                 onToggle={() => toggleSection('specifications')}
@@ -95,10 +96,10 @@ const ProductAccordion = ({ product }) => {
                         </div>
                     ))}
                 </div>
-            </AccordionItem>
+            </AccordionItem> */}
 
             {/* ================= User Manual =============== */}
-            <AccordionItem
+            {product.Manuals && <AccordionItem
                 title={t("user_manual")}
                 isOpen={openSections.userGuide}
                 onToggle={() => toggleSection('userGuide')}
@@ -106,7 +107,7 @@ const ProductAccordion = ({ product }) => {
                 className={!openSections.userGuide ? 'border-b border-gray-200' : ''}
             >
                 <div className="flex flex-col justify-between cust-trans animate-flip-up ">
-                    {['بيانات فنية', 'دليل استخدام المنتج'].map((item, index) => (
+                    {[t('data_explaning'), t('product_usage')].map((item, index) => (
                         <div className={`flex items-center gap-2 justify-between  p-4 ${index == 0 ? 'bg-[#f3f3f3]' : 'bg-[#E0E0E0]'}`} key={index}>
                             <div className='flex items-center gap-2'>
                                 <Image src='/singleProduct/File Send.png' alt='File Send' width={100} height={100} className='w-[30px] p-[5px] flex items-center justify-center rounded-full bg-green-50' />
@@ -114,21 +115,38 @@ const ProductAccordion = ({ product }) => {
                             </div>
                             <button className="text-primary flex items-center gap-2 hover:text-lightPrimary cust-trans">
                                 <HiDownload size={20} />
-                                <span className='max-md:text-sm'>تحميل</span>
+                                <Link target='_blanck' href={product.Manuals || '#'} rel="noopener noreferrer" className='max-md:text-sm'>{t('download')}</Link>
                             </button>
                         </div>
                     ))}
                 </div>
-            </AccordionItem>
+            </AccordionItem>}
             {/* ================= Video =============== */}
-            <AccordionItem
-                title={t("video")}
+            {product.video_url && <AccordionItem
+                title={t('video')}
                 isOpen={openSections.video}
                 onToggle={() => toggleSection('video')}
                 downloadable
-                className={!openSections.video ? 'border-b border-gray-200' : ''}>
-                {product?.video_url ? <YouTubeEmbed videoId={embedUrl.split('/').pop()} /> : <p className='text-center text-darkGray'>{t('video_not_found')}</p>}
-            </AccordionItem>
+                className={!openSections.video ? 'border-b border-gray-200 ' : ''}
+            >
+
+                <div className='grid grid-cols-2 max-md:grid-cols-1 gap-2'>
+                    {product?.video_url ? (
+                        product.video_url.split(',').map((url, index) => {
+                            const trimmedUrl = url.trim();
+                            return (
+                                <div key={index} className="my-4">
+                                    <VideoRenderer url={trimmedUrl} title={`Video ${index + 1}`} />
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <p className="text-center text-darkGray">{t('video_not_found')}</p>
+                    )}
+                </div>
+                {/* <VideoRenderer url={`https://dyq4yrh81omo6.cloudfront.net/videos/video_6473363f0e0a21685272127.mp4`} title={`Video ${ + 1}`} /> */}
+                {/* <p className='text-darkGray w-full text-center'>تحت الانشاء </p> */}
+            </AccordionItem>}
         </div>
     );
 };

@@ -1,0 +1,27 @@
+# robots.txt for https://hypnotek.com/
+
+# Allow all robots full access to the main site
+User-agent: *
+Allow: /
+
+# Block access to sensitive or non-indexable routes
+Disallow: /api/*
+Disallow: /_next/*
+Disallow: /assets/*
+Disallow: /server-sitemap.xml
+Disallow: /_next/data/*
+
+# Block common static file types (Optional: Uncomment if needed)
+# Disallow: /*.css$
+# Disallow: /*.js$
+# Disallow: /*.json$
+
+# Allow important SEO files
+Allow: /sitemap.xml
+Allow: /sitemap-*.xml
+
+# Specify sitemap locations
+Sitemap: http:hypnotek.com/api/sitemap
+
+# Add a crawl delay to prevent server overload
+Crawl-delay: 1

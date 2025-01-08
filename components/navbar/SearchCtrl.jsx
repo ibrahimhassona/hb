@@ -1,6 +1,6 @@
 "use client"
 import { useLocale, useTranslations } from 'next-intl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { IoClose } from "react-icons/io5"
 import { IoIosSearch } from "react-icons/io"
 import { useQuery } from '@tanstack/react-query'
@@ -10,11 +10,13 @@ import { useRouter } from 'next/navigation'
 
 // =============== Highlighted Text ==============
 export const HighlightedText = ({ text, searchValue }) => {
-    if (!searchValue) return text;
 
-    const parts = text.split(new RegExp(`(${searchValue})`, 'gi'));
+    const parts = useMemo(() => {
+        if (!searchValue) return [text];
+        return text.split(new RegExp(`(${searchValue})`, 'gi'))
+    }, [text, searchValue]);
     return parts.map((part, index) =>
-        part.toLowerCase() === searchValue.toLowerCase() ? (
+        part?.toLowerCase() === searchValue?.toLowerCase() ? (
             <span key={index} className="bg-lightPrimary text-white">
                 {part}
             </span>
@@ -26,9 +28,13 @@ export const HighlightedText = ({ text, searchValue }) => {
 // Search hook with proper conditions
 export const useSearch = (locale, value) => {
     const enabled = value?.length >= 3;
-    const url = enabled
-        ? `products?populate=*&filters[$or][0][title][$containsi]=${value}&filters[$or][1][SKU][$containsi]=${value}`
-        : null;
+    const url = useMemo(() => {
+        if (value?.length >= 3) {
+            return `products?populate=*&filters[$or][0][title][$containsi]=${value}&filters[$or][1][SKU][$containsi]=${value}&filters[isVisible][$eq]=true`;
+        }
+        return null;
+    }, [value]);
+
     return useQuery({
         queryKey: ['search', locale, value],
         queryFn: () => getData(locale, url),
@@ -67,18 +73,23 @@ const SearchCtrl = ({ props }) => {
         };
     }, [searchResults, router]);
     // ---- Put Value And Target ------
-    const handleValue = (e) => {
+    const handleValue = useCallback((e) => {
         setValue(e.target.value);
         if (e.target.value.length > 0 && !isOpen) {
             setIsOpen(true);
         }
-    };
+    }, [isOpen]);
     // ---- Close And Reset value ------
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setIsOpen(false);
         setValue("");
-    };
+    }, []);
 
+    // --- Handle click on product ------
+    const handleProductClick = useCallback((slug) => {
+        const newUrl = `/products/${encodeURIComponent(slug)}`
+        router.replace(newUrl)
+    }, [router])
     return (
         <div className="">
             {/* ============= Search SECTION ============= */}
@@ -127,14 +138,11 @@ const SearchCtrl = ({ props }) => {
                         <div className="max-h-60 overflow-y-auto flex flex-col gap-1 py-4">
                             {searchResults?.map((product) => (
                                 <div
-                                    onClick={() => {
-                                        const newUrl = `/products/${encodeURIComponent(product.slug)}`;
-                                        router.replace(newUrl);
-                                    }}
-                                    className='flex cursor-pointer rounded-sm gap-2 items-center w-[90%] py-1 px-2 shadow-sm m-auto bg-gray-50 border border-gray-200 hover:border-green-300 cust-trans' key={product.id}>
-                                    <Image src={product?.main_image?.url} height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
+                                    onClick={() => handleProductClick(product.slug)}
+                                    className='flex cursor-pointer h-[60px] rounded-sm gap-2 items-center w-[90%] py-1 px-2 shadow-sm m-auto bg-gray-50 border border-gray-200 hover:border-green-300 cust-trans' key={product.id}>
+                                    <Image src={product?.images_url ? product?.images_url.split(',')[0] : `/isNoavilable-${locale}.png`} loading="lazy" height={100} width={100} className='w-[50px] rounded-sm' alt={product?.title} />
                                     <div className='flex flex-col items-start h-full justify-between w-full gap-2'>
-                                        <h2 className='text-darkGray font-semibold line-clamp-1'>
+                                        <h2 className='text-darkGray text-xs font-semibold line-clamp-1'>
                                             <HighlightedText
                                                 text={product.title}
                                                 searchValue={value}
@@ -154,8 +162,8 @@ const SearchCtrl = ({ props }) => {
                             ))}
                             <button onClick={() => {
                                 const newUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/products/search?value=${encodeURIComponent(value)}`;
-                                 router.replace(newUrl);
-                                 setIsOpen(false)
+                                router.replace(newUrl);
+                                setIsOpen(false)
                             }} className='text-darkGray  hover:text-primary cust-trans border border-darkGray hover:border-primary w-fit px-3 text-xs py-1 m-auto mt-4 rounded-sm '>{t("visit_results")}</button>
                         </div>
                     ) : (

@@ -37,24 +37,33 @@
   "main_categories": {
     "title": "Shop products by category",
     "featured_products": "Featured Products",
-    "discover_more": "Discover More"
+    "discover_more": "Discover More",
+    "offers":"Offers"
   },
   "news": {
     "title": "Explore Our Journey & Creations",
     "discover_more": "Discover More",
-    "read_more": "Read More"
+    "read_more": "Read More",
+    "our_news": "Our News",
+    "sort": "Sort by",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "home": "Home",
+    "news": "News",
+    "stay_updated": "Stay updated with us",
+    "newsletter_text": "Get the latest news, innovations, and insights in smart home technology."
   },
   "contactUs": {
     "home": "Home",
     "contactUs": "Contact Us",
-    "head": "How can we assist you?",
-    "text": "We value your inquiries, thoughts, and feedback. Reaching out to us is the first step toward a smooth and satisfying experience.",
-    "stay_in_touch": "Stay in touch",
-    "fill_form": "We are happy to hear from you, please fill out this form",
+    "head": "How can we help you?",
+    "text": "We value your inquiries, suggestions, and feedback. Reaching out to us is the first step toward a smooth and satisfying experience.",
+    "stay_in_touch": "Stay in Touch",
+    "fill_form": "We'd love to hear from you. Please fill out this form.",
     "email": "Email",
     "phone": "Phone Number",
     "main_location": "Main Location",
-    "address": "3533 Al Kharj Road, Riyadh, Saudi Arabia",
+    "address": "3533 Old Khobar Road, Riyadh, Kingdom of Saudi Arabia",
     "reasons": {
       "inquiry": "Inquiry",
       "complaint": "Complaint",
@@ -66,13 +75,26 @@
       "last_name": "Last Name",
       "email": "Your Email",
       "phone": "Your Phone Number",
-      "message": "Message (Optional)",
-      "contact_reason": "Reason for Contact (Optional)",
+      "message": "Message ",
+      "contact_reason": "Reason for Contact",
       "message_placeholder": "Write your message",
       "first_name_placeholder": "Enter your first name",
       "last_name_placeholder": "Enter your last name",
       "email_placeholder": "Enter your email",
-      "submit_button": "Send Message"
+      "submit_button": "Send Message",
+      "full_name_error": "Full name must be at least 4 characters.",
+      "full_name_required": "First and last name are required.",
+      "email_error": "Please enter a valid email address.",
+      "email_required": "Email is required.",
+      "phone_required": "Phone number is required and must be in the correct format.",
+      "phone_error": "Phone number must be in the correct format.",
+      "message_required": "Message must be at least 15 characters long.",
+      "message_error": "Message is required.",
+      "reason_required": "Reason for contact is required.",
+      "error_message": "An error occurred. Please try again later.",
+      "sending": "sending ...",
+      "success_message": "success sending",
+      "reset":"Reset"
     }
   },
   "product": {
@@ -98,7 +120,13 @@
     "description": "Explore our collection of smart devices designed to enhance comfort, security, and convenience.",
     "sku": "SKU",
     "products": "Products",
-    "open_menu": "Click To Categories"
+    "open_menu": "Click To Categories",
+    "product_usage": "Product Usage Guide",
+    "data_explaning": "Technical Data",
+    "download": "Download",
+    "stock":"Stock",
+    "outOfStock":"Out Of Stock"
+
   },
   "footer": {
     "p1": "Where innovation meets comfort, and every corner shines with smart solutions.",
@@ -113,7 +141,8 @@
     "all_rights_hypnotek": {
       "one": "All rights reserved ",
       "two": "Hypnotek."
-    }
+    },
+    "download-app":"Download the mobile app"
   },
   "Locations": {
     "no_data_to_view": "There are no identical places",
@@ -136,8 +165,8 @@
     "description": "Don't worry though - we'll get you back home in ",
     "goHome": "Go Home",
     "goBack": "Go Back",
-    "seconds":"Seconds",
-    "second":"Second"
+    "seconds": "Seconds",
+    "second": "Second"
   },
   "error": {
     "title": "Something Went Wrong",
