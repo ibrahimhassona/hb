@@ -5,7 +5,8 @@ export async function POST(req) {
   const body = await req.json();
   const locale = await req.headers.get("locale")?.split(',')[0];
   const { firstName, lastName, email, phone, message, reason } = body;
-
+  console.log("SMTP_USER:", process.env.SMTP_USER);
+  console.log("SMTP_PASS:", process.env.EMAIL_PASS);
   // Validation
   if (!firstName || !lastName || !email || !phone || !reason) {
     return new Response(JSON.stringify({ error: 'All required fields must be filled.' }), { status: 400 });
@@ -112,14 +113,18 @@ export async function POST(req) {
 </body>
 `;
 
+
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // SMTP host from provided data
-      port: process.env.SMTP_PORT,
+      host:"email-smtp.us-east-1.amazonaws.com",
+      port:process.env.SMTP_PORT,
+      secure: false, 
       auth: {
-        user: process.env.USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
+      logger: true, 
+      debug: true,  
     });
 
     const mailOptionsToUser = {
